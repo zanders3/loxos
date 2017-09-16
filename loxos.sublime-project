@@ -1,0 +1,21 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+	"settings":
+	{
+		"sublimegdb_workingdir": "C:/Users/Alex/Code/loxos",
+		"sublimegdb_commandline": "bash -c \"gdb --interpreter=mi -ex 'target remote localhost:1234' -ex 'symbol-file build/kernel.bin'\""
+	},
+	"build_systems":
+	[
+		{
+			"name": "loxos",
+			"shell_cmd": "bash -c \"make\"",
+			"working_dir": "C:/Users/Alex/Code/loxos"
+		}
+	]
+}

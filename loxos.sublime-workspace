@@ -1,0 +1,1459 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Print",
+				"PrintVal"
+			],
+			[
+				"Prni",
+				"PrintVal"
+			],
+			[
+				"arg",
+				"arg_arry"
+			],
+			[
+				"VGA",
+				"VGAColor"
+			],
+			[
+				"mindm",
+				"mindmapNodes"
+			],
+			[
+				"chil",
+				"children"
+			],
+			[
+				"root",
+				"mindmapRoot"
+			],
+			[
+				"min",
+				"mindmapNodes"
+			],
+			[
+				"par",
+				"parentNode"
+			],
+			[
+				"pare",
+				"parentNode"
+			],
+			[
+				"paren",
+				"parentNodeIdx"
+			],
+			[
+				"ke",
+				"keyCode"
+			],
+			[
+				"Key",
+				"keyCode"
+			],
+			[
+				"Ke",
+				"keyCode"
+			],
+			[
+				"sele",
+				"selectionStart"
+			],
+			[
+				"selec",
+				"selectionStart"
+			],
+			[
+				"mindmap",
+				"mindmapText"
+			],
+			[
+				"ix",
+				"ix_to_char"
+			],
+			[
+				"y",
+				"yarr"
+			],
+			[
+				"se",
+				"secondObj"
+			],
+			[
+				"data",
+				"dataPort\tDataPort ν"
+			],
+			[
+				"da",
+				"dataPort\tDataPort ν"
+			],
+			[
+				"Callin",
+				"CallingPointType\tuint8 ʈ"
+			],
+			[
+				"En",
+				"EndElement\tstruct ʈ"
+			],
+			[
+				"De",
+				"DecodeElement\terror ƒ"
+			],
+			[
+				"Prin",
+				"Println\tn int, err error ƒ"
+			],
+			[
+				"_Ma",
+				"_MaskTex"
+			],
+			[
+				"The",
+				"Theta2_grad"
+			],
+			[
+				"del",
+				"delta_1"
+			],
+			[
+				"Thet",
+				"Theta2"
+			],
+			[
+				"For",
+				"FormatInt\tstring ƒ"
+			],
+			[
+				"fbid",
+				"fbidVal\tint64 ν"
+			],
+			[
+				"fb",
+				"fbidStr\tstring ν"
+			],
+			[
+				"Par",
+				"ParseInt\ti int64, err error ƒ"
+			],
+			[
+				"Sum",
+				"Sum32\tuint32 ƒ"
+			],
+			[
+				"N",
+				"New32a\thash.Hash32 ƒ"
+			],
+			[
+				"Statin",
+				"StatusInternalServerError\t Ɩ"
+			],
+			[
+				"GetLea",
+				"GetLeaderboardResponse\tstruct ʈ"
+			],
+			[
+				"Fa",
+				"Fatalf\t ƒ"
+			],
+			[
+				"prin",
+				"Printf\t ƒ"
+			],
+			[
+				"Statusin",
+				"StatusInternalServerError\t Ɩ"
+			],
+			[
+				"GetE",
+				"Getenv\tstring ƒ"
+			],
+			[
+				"statusredi",
+				"StatusTemporaryRedirect\t Ɩ"
+			],
+			[
+				"Statusreques",
+				"StatusBadRequest\t Ɩ"
+			],
+			[
+				"Bin",
+				"BindJSON\terror ƒ"
+			],
+			[
+				"err",
+				"Error"
+			],
+			[
+				"sphe",
+				"sphere_intersect"
+			],
+			[
+				"x",
+				"Xsigmoid"
+			],
+			[
+				"dept",
+				"depthFog"
+			],
+			[
+				"de",
+				"depthFog"
+			],
+			[
+				"_LI",
+				"_Light3"
+			],
+			[
+				"_li",
+				"_Light2"
+			],
+			[
+				"_",
+				"_Light1"
+			],
+			[
+				"nex",
+				"next_table_mut"
+			],
+			[
+				"next_ta",
+				"next_table_mut"
+			],
+			[
+				"entr",
+				"entries"
+			],
+			[
+				"p2",
+				"p2_index"
+			],
+			[
+				"con",
+				"contains"
+			],
+			[
+				"p2_",
+				"p2_entry"
+			],
+			[
+				"p3",
+				"p3_index"
+			],
+			[
+				"p1",
+				"p1_index"
+			],
+			[
+				"p3_",
+				"p3_entry"
+			],
+			[
+				"trn",
+				"translate_page"
+			],
+			[
+				"PAGE",
+				"Page"
+			],
+			[
+				"next",
+				"next_table"
+			],
+			[
+				"Tab",
+				"TableLevel"
+			],
+			[
+				"Entry",
+				"EntryFlags"
+			],
+			[
+				"memo",
+				"memory_areas"
+			],
+			[
+				"mem",
+				"memory_map_tag"
+			],
+			[
+				"mul",
+				"multiboot_end"
+			],
+			[
+				"kern",
+				"kernel_start"
+			],
+			[
+				"MemoryAre",
+				"MemoryAreaIter"
+			],
+			[
+				"multi",
+				"multiboot_start"
+			],
+			[
+				"kernel",
+				"kernel_end"
+			],
+			[
+				"sta",
+				"start_frame"
+			],
+			[
+				"curr",
+				"current_area"
+			],
+			[
+				"CURR",
+				"current_area"
+			],
+			[
+				"Memor",
+				"MemoryAreaIter"
+			],
+			[
+				"ker",
+				"kernel_end"
+			],
+			[
+				"mult",
+				"multiboot_information_address"
+			],
+			[
+				"sec",
+				"sections"
+			],
+			[
+				"BUFF",
+				"BUFFER_HEIGHT"
+			],
+			[
+				"colo",
+				"color_code"
+			],
+			[
+				"col",
+				"column_position"
+			],
+			[
+				"BUF",
+				"BUFFER_HEIGHT"
+			],
+			[
+				"Colo",
+				"ColorCode"
+			],
+			[
+				"hello",
+				"hello_coloured"
+			],
+			[
+				"p",
+				"p4_table\tlabel"
+			],
+			[
+				"check",
+				"check_long_mode\tlabel"
+			],
+			[
+				"che",
+				"check_cpuid\tlabel"
+			],
+			[
+				"scre",
+				"screen"
+			],
+			[
+				"Dra",
+				"DrawCircles"
+			],
+			[
+				"bitma",
+				"bitmapSize"
+			],
+			[
+				"bitm",
+				"bitmapWidth"
+			],
+			[
+				"scr",
+				"screenResolution"
+			],
+			[
+				"IM",
+				"IMyTerminalBlock"
+			],
+			[
+				"Space",
+				"SpaceKrieg_Windows"
+			],
+			[
+				"program",
+				"programInfo"
+			],
+			[
+				"fon",
+				"font-style"
+			],
+			[
+				"sun",
+				"sunDirection"
+			],
+			[
+				"sunD",
+				"sunDirection"
+			],
+			[
+				"sunDi",
+				"sunDir"
+			],
+			[
+				"scatt",
+				"scatterColor"
+			],
+			[
+				"sca",
+				"scatterCol"
+			],
+			[
+				"mat",
+				"materialColor"
+			],
+			[
+				"ligh",
+				"lightPos"
+			],
+			[
+				"nor",
+				"normalize"
+			],
+			[
+				"ray",
+				"rayPos"
+			],
+			[
+				"verte",
+				"vertexPositionAttribute"
+			],
+			[
+				"shader",
+				"shaderProgram"
+			],
+			[
+				"text",
+				"textureColor"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/boot.asm",
+			"settings":
+			{
+				"buffer_size": 1561,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/main.cpp",
+			"settings":
+			{
+				"buffer_size": 2149,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/printf.cpp",
+			"settings":
+			{
+				"buffer_size": 146,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "#include \"printf.h\""
+			}
+		},
+		{
+			"file": "src/printf.h",
+			"settings":
+			{
+				"buffer_size": 213,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "#pragma once"
+			}
+		},
+		{
+			"contents": "\n",
+			"settings":
+			{
+				"buffer_size": 1,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "loxos.sublime-project",
+			"settings":
+			{
+				"buffer_size": 387,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Makefile",
+			"settings":
+			{
+				"buffer_size": 767,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "default: run"
+			}
+		},
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/linker.ld",
+			"settings":
+			{
+				"buffer_size": 101,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/Makefile/Make.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/GoSublime/GoSublime.sublime-build",
+					""
+				],
+				[
+					"Packages/User/go.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/GoSublime/GoSublime.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Makefile/Make.sublime-build",
+					""
+				],
+				[
+					"Packages/Makefile/Make.sublime-build",
+					"Clean"
+				],
+				[
+					"Packages/User/go.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/Makefile/Make.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 269.0,
+		"last_filter": "sublimegdb",
+		"selected_items":
+		[
+			[
+				"sublimegdb",
+				"SublimeGDB: Stop Debugging"
+			],
+			[
+				"gdb",
+				"SublimeGDB: Start Debugging"
+			],
+			[
+				"gdb sett",
+				"GoSublime: Default Settings"
+			],
+			[
+				"gdb use",
+				"Preferences: SublimeGDB Settings – User"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"ssc++",
+				"Set Syntax: C++"
+			],
+			[
+				"beau",
+				"HTMLBeautify"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"sshtml",
+				"Set Syntax: HTML"
+			],
+			[
+				"sscss",
+				"Set Syntax: CSS"
+			],
+			[
+				"sspy",
+				"Set Syntax: Python"
+			],
+			[
+				"json",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"ssht",
+				"Set Syntax: HTML"
+			],
+			[
+				"goto de",
+				"GoSublime: Goto Definition"
+			],
+			[
+				"GoSublime: ",
+				"Set Syntax: GoSublime: Go"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"ssc",
+				"Set Syntax: C"
+			],
+			[
+				"ssc#",
+				"Set Syntax: C#"
+			],
+			[
+				"ssmat",
+				"Set Syntax: MATLAB"
+			],
+			[
+				"ssma",
+				"Set Syntax: Makefile"
+			],
+			[
+				"ssbash",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"sftp",
+				"SFTP: Browse Remote…"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"INSTAL",
+				"Package Control: Install Package"
+			],
+			[
+				"sort",
+				"Sort Lines"
+			],
+			[
+				"sscg",
+				"Set Syntax: Cg"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"ssbas",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"ssjav",
+				"Set Syntax: Java"
+			],
+			[
+				"pac",
+				"Package Control: Remove Package"
+			],
+			[
+				"pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"ssrus",
+				"Set Syntax: Rust"
+			],
+			[
+				"ssnasm",
+				"Set Syntax: Assembly x86 (NASM)"
+			],
+			[
+				"ssxml",
+				"Set Syntax: XML"
+			],
+			[
+				"ssjs",
+				"Set Syntax: JavaScript"
+			]
+		],
+		"width": 412.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Alex/Code/loxos",
+		"/C/Users/Alex/Code/loxos/src"
+	],
+	"file_history":
+	[
+		"/C/Users/Alex/Code/loxos/src/string.cpp",
+		"/C/Users/Alex/Code/loxos/src/string.hpp",
+		"/C/Users/Alex/Code/loxos/src/format.hpp",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 3/Packages/User/MakeWin.sublime-build",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 3/Packages/GoSublime/GoSublime.sublime-settings",
+		"/C/Users/Alex/Code/loxos/Readme.md",
+		"/C/Users/Alex/Code/loxos/loxos.sublime-project",
+		"/C/Users/Alex/Code/loxos/boot.asm",
+		"/C/Users/Alex/Code/loxos/main.cpp",
+		"/C/Users/Alex/Code/loxos/linker.ld",
+		"/C/Users/Alex/Code/loxos/grub.cfg",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 3/Packages/User/SublimeGDB.sublime-settings",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 3/Packages/User/Make.sublime-build",
+		"/C/Users/Alex/Code/loxos/isofiles/boot/grub/grub.cfg",
+		"/C/Users/Alex/Desktop/BookGalaxy/BookWeb.java",
+		"/C/Users/Alex/Desktop/mindmapper/mindmapper2.html",
+		"/C/Users/Alex/Desktop/mindmapper/springy.js",
+		"/C/Users/Alex/Code/GB/main.cpp",
+		"/C/Users/Alex/Desktop/license.txt",
+		"/C/Users/Alex/Desktop/springyui.js",
+		"/C/Users/Alex/Desktop/springy.js",
+		"/C/Users/Alex/Desktop/BookGalaxy/BookWebApplet.java",
+		"/C/Users/Alex/Desktop/BookGalaxy/NodeViewer.java",
+		"/C/Users/Alex/Desktop/SpaceKriegProto2.txt",
+		"/C/Users/Alex/Documents/Curse/Minecraft/Instances/ImmersiveEngineering/config/oretweaker.cfg",
+		"/C/Users/Alex/Documents/Curse/Minecraft/Instances/ImmersiveEngineering/config/railcraft/railcraft.cfg",
+		"/C/Users/Alex/Documents/Curse/Minecraft/Instances/ImmersiveEngineering/config/railcraft/modules.cfg",
+		"/C/Users/Alex/Documents/Curse/Minecraft/Instances/ImmersiveEngineering/config/immersiveengineering.cfg",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/Assets/Editor/.itch.mac.toml",
+		"/C/Users/Alex/Documents/Curse/Minecraft/Instances/ImmersiveEngineering/config/railcraft/blocks.cfg",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/Assets/Editor/.itch.toml",
+		"/C/Users/Alex/AppData/Roaming/itch/apps/SpaceKrieg/.itch.toml",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/Builds/SpaceKriegMac/.itch.toml",
+		"/C/Users/Alex/AppData/Roaming/itch/apps/SpaceKrieg/SpaceKrieg_Data/output_log.txt",
+		"/C/Users/Alex/AppData/Local/Unity/Editor/Editor.log",
+		"/C/Users/Alex/Documents/Curse/Minecraft/Instances/ImmersiveEngineering/config/orespawn.cfg",
+		"/C/Users/Alex/Code/parkos2/selfie.c",
+		"/C/Users/Alex/AppData/LocalLow/We Heart Dragons/Glyph Quest Chronicles/PublicProfile.bat",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/Builds/Debug/SpaceKrieg_Data/output_log.txt",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/Assets/Code/Ship/EngineAbility.cs",
+		"/C/Users/Alex/Code/Solaxis/Assets/Art/Stars/StarList.txt",
+		"/C/Users/Alex/Code/Solaxis/NameGen/output.txt",
+		"/C/Users/Alex/Code/Solaxis/NameGen/char-rnn.py",
+		"/C/Users/Alex/Code/go/src/zanders3/gqcserver/main.go",
+		"/C/Users/Alex/Downloads/builtin_shaders-2017.1.0f3/CGIncludes/UnityShaderVariables.cginc",
+		"/C/Users/Alex/Downloads/builtin_shaders-2017.1.0f3/CGIncludes/UnityStandardUtils.cginc",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/MakeBuild.sh",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/MakeBuild.bat",
+		"/C/Users/Alex/Code/GB/Tetris.gb",
+		"/C/Users/Alex/Downloads/builtin_shaders-2017.1.0f3/CGIncludes/UnityCG.cginc",
+		"/C/Users/Alex/AppData/Local/Temp/Temp1_cpu_instrs (2).zip/cpu_instrs/readme.txt",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/Assets/Photon Unity Networking/changelog.txt",
+		"/C/Users/Alex/AppData/LocalLow/We Heart Dragons/Glyph Quest Chronicles/PrivateProfile.bat",
+		"/C/Users/Alex/Downloads/builtin_shaders-2017.1.0f3/DefaultResourcesExtra/Standard.shader",
+		"/C/Users/Alex/Downloads/builtin_shaders-2017.1.0f3/CGIncludes/UnityStandardCoreForwardSimple.cginc",
+		"/C/Users/Alex/Downloads/builtin_shaders-2017.1.0f3/CGIncludes/UnityStandardCoreForward.cginc",
+		"/C/Users/Alex/Downloads/builtin_shaders-2017.1.0f3/CGIncludes/UnityStandardCore.cginc",
+		"/C/Users/Alex/Downloads/builtin_shaders-2017.1.0f3/CGIncludes/UnityStandardBRDF.cginc",
+		"/C/Users/Alex/Downloads/builtin_shaders-2017.1.0f3/CGIncludes/UnityLightingCommon.cginc",
+		"/C/Users/Alex/Downloads/builtin_shaders-2017.1.0f3/DefaultResourcesExtra/Reflect-BumpNolight.shader",
+		"/C/Users/Alex/Desktop/bootstrap.min.css",
+		"/C/Users/Alex/Desktop/Sprites-Diffuse.shader",
+		"/C/Users/Alex/Code/Solaxis/NameGen/starnames.txt",
+		"/C/Users/Alex/Code/go/src/zanders3/gqcserver/README.md",
+		"/C/Users/Alex/Desktop/Sprites-Default.shader",
+		"/C/Users/Alex/Desktop/envmon.html",
+		"/C/Users/Alex/Code/Unity/gqc/Assets/Code/Managers/cServerProfiles.cs",
+		"/C/Users/Alex/Code/Unity/gqc/ProjectSettings/ProjectVersion.txt",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/ProjectSettings/ProjectVersion.txt",
+		"/C/Users/Alex/Code/TrainTimes/Docs/ActivityCodes.txt",
+		"/C/Users/Alex/Code/TrainTimes/Docs/StopLocalities.csv",
+		"/C/Users/Alex/Code/TrainTimes/reference.xml",
+		"/C/Users/Alex/Code/TrainTimes/Docs/RailReferences.csv",
+		"/C/Users/Alex/Code/TrainTimes/Docs/Stops.csv",
+		"/C/Users/Alex/Code/TrainTimes/Docs/StopAreas.csv",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/Assets/Editor/SplitMeshInTwo.py",
+		"/C/Users/Alex/Code/TrainTimes/20170602020826_v8.xml",
+		"/C/Users/Alex/Code/TrainTimes/tfl_1-VIC-_-y05-410800.xml",
+		"/C/Users/Alex/Code/TrainTimes/output_txc_01BAK_.xml",
+		"/C/Users/Alex/Code/TrainTimes/timetable.xml",
+		"/C/Users/Alex/Code/TrainTimes/graph.txt",
+		"/C/Users/Alex/Code/TrainTimes/Docs/AlternativeDescriptors.csv",
+		"/C/Users/Alex/Downloads/journey-planner-timetables/output_txc_01BAK_.xml",
+		"/E/SteamLibrary/steamapps/common/Kerbal Space Program/2017-06-02_190940/output_log.txt",
+		"/C/Users/Alex/Code/go/src/bitbucket.org/zanders3/traintracker/2017-06-02-02-01.pPortData.log",
+		"/C/Users/Alex/Code/go/src/bitbucket.org/zanders3/traintracker/timetablesmall.xml",
+		"/C/Users/Alex/Code/go/src/bitbucket.org/zanders3/traintracker/reference.xml",
+		"/C/Users/Alex/Code/go/src/bitbucket.org/zanders3/traintracker/rttiPPTSchedules_v1.xsd",
+		"/C/Users/Alex/Code/go/src/bitbucket.org/zanders3/traintracker/main.go",
+		"/C/Users/Alex/Code/go/src/bitbucket.org/zanders3/traintracker/20170602020826_v8.xml",
+		"/C/Users/Alex/Downloads/nordic-game-playtest.txt",
+		"/E/SteamLibrary/steamapps/common/Kerbal Space Program/2017-06-02_190940/error.log",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 3/Packages/GoSublime/9o.md",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 3/Packages/User/go.sublime-build",
+		"/C/Users/Alex/Code/go/src/bitbucket.org/zanders3/traintracker/go.sublime-build",
+		"/C/Users/Alex/Downloads/20044.8205.xml",
+		"/C/Users/Alex/Downloads/20170531020826_ref_v3.xml",
+		"/C/Users/Alex/Code/go/src/zanders3/gqcserver/leaderboardhandlers.go",
+		"/C/Users/Alex/Code/go/src/zanders3/gqcserver/app.json",
+		"/C/Users/Alex/Code/go/src/zanders3/gqcserver/models/leaderboard.go",
+		"/C/Users/Alex/Code/go/src/zanders3/gqcserver/models/db.go",
+		"/C/Users/Alex/Code/go/src/zanders3/gqcserver/leaderboardhandlers_test.go",
+		"/C/Users/Alex/Code/go/src/zanders3/gqcserver/profilehandlers_test.go",
+		"/C/Users/Alex/Code/go/src/zanders3/gqcserver/main_test.go",
+		"/C/Users/Alex/Code/go/src/zanders3/gqcserver/profilehandlers.go",
+		"/C/Users/Alex/Code/go/src/zanders3/gqcserver/vendor/github.com/gin-gonic/gin/logger.go",
+		"/C/Users/Alex/Code/go/getlb.txt",
+		"/C/Users/Alex/Code/go/src/zanders3/gqcserver/verifyFBID.go",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/Assets/Art/Ships/Trench Freighter/_Trench Freighter.prefab",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/Builds/SpaceKriegWin/overrideserver.txt",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/CloudServer/PhotonControl/log/PhotonCLR.log",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/CloudServer/log/PhotonCLR.log",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/Assets/Art/UI/Shaders/UIFadeMask.shader",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/CloudServer/Loadbalancing/GameServer/bin/Photon.LoadBalancing.dll.config",
+		"/C/Users/Alex/Code/cryptopals/CryptoPals/3.txt",
+		"/C/Users/Alex/AppData/Roaming/itch/apps/SpaceKrieg/.itch/receipt.json",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/Builds/SpaceKriegWin/SpaceKrieg_Data/output_log.txt",
+		"/C/Users/Alex/Downloads/members_list.csv",
+		"/C/Users/Alex/Downloads/Photon-OnPremise-Server-SDK_v4-0-29-11263/deploy/bin_Win64/version.txt",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/Assets/Art/UI/Callsigns.txt",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/Builds/SpaceKriegWin/serveroverride.txt",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/.gitignore",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/CloudServer/log/GSGame.log",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/serveroverride.txt",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/Assets/Editor/RemoveEmptyFolder.cs",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/CloudServer/bin_tools/perfmon/logman.config.txt",
+		"/C/Users/Alex/Downloads/Photon-OnPremise-Server-SDK_v4-0-29-11263/src-server/Lite/Lite.TestConsole/Program.cs",
+		"/C/Users/Alex/Downloads/Photon-OnPremise-Server-SDK_v4-0-29-11263/deploy/log/CounterPublisher.log"
+	],
+	"find":
+	{
+		"height": 41.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"<open folders>",
+			"<current file>",
+			"<open folders>",
+			"C:\\Users\\Alex\\Downloads\\PresentationProxyTest\\PresentationProxy\\Assets\\Net"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"char",
+			"format",
+			" [A-Z]",
+			"     ",
+			"    ",
+			"   ",
+			"  ",
+			"keywords.put(",
+			"merge",
+			"clear",
+			"removeNode",
+			"mindmapRoot",
+			"numTabs",
+			"textArea.selectionStart",
+			"=false",
+			"ore",
+			"\n ",
+			"linear",
+			"UNITY_LIGHTMODEL_AMBIENT",
+			"ambient",
+			"worldpos",
+			"UnityObjectTo",
+			"SHEvalLinearL0L1",
+			"ShadeSH9",
+			"ShadeSHPerVertex",
+			"ShadeSH9",
+			"ShadeSHPerVertex",
+			"unity_AmbientGround",
+			"unity_AmbientEquator",
+			"ambient",
+			" +.+",
+			".*\\([0-9]+\\) ",
+			".+\\([0-9]+\\) ",
+			"data",
+			"\t",
+			"\"",
+			"\n",
+			"777",
+			"eee",
+			"\n",
+			"(0,0,1)",
+			"range",
+			"PartitionMesh",
+			"DialogOperator",
+			"9100ADLC",
+			"ADLC",
+			"brighton",
+			"HOve",
+			"brighton",
+			"Victoria",
+			"VICToria",
+			"EUSTON.+VI",
+			"\"EUSTON\"",
+			"\"OL\"",
+			"Tower Hill",
+			"Green",
+			"Underground",
+			"\"OL\"",
+			"VICTRIE ->",
+			"BRIXTON",
+			"VICTRIE",
+			"BRGHTN",
+			"W ",
+			"act=\".*OP",
+			"KC\"",
+			"KC",
+			"L ",
+			"act=\"TF\"",
+			"PRNCSTG",
+			"201706026774104",
+			"act=\"U \"",
+			"XC",
+			"STFD",
+			"201706037663964",
+			"NPLE818",
+			"<DT tpl=\"BRGHTN\"",
+			"VICTRIC",
+			"201706027603783",
+			"VICTRIC",
+			"201706027603295",
+			"VICTRIC",
+			"VICTRIA",
+			"VICTREE",
+			"\"VIC\"",
+			"VICTRIA",
+			"G48952",
+			"S07488",
+			"2Y07",
+			"Schedule",
+			"\"chester",
+			"chester",
+			"euston",
+			"brighton",
+			"btn",
+			"SWANSLE",
+			"Hove",
+			"opdt",
+			"23",
+			"LANDUDJ",
+			"LUDO",
+			"LLJN",
+			"test",
+			" ",
+			",",
+			" ",
+			"compressed shader",
+			"compile",
+			".png",
+			" = [0-9]+;",
+			".+\\n.+public const int ",
+			"public const int ",
+			",",
+			"htheta",
+			"z1",
+			"    ",
+			"999.",
+			"scores",
+			"obj",
+			"onoff_",
+			"MyInventoryItem",
+			"list",
+			"List",
+			"list",
+			"item",
+			"    \"",
+			"\":",
+			"case \"",
+			"Desired = .+;"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"Flux",
+			"gl"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/boot.asm",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1561,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								922,
+								922
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/NASM x86 Assembly/Assembly x86.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 450.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/main.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2149,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								545,
+								545
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/printf.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 146,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								143,
+								143
+							]
+						],
+						"settings":
+						{
+							"auto_name": "#include \"printf.h\"",
+							"incomplete_sync": null,
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/printf.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 213,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								136,
+								136
+							]
+						],
+						"settings":
+						{
+							"auto_name": "#pragma once",
+							"incomplete_sync": null,
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"default_dir": "C:\\Users\\Alex\\Code\\loxos\\src",
+							"incomplete_sync": null,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "loxos.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 387,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								376,
+								376
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Makefile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 767,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								27,
+								27
+							]
+						],
+						"settings":
+						{
+							"auto_name": "default: run",
+							"incomplete_sync": null,
+							"syntax": "Packages/Makefile/Makefile.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"default_dir": "C:\\Users\\Alex\\Code\\loxos\\src",
+							"incomplete_sync": null,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/linker.ld",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 101,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.9o://C:\\Users\\Alex\\Code\\go\\src\\bitbucket.org\\zanders3\\traintracker":
+	{
+		"height": 194.0
+	},
+	"output.GsDoc-output-output":
+	{
+		"height": 100.0
+	},
+	"output.exec":
+	{
+		"height": 266.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 100.0
+	},
+	"pinned_build_system": "loxos",
+	"project": "loxos.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"ran",
+				"randInitializeWeights.m"
+			],
+			[
+				"standa",
+				"DefaultResourcesExtra\\Standard.shader"
+			],
+			[
+				"unitycg",
+				"CGIncludes\\UnityCG.cginc"
+			],
+			[
+				"unitystandarcorefo",
+				"CGIncludes\\UnityStandardCoreForwardSimple.cginc"
+			],
+			[
+				"unitystandardcorefor",
+				"CGIncludes\\UnityStandardCoreForward.cginc"
+			],
+			[
+				"stan",
+				"DefaultResourcesExtra\\Standard.shader"
+			],
+			[
+				"uity",
+				"CGIncludes\\UnityCG.cginc"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 217.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
