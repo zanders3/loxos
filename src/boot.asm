@@ -1,23 +1,22 @@
 extern kmain
 
 section .multiboot_header
+align 4
 header_start:
-    dd 0xe85250d6                ; magic number
-    dd 0                         ; protected mode code
-    dd header_end - header_start ; header length
-
-    ; checksum
-    dd 0x100000000 - (0xe85250d6 + 0 + (header_end - header_start))
-
-    ; required end tag
-    dw 0    ; type
-    dw 0    ; flags
-    dd 8    ; size
+	MULTIBOOT_FLAGS equ 1<<0 | 1<<1 ; PAGE_ALIGN, MEMORY_INFO
+	MULTIBOOT_MAGIC equ 0x1BADB002
+	MULTIBOOT_CHECKSUM equ -(MULTIBOOT_MAGIC + MULTIBOOT_FLAGS)
+    dd MULTIBOOT_MAGIC
+    dd MULTIBOOT_FLAGS
+    dd MULTIBOOT_CHECKSUM
 header_end:
 global start
 section .text
 bits 32
 start:
+	mov dword [multiboot_magic], eax
+	mov dword [multiboot], ebx
+
 	; Page table setup
 	mov eax, p3_table ; Point L4 table to L3 table
 	or eax, 0b11 ; set page in memory and page can be written to
@@ -71,9 +70,14 @@ start:
 	mov ds, ax
 	mov es, ax
 
+	jmp gdt64.code:longmode ; long jump to 64bit!
+	hlt
+
+bits 64
+longmode:
 	; set callstack and jump to kmain() in 64 bit mode (in main.cpp)
-	mov esp, kernel_stack
-	jmp gdt64.code:kmain
+	mov rsp, kernel_stack_top
+	jmp kmain
 	hlt
 
 section .bss
@@ -86,12 +90,18 @@ p3_table:
 p2_table:
 	resb 4096
 
-
-KERNEL_STACK_SIZE equ 4096
 section .bss
+global multiboot
+multiboot:
+	resb 4
+global multiboot_magic
+multiboot_magic:
+	resb 4
+
 align 4
-kernel_stack:
-	resb KERNEL_STACK_SIZE
+kernel_stack_bottom: equ $
+	resb 16384 ; 16 KB
+kernel_stack_top:
 
 section .rodata
 global gdt64.code

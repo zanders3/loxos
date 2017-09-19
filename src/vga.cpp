@@ -97,6 +97,12 @@ void VGA::PrintVal(int value)
 
 void VGA::PrintVal(unsigned long long value)
 {
+	if (value <= 0)
+	{
+		Puts('0');
+		return;
+	}
+
 	char buf[20];
 	int i = 0;
 	for (; value > 0; i++)
@@ -111,6 +117,11 @@ void VGA::PrintVal(unsigned long long value)
 }
 
 void VGA::PrintVal(unsigned long value)
+{
+	PrintVal((unsigned long long)value);
+}
+
+void VGA::PrintVal(unsigned short value)
 {
 	PrintVal((unsigned long long)value);
 }

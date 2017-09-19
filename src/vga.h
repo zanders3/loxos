@@ -41,6 +41,7 @@ private:
 	void PrintVal(int value);
 	void PrintVal(unsigned long long value);
 	void PrintVal(unsigned long value);
+	void PrintVal(unsigned short value);
 	void PrintVal(unsigned int value);
 
 	int cursorX, cursorY;

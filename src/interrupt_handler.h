@@ -14,7 +14,7 @@ class Interrupts
 {
 public:
 	//Initializes the programmable interrupt controllers
-	void SetupPIC();
+	void Setup();
 	//Registers a callback from a PIC
 	inline void RegisterHandler(u8 n, InterruptHandler handler) { handlers[n] = handler; }
 	//Called from kfault_handler() in interrupt_handler.cpp

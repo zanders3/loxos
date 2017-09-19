@@ -66,7 +66,7 @@ idtr:
 	dw (idt.end - idt) + 1
 	dq idt
 
-%define BASE_OF_SECTION 0x104000 ;IF INTERRUPTS EXPLODE - it is because the linker has relocated the interrupts!
+%define BASE_OF_SECTION 0x101000 ;IF INTERRUPTS EXPLODE - it is because the linker has relocated the interrupts!
 %define SIZE_OF_INTCODE (interrupts.second-interrupts.first)
 
 ; IDT definition

@@ -1,5 +1,6 @@
 
 #include "common.h"
+#include "vga.h"
 
 void outb(u16 port, u8 value)
 {
@@ -17,4 +18,18 @@ u16 inw(u16 port)
 {
 	u16 ret;
 	asm volatile ("inw %1,%0" : "=a" (ret) : "dN" (port));
+}
+
+void kpanic(const char* msg)
+{
+    vga.SetColor(VGAColor::Red, VGAColor::Black);
+    vga.Print(msg);
+    while (true) {}
+}
+
+void zero_memory(void* ptr, u64 size)
+{
+    char* buf = (char*)ptr;
+    for (u64 i = 0; i<size; ++i)
+        buf[i] = 0;
 }

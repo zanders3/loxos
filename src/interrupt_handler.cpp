@@ -3,7 +3,7 @@
 
 Interrupts interrupts;
 
-void Interrupts::SetupPIC()
+void Interrupts::Setup()
 {
 	//Remap IRQ table
 	outb(0x20, 0x11);
@@ -16,6 +16,8 @@ void Interrupts::SetupPIC()
 	outb(0xA1, 0x01);
 	outb(0x21, 0x0);
 	outb(0xA1, 0x0);
+
+	asm volatile("sti");
 }
 
 void Interrupts::CallHandler(const Registers& regs)
@@ -36,6 +38,7 @@ extern "C" void kfault_handler(const Registers& regs)
 	else
 	{
 		vga.SetColor(VGAColor::Red, VGAColor::Black);
-		vga.Print("Unhandled Interrupt: %?\n", regs.interrupt);
+		vga.Print("Unhandled Interrupt: %?\n", (int)regs.interrupt);
+		while (true) {}
 	}
 }
