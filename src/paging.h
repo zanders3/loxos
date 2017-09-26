@@ -1,9 +1,6 @@
 #pragma once
 
 #include "common.h"
-#include "interrupt_handler.h"
-
-u64 kmalloc(u64 sz, bool align = false);
 
 struct Page
 {
@@ -16,30 +13,20 @@ struct Page
 	u32 frame      : 20;	
 } __attribute__((__packed__));
 
+static_assert(sizeof(Page) == sizeof(u32), "Page size");
+
 struct PageTable
 {
     Page pages[1024];
 } __attribute__((__packed__));
 
+static_assert(sizeof(PageTable) == sizeof(u32)*1024, "Page size");
+
 struct PageDirectory
 {
-    //Array of pointers to page tables
-    PageTable* tables[1024];
-    //Array of points to page tables,
-    //but physical location for loading into CR3 register
-    u64 tablesPhysical[1024];
+    u32 tables[1024];
 } __attribute__((__packed__));
+static_assert(sizeof(PageDirectory) == sizeof(u32)*1024, "Page size");
 
-class Paging
-{
-public:
-    void Init();
-    void AllocFrame(Page* page, bool isKernel, bool isWritable);
-    Page* GetPage(u64 address, bool create, PageDirectory* directory);
-    void SwitchPageDirectory(PageDirectory* directory);
-
-private:
-    //Page fault handler
-    static void PageFault(const Registers& reg);
-};
-extern Paging paging;
+void setup_paging();
+Page& get_page(u32 memoryLocation);

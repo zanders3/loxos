@@ -1,87 +1,59 @@
-section .interrupts
-bits 64
+section .text
+align 4
+bits 32
 
-; Define IDT code for 255 interrupt handlers - each pushes the interrupt idx
-; then jumps to .handle
-interrupts:
-.first:
-	push qword 0
-	jmp qword .handle
-.second:
-%assign i 1
-%rep 255
-	push qword i
-	jmp qword .handle
-%assign i i+1
-%endrep
+%macro ISR_ERRCODE 1
+global isr%1
+isr%1:
+    cli
+    push byte %1
+    jmp isr_common_handler
+%endmacro
+%macro ISR_NOERRCODE 1
+global isr%1
+isr%1:
+    cli
+    push byte 0
+    push byte %1
+    jmp isr_common_handler
+%endmacro
 
-.handle:
-	push rbp ; Save all registers
-	push r15
-	push r14
-	push r13
-	push r12
-	push r11
-	push r10
-	push r9
-	push r8
-	push rsi
-	push rdi
-	push rdx
-	push rcx
-	push rbx
-	push rax
+ISR_NOERRCODE 0
+ISR_NOERRCODE 1
+ISR_NOERRCODE 2
+ISR_NOERRCODE 3
+ISR_NOERRCODE 4
+ISR_NOERRCODE 5
+ISR_NOERRCODE 6
+ISR_NOERRCODE 7
+ISR_ERRCODE 8
+ISR_NOERRCODE 9
+ISR_ERRCODE 10
+ISR_ERRCODE 11
+ISR_ERRCODE 12
+ISR_ERRCODE 13
+ISR_ERRCODE 14
 
-	mov rdi, rsp ; Save stack pointer
-	push rdi
-	mov rdi, rsp
+isr_common_handler:
+	pusha
+	mov ax, ds
+	push eax
 
-	extern kfault_handler
-	call kfault_handler ; Call fault handler
+	mov ax, 0x10
+	mov ds, ax
+	mov es, ax
+	mov fs, ax
+	mov gs, ax
 
-	pop rsp ; Pop stack pointer
+	extern isr_handler
+	call isr_handler
 
-	pop rax ; Restore all registers
-	pop rbx
-	pop rcx
-	pop rdx
-	pop rdi
-	pop rsi
-	pop r8
-	pop r9
-	pop r10
-	pop r11
-	pop r12
-	pop r13
-	pop r14
-	pop r15
-	pop rbp
-	add rsp, 8 ; pop error code qword
+	pop eax
+	mov ds, ax
+	mov es, ax
+	mov fs, ax
+	mov gs, ax
+	popa
+	add esp, 8
 	sti
-	iretq
-
-; IDTR definition
-global idtr
-idtr:
-	dw (idt.end - idt) + 1
-	dq idt
-
-%define BASE_OF_SECTION 0x101000 ;IF INTERRUPTS EXPLODE - it is because the linker has relocated the interrupts!
-%define SIZE_OF_INTCODE (interrupts.second-interrupts.first)
-
-; IDT definition
-extern gdt64.code
-idt:
-%assign i 0
-%rep 255
-;((interrupts.first + ((interrupts.second-interrupts.first)*i)) & 0xFFFF)
-	dw ((BASE_OF_SECTION + (SIZE_OF_INTCODE*i)) & 0xFFFF) ; offset to low bits
-	dw gdt64.code ; pointer to gdt code segment selector
-	db 0
-	db (1<<7) | 0xE ; PRESENT | INTERRUPT64
-	dw ((BASE_OF_SECTION + (SIZE_OF_INTCODE*i)) >> 16) ; offset to middle bits
-	dd 0 ; offset to higher bits
-	dd 0 ; always 0
-%assign i i+1
-%endrep
-.end ; IDT end
+	iret

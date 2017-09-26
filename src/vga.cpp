@@ -65,12 +65,22 @@ void VGA::PrintVal(const char* s)
 		Puts(*s);
 }
 
-void VGA::PrintVal(long long value)
+void VGA::PrintVal(short value)
+{
+	PrintVal((int)value);
+}
+
+void VGA::PrintVal(int value)
 {
 	if (value < 0)
 	{
 		Puts('-');
 		value = -value;
+	}
+	else if (value == 0)
+	{
+		Puts('0');
+		return;
 	}
 	char buf[20];
 	int i = 0;
@@ -85,17 +95,12 @@ void VGA::PrintVal(long long value)
 		Puts(buf[i]);
 }
 
-void VGA::PrintVal(long value)
+void VGA::PrintVal(unsigned short value)
 {
-	PrintVal((long long)value);
+	PrintVal((unsigned int)value);
 }
 
-void VGA::PrintVal(int value)
-{
-	PrintVal((long long)value);
-}
-
-void VGA::PrintVal(unsigned long long value)
+void VGA::PrintVal(unsigned int value)
 {
 	if (value <= 0)
 	{
@@ -103,7 +108,7 @@ void VGA::PrintVal(unsigned long long value)
 		return;
 	}
 
-	char buf[20];
+	char buf[12];
 	int i = 0;
 	for (; value > 0; i++)
 	{
@@ -114,19 +119,4 @@ void VGA::PrintVal(unsigned long long value)
 	i--;
 	for (;i>=0;i--)
 		Puts(buf[i]);
-}
-
-void VGA::PrintVal(unsigned long value)
-{
-	PrintVal((unsigned long long)value);
-}
-
-void VGA::PrintVal(unsigned short value)
-{
-	PrintVal((unsigned long long)value);
-}
-
-void VGA::PrintVal(unsigned int value)
-{
-	PrintVal((unsigned long long)value);
 }

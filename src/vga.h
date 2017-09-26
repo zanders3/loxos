@@ -36,11 +36,8 @@ private:
 	template <typename T> void PrintVal(T val)
 	{ Print("???"); }
 	void PrintVal(const char* s);
-	void PrintVal(long long value);
-	void PrintVal(long value);
+	void PrintVal(short value);
 	void PrintVal(int value);
-	void PrintVal(unsigned long long value);
-	void PrintVal(unsigned long value);
 	void PrintVal(unsigned short value);
 	void PrintVal(unsigned int value);
 

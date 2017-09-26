@@ -2,16 +2,9 @@ ENTRY(start)
 
 SECTIONS {
 	. = 1M;
-
-	.boot :
+	.text :
 	{
-		*(.multiboot_header)
-	}
-
-	_text_start = 0x101000;
-	.text _text_start :
-	{
-		KEEP(*(.interrupts))
+        *(.multiboot_header)
 		*(.text)
 	}
     

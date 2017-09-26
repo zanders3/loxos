@@ -1,8 +1,7 @@
 #include "common.h"
 #include "vga.h"
-#include "interrupt_handler.h"
-#include "timer.h"
 #include "paging.h"
+#include "gdt.h"
 
 struct MultibootInfo
 {
@@ -21,34 +20,46 @@ struct MultibootInfo
 struct MemoryMap
 {
     u32 size;
-    u64 base_addr, length;
+    u32 base_addr, base_addr_high, length, length_high;
     u32 type;
 } __attribute__((__packed__));
 
-extern "C" u32 multiboot, multiboot_magic;
+extern "C" u32 code_end;
 
-extern "C" void kmain()
+extern "C" void kmain(MultibootInfo* bootInfo, u32 multiboot_magic)
 {
 	vga.Clear();
 	vga.Print("loxos\n");
-    vga.Print("mbt: 0x%? 0x%?\n", multiboot_magic, multiboot);
-    MultibootInfo* bootInfo = (MultibootInfo*)(u64)multiboot;
-    vga.Print("flags: %?\n", (u64)bootInfo->flags);
+    vga.Print("mbt: 0x%?\n", multiboot_magic);
+    vga.Print("flags: %?\n", bootInfo->flags);
     vga.Print("mem: %?KB -> %?KB\n", (int)bootInfo->mem_lower, (int)bootInfo->mem_upper);
     vga.Print("mmap: 0x%? (0x%?)\n", bootInfo->mmap_addr, bootInfo->mmap_length);
 
-    for (MemoryMap* mmap = (MemoryMap*)(u64)bootInfo->mmap_addr; 
-        (u64)mmap < bootInfo->mmap_addr + bootInfo->mmap_length;
-        mmap = (MemoryMap*)((u64)mmap + mmap->size + sizeof(mmap->size)))
+    for (MemoryMap* mmap = (MemoryMap*)(u32)bootInfo->mmap_addr; 
+        (u32)mmap < bootInfo->mmap_addr + bootInfo->mmap_length;
+        mmap = (MemoryMap*)((u32)mmap + mmap->size + sizeof(mmap->size)))
     {
-        vga.Print("  size = 0x%? base_addr = 0x%? len = 0x%? type = 0x%?\n",
-            mmap->size, mmap->base_addr, mmap->length, mmap->type);
+        vga.Print("  base_addr = 0x%? len = 0x%? type = %?\n",
+            (u32)mmap->base_addr, (u32)mmap->length, (int)mmap->type);
     }
+
+    vga.Print("0x%?\n", (u32)&code_end);
+    init_gdt();
+    init_idt();
+    asm volatile("int $0x1");
+    vga.Print("OK!\n");
+    asm volatile("int $0x2");
+    vga.Print("OK!\n");
+    asm volatile("int $0x9");
+    vga.Print("OK!\n");
+    while (true) {}
+    /*init_allocator();
+    setup_paging();
 
 	interrupts.Setup();
 	timer.Init(50);
     paging.Init();
 
-    vga.Print("Paged!\n");
-	while (true) {}
+    vga.Print("Paged!\n");*/
+	kpanic("WIN");
 }
