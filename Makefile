@@ -2,17 +2,18 @@ default: run
 
 .PHONY: clean
 
-OBJS := build/boot.o build/main.o build/vga.o build/common.o build/paging.o build/gdt.o build/interrupts.o build/isr.o
+OBJS := build/boot.o build/main.o build/vga.o build/common.o build/paging.o build/gdt.o build/isr.o
+OPTIONS := -m32 -nostdlib -fno-exceptions -mno-red-zone -mno-ms-bitfields -ffreestanding -std=c++11 -fno-rtti -Wall -Wextra
 
 build/%.o: src/%.asm
 	mkdir -p build
 	nasm -f elf32 $< -o $@
 
 build/%.o: src/%.cpp
-	g++ -m32 -g -c $< -nostdlib -fno-exceptions -mno-ms-bitfields -ffreestanding -std=c++11 -fno-rtti -Wall -Wextra $(sources) -o $@
+	gcc -g -c $< $(OPTIONS) $(sources) -o $@
 
 build/kernel.bin: $(OBJS) src/linker.ld
-	g++ -m32 -n -o $@ -T src/linker.ld -nostdlib $(OBJS)
+	gcc -n -o $@ -T src/linker.ld $(OPTIONS) $(OBJS)
 
 build/os.iso: build/kernel.bin src/grub.cfg
 	mkdir -p build/isofiles/boot/grub
