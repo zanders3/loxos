@@ -3,21 +3,28 @@ align 4
 bits 32
 
 %macro ISR_ERRCODE 1
-global isr%1
-isr%1:
+.isr%1:
     cli
     push byte %1
     jmp isr_common_handler
 %endmacro
 %macro ISR_NOERRCODE 1
-global isr%1
-isr%1:
+.isr%1:
     cli
     push byte 0
     push byte %1
     jmp isr_common_handler
 %endmacro
 
+global isr_loc
+isr_loc:
+%assign i 0
+%rep 32
+dd isrs.isr%+i
+%assign i i+1
+%endrep
+
+isrs:
 ISR_NOERRCODE 0
 ISR_NOERRCODE 1
 ISR_NOERRCODE 2
@@ -33,6 +40,11 @@ ISR_ERRCODE 11
 ISR_ERRCODE 12
 ISR_ERRCODE 13
 ISR_ERRCODE 14
+%assign i 15
+%rep 17
+ISR_NOERRCODE i
+%assign i i+1
+%endrep
 
 isr_common_handler:
 	pusha

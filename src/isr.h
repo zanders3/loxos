@@ -11,3 +11,20 @@ struct Registers
 } __attribute__((__packed__));
 
 typedef void (*InterruptHandler)(const Registers&);
+
+struct IDTEntry
+{
+    u16 addr_lo;//target address low 16 bits
+    u16 sel;//memory offset to kernel segment selector
+    u8 always0;//always 0
+    u8 flags;//flags (see init_idt)
+    u16 addr_high;//target address high 16 bits
+} __attribute__((packed));
+
+struct IDTPointer
+{
+    u16 limit;
+    u32 base;
+} __attribute__((packed));
+
+void init_idt();

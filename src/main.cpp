@@ -2,6 +2,7 @@
 #include "vga.h"
 #include "paging.h"
 #include "gdt.h"
+#include "isr.h"
 
 struct MultibootInfo
 {
@@ -48,9 +49,7 @@ extern "C" void kmain(MultibootInfo* bootInfo, u32 multiboot_magic)
     init_idt();
     asm volatile("int $0x1");
     vga.Print("OK!\n");
-    asm volatile("int $0x2");
-    vga.Print("OK!\n");
-    asm volatile("int $0x9");
+    asm volatile("int $32");
     vga.Print("OK!\n");
     while (true) {}
     /*init_allocator();

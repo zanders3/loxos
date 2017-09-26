@@ -2,11 +2,9 @@
 
 GDTEntry gdt_entries[5];
 GDTPointer gdt_pointer;
-IDTEntry idt_entries[256];
-IDTPointer idt_pointer;
+
 
 extern "C" void gdt_flush(u32);
-extern "C" void idt_flush(u32);
 
 static void gdt_setup(int idx, u32 base, u32 limit, u8 access, u8 granularity)
 {
@@ -47,57 +45,3 @@ void init_gdt()
     gdt_flush((u32)&gdt_pointer);
 }
 
-static void idt_setup(int idx, u32 address, u16 sel, u8 flags)
-{
-    IDTEntry& entry = idt_entries[idx];
-    entry.addr_lo = address & 0xFFFF;
-    entry.addr_high = (address >> 16) & 0xFFFF;
-    entry.sel = sel;
-    entry.always0 = 0;
-    entry.flags = flags;
-}
-
-extern "C" void isr0();
-extern "C" void isr1();
-extern "C" void isr2();
-extern "C" void isr3();
-extern "C" void isr4();
-extern "C" void isr5();
-extern "C" void isr6();
-extern "C" void isr7();
-extern "C" void isr8();
-extern "C" void isr9();
-extern "C" void isr10();
-extern "C" void isr11();
-extern "C" void isr12();
-extern "C" void isr13();
-extern "C" void isr14();
-extern "C" void isr15();
-
-void init_idt()
-{
-    idt_pointer.limit = (sizeof(IDTEntry) * 256) - 1;
-    idt_pointer.base = (u32)&idt_entries;
-
-    // 0x08 is offset to kernel code segment selector
-    // Flags byte format:
-    // P | DPL 2 | Misc 4
-    // P = Interrupt present? (1 = true)
-    // DPL = Privilege level - Kernel ring 0-3
-    // Misc = Always 0xE
-    // 0x8E sets present, ring 0
-
-    zero_memory(&idt_entries, sizeof(IDTEntry)*256);
-    idt_setup(0, (u32)isr0, 0x08, 0x8E);
-    idt_setup(1, (u32)isr1, 0x08, 0x8E);
-    idt_setup(2, (u32)isr2, 0x08, 0x8E);
-    idt_setup(3, (u32)isr3, 0x08, 0x8E);
-    idt_setup(4, (u32)isr4, 0x08, 0x8E);
-    idt_setup(5, (u32)isr5, 0x08, 0x8E);
-    idt_setup(6, (u32)isr6, 0x08, 0x8E);
-    idt_setup(7, (u32)isr7, 0x08, 0x8E);
-    idt_setup(8, (u32)isr8, 0x08, 0x8E);
-    idt_setup(9, (u32)isr9, 0x08, 0x8E);
-
-    idt_flush((u32)&idt_pointer);
-}
