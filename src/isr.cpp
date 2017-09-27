@@ -4,6 +4,10 @@
 IDTEntry idt_entries[256];
 IDTPointer idt_pointer;
 
+//interrupt handler assembly code locations
+//defined in interrupts.asm
+extern "C" u32 isr_loc;
+
 static void idt_setup(int idx, u32 address, u16 sel, u8 flags)
 {
     IDTEntry& entry = idt_entries[idx];
@@ -13,8 +17,6 @@ static void idt_setup(int idx, u32 address, u16 sel, u8 flags)
     entry.always0 = 0;
     entry.flags = flags;
 }
-
-extern "C" u32 isr_loc;
 
 void init_idt()
 {
@@ -28,16 +30,16 @@ void init_idt()
     // DPL = Privilege level - Kernel ring 0-3
     // Misc = Always 0xE
     // 0x8E sets present, ring 0
-
     zero_memory(&idt_entries, sizeof(IDTEntry)*256);
     u32* isrLoc = &isr_loc;
-    for (int i = 0; i<32; i++)
+    for (int i = 0; i<48; i++)
     	idt_setup(i, isrLoc[i], 0x08, 0x8E);
 
+    //Load IDT instruction
     __asm__ __volatile__("lidt (%0)\n" :: "r"(&idt_pointer));
 
-    //Remap IRQ table
-	/*outb(0x20, 0x11);
+    //Remap IRQ table from IRQ 0-15 to INT 32-47
+	outb(0x20, 0x11);
 	outb(0xA0, 0x11);
 	outb(0x21, 0x20);
 	outb(0xA1, 0x28);
@@ -48,19 +50,61 @@ void init_idt()
 	outb(0x21, 0x0);
 	outb(0xA1, 0x0);
 
-	asm volatile("sti");*/
+	//Enable interrupts
+	asm volatile("sti");
 }
+
+static const char* isrErrors[19] = {
+	"Division by zero", 
+	"Debug exception",
+	"Non maskable interrupt",
+	"Breakpoint exception",
+	"'Into detected overflow'",
+	"Out of bounds exception",
+	"Invalid opcode exception",
+	"No coprocessor exception",
+	"Double fault",
+	"Coprocessor segment overrun",
+	"Bad TSS",
+	"Segment not present",
+	"Stack fault",
+	"General protection fault",
+	"Page fault",
+	"Coprocessor fault",
+	"Alignment check exception",
+	"Machine check exception"
+};
 
 extern "C" void isr_handler(const Registers regs)
 {
-	//Handle PIC interrupt
-	/*if (regs.interrupt >= 0x28)
-		outb(0xA0, 0x20);//send reset signal to slave PIC
-	outb(0x20, 0x20);//send reset signal to master*/
+	vga.Print("Unhandled interrupt:\n%? (%?) code %? at 0x%?\n",
+		regs.interrupt <= 18 ? isrErrors[regs.interrupt] : "Reserved",
+		(int)regs.interrupt, 
+		(int)regs.err_code,
+		regs.eip);
 
-	/*if (handlers[regs.interrupt])
-		handlers[regs.interrupt](regs);*/
-	vga.Print("Handled interrupt: %? %?\n", (int)regs.interrupt, (int)regs.err_code);
-	if ((int)regs.interrupt == 13)
-		kpanic("");
+	// Interpret selector error code for Bad TSS to General Protection fault errors
+	// http://wiki.osdev.org/Exceptions#Selector_Error_Code
+	if (regs.interrupt >= 10 && regs.interrupt <= 13)
+	{
+		int tableType = (regs.err_code >> 1) & 0x3;
+		vga.Print("using %? %? at index %?\n",
+			regs.err_code & 0x1 ? "External" : "Internal",
+			tableType == 0 ? "GDT" :
+			tableType == 1 ? "IDT" :
+			tableType == 2 ? "LDT" :
+			"IDT",
+			(int)(regs.err_code >> 3)
+		);
+	}
+	kpanic("");
+}
+
+extern "C" void irq_handler(const Registers regs)
+{
+	if (regs.interrupt >= 8)
+		outb(0xA0, 0x20);
+	outb(0x20, 0x20);
+
+	vga.Print("IRQ %?\n", (int)regs.interrupt);
 }

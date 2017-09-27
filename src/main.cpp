@@ -47,10 +47,10 @@ extern "C" void kmain(MultibootInfo* bootInfo, u32 multiboot_magic)
     vga.Print("0x%?\n", (u32)&code_end);
     init_gdt();
     init_idt();
-    asm volatile("int $0x1");
-    vga.Print("OK!\n");
-    asm volatile("int $32");
-    vga.Print("OK!\n");
+    asm volatile("int $47");
+    //vga.Print("OK!\n");
+    //asm volatile("int $40");
+    //vga.Print("OK!\n");
     while (true) {}
     /*init_allocator();
     setup_paging();
