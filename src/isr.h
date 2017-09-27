@@ -8,7 +8,7 @@ struct Registers
 	u32 edi, esi, ebp, esp, ebx, edx, ecx, eax;
 	u32 interrupt, err_code;
 	u32 eip, cs, eflags, useresp, ss;
-} __attribute__((__packed__));
+} __attribute__((packed));
 
 typedef void (*InterruptHandler)(const Registers&);
 

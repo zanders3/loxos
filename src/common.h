@@ -12,8 +12,3 @@ u16 inw(u16 port);
 
 void kpanic(const char* msg);
 void zero_memory(void* ptr, u32 size);
-
-void init_allocator();
-void align_allocator();
-void* operator new[](u32 size);
-void* operator new(u32 size);

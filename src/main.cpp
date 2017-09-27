@@ -49,8 +49,8 @@ extern "C" void kmain(MultibootInfo* bootInfo, u32 multiboot_magic)
     init_gdt();
     init_idt();
     init_timer();
-    asm volatile("sti");
+    init_paging();
     while (true) {}
 
-	kpanic("WIN");
+    //asm volatile("sti");
 }
