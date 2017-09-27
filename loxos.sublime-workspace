@@ -4,8 +4,20 @@
 		"selected_items":
 		[
 			[
+				"err",
+				"err_code"
+			],
+			[
+				"talbE",
+				"tableType"
+			],
+			[
+				"tal",
+				"tableType"
+			],
+			[
 				"idt",
-				"idt_entries"
+				"idt_pointer"
 			],
 			[
 				"gdt",
@@ -308,10 +320,6 @@
 				"BindJSON\terror ƒ"
 			],
 			[
-				"err",
-				"Error"
-			],
-			[
 				"sphe",
 				"sphere_intersect"
 			],
@@ -506,33 +514,42 @@
 			[
 				"program",
 				"programInfo"
-			],
-			[
-				"fon",
-				"font-style"
-			],
-			[
-				"sun",
-				"sunDirection"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "src/main.cpp",
+			"file": "src/interrupts.asm",
 			"settings":
 			{
-				"buffer_size": 1549,
+				"buffer_size": 1605,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/interrupts.asm",
+			"file": "src/isr.cpp",
 			"settings":
 			{
-				"buffer_size": 728,
+				"buffer_size": 2697,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/isr.h",
+			"settings":
+			{
+				"buffer_size": 604,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/main.cpp",
+			"settings":
+			{
+				"buffer_size": 1607,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -547,48 +564,11 @@
 			}
 		},
 		{
-			"file": "src/isr.cpp",
+			"file": "src/boot.asm",
 			"settings":
 			{
-				"buffer_size": 1571,
-				"encoding": "UTF-8",
+				"buffer_size": 618,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/gdt.cpp",
-			"settings":
-			{
-				"buffer_size": 1539,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "section .text\nalign 4\nbits 32\n\n%assign i 0\n%rep 3\nglobal isr%+i\nisr%+i:\n    cli\n    push byte i\n    jmp isr_common_handler\n%assign i i+1\n%endrep\n\nisr_common_handler:\n    pusha\n    mov ax, ds\n    push eax\n\n    mov ax, 0x10\n    mov ds, ax\n    mov es, ax\n    mov fs, ax\n    mov gs, ax\n\n    extern isr_handler\n    call isr_handler\n\n    pop eax\n    mov ds, ax\n    mov es, ax\n    mov fs, ax\n    mov gs, ax\n    popa\n    add esp, 4\n    sti\n    iret\n",
-			"settings":
-			{
-				"buffer_size": 441,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/isr.h",
-			"settings":
-			{
-				"buffer_size": 604,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/gdt.h",
-			"settings":
-			{
-				"buffer_size": 570,
-				"encoding": "UTF-8",
-				"line_ending": "Windows",
-				"name": "#pragma once"
 			}
 		}
 	],
@@ -810,21 +790,23 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Alex/Code/loxos/src/main.cpp",
+		"/C/Users/Alex/Code/loxos/src/gdt.h",
+		"/C/Users/Alex/Code/loxos/src/isr.h",
+		"/C/Users/Alex/Code/loxos/src/gdt.cpp",
+		"/C/Users/Alex/Code/loxos/src/linker.ld",
+		"/C/Users/Alex/Code/loxos/src/boot.asm",
+		"/C/Users/Alex/Code/loxos/src/common.h",
+		"/C/Users/Alex/Code/loxos/Makefile",
 		"/C/Users/Alex/Code/loxos/src/test.c",
 		"/C/Users/Alex/Code/loxos/src/vga.cpp",
-		"/C/Users/Alex/Code/loxos/Makefile",
 		"/C/Users/Alex/Code/loxos/src/interrupts.asm",
 		"/C/Users/Alex/Code/loxos/src/common.cpp",
-		"/C/Users/Alex/Code/loxos/src/gdt.cpp",
-		"/C/Users/Alex/Code/loxos/src/boot.asm",
-		"/C/Users/Alex/Code/loxos/src/linker.ld",
-		"/C/Users/Alex/Code/loxos/src/common.h",
 		"/C/Users/Alex/Code/loxos/src/paging.cpp",
 		"/C/Users/Alex/Code/loxos/src/paging.h",
 		"/C/Users/Alex/Code/loxos/src/vga.h",
 		"/C/Users/Alex/Code/loxos/src/grub.cfg",
 		"/C/Users/Alex/Code/loxos/src/interrupt_handler.h",
-		"/C/Users/Alex/Code/loxos/src/main.cpp",
 		"/C/Users/Alex/Code/loxos/src/timer.cpp",
 		"/C/Users/Alex/Downloads/paging/src/boot.s",
 		"/C/Users/Alex/Downloads/paging/src/kheap.c",
@@ -935,9 +917,7 @@
 		"/C/Users/Alex/Code/go/src/bitbucket.org/zanders3/traintracker/go.sublime-build",
 		"/C/Users/Alex/Downloads/20044.8205.xml",
 		"/C/Users/Alex/Downloads/20170531020826_ref_v3.xml",
-		"/C/Users/Alex/Code/go/src/zanders3/gqcserver/leaderboardhandlers.go",
-		"/C/Users/Alex/Code/go/src/zanders3/gqcserver/app.json",
-		"/C/Users/Alex/Code/go/src/zanders3/gqcserver/models/leaderboard.go"
+		"/C/Users/Alex/Code/go/src/zanders3/gqcserver/leaderboardhandlers.go"
 	],
 	"find":
 	{
@@ -959,6 +939,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"gcc",
 			"idt_flush",
 			"}\n",
 			"g++",
@@ -1085,8 +1066,7 @@
 			"compressed shader",
 			"compile",
 			".png",
-			" = [0-9]+;",
-			".+\\n.+public const int "
+			" = [0-9]+;"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1111,19 +1091,82 @@
 			[
 				{
 					"buffer": 0,
-					"file": "src/main.cpp",
+					"file": "src/interrupts.asm",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1549,
+						"buffer_size": 1605,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1354,
-								1354
+								1002,
+								1002
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/NASM x86 Assembly/Assembly x86.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 585.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/isr.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2697,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2608,
+								2608
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1125.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/isr.h",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 604,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								253,
+								253
 							]
 						],
 						"settings":
@@ -1136,27 +1179,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 270.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "src/interrupts.asm",
+					"buffer": 3,
+					"file": "src/main.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 728,
+						"buffer_size": 1607,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								133,
-								133
+								1350,
+								1350
 							]
 						],
 						"settings":
@@ -1164,17 +1207,19 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/NASM x86 Assembly/Assembly x86.tmLanguage"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 315.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 4,
 					"file": "Makefile",
 					"semi_transient": false,
 					"settings":
@@ -1186,8 +1231,12 @@
 						"selection":
 						[
 							[
-								717,
-								717
+								360,
+								360
+							],
+							[
+								443,
+								443
 							]
 						],
 						"settings":
@@ -1201,86 +1250,16 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/isr.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1571,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								398,
-								398
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 2,
-			"sheets":
-			[
-				{
-					"buffer": 4,
-					"file": "src/gdt.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1539,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								504,
-								504
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
+					"file": "src/boot.asm",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 441,
+						"buffer_size": 618,
 						"regions":
 						{
 						},
@@ -1288,38 +1267,7 @@
 						[
 							[
 								0,
-								441
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"syntax": "Packages/NASM x86 Assembly/Assembly x86.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/isr.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 604,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								508,
-								508
+								0
 							]
 						],
 						"settings":
@@ -1327,44 +1275,14 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
+							"syntax": "Packages/NASM x86 Assembly/Assembly x86.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "src/gdt.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 570,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								552,
-								552
-							]
-						],
-						"settings":
-						{
-							"auto_name": "#pragma once",
-							"incomplete_sync": null,
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1387,18 +1305,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.587893113859,
 			1.0
 		],
 		"rows":
@@ -1442,16 +1353,28 @@
 		"selected_items":
 		[
 			[
-				"pag",
-				"src\\paging.h"
+				"main",
+				"src\\main.cpp"
+			],
+			[
+				"make",
+				"Makefile"
+			],
+			[
+				"boo",
+				"src\\boot.asm"
+			],
+			[
+				"comm",
+				"src\\common.h"
 			],
 			[
 				"boot",
 				"src\\boot.asm"
 			],
 			[
-				"main",
-				"src\\main.cpp"
+				"pag",
+				"src\\paging.h"
 			],
 			[
 				"inte",

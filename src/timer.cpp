@@ -2,22 +2,21 @@
 
 #include "timer.h"
 
-#include "interrupt_handler.h"
+#include "isr.h"
 #include "vga.h"
 
-Timer timer;
 long ticks;
 
-void timercallback(const Registers& regs)
+void timercallback(const Registers&)
 {
 	ticks++;
-	//vga.Print("Tick!");
 }
 
-void Timer::Init(u32 freq)
+void init_timer()
 {
+    const u32 freq = 50;
 	ticks = 0;
-	interrupts.RegisterHandler(32, &timercallback);
+	register_irq_handler(0, &timercallback);
 	u32 divisor = 1193180 / freq;
 	outb(0x43, 0x36);
 	outb(0x40, (u8)(divisor & 0xFF));

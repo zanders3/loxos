@@ -18,6 +18,7 @@ u16 inw(u16 port)
 {
 	u16 ret;
 	asm volatile ("inw %1,%0" : "=a" (ret) : "dN" (port));
+    return ret;
 }
 
 void kpanic(const char* msg)

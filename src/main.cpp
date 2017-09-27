@@ -3,6 +3,7 @@
 #include "paging.h"
 #include "gdt.h"
 #include "isr.h"
+#include "timer.h"
 
 struct MultibootInfo
 {
@@ -47,18 +48,9 @@ extern "C" void kmain(MultibootInfo* bootInfo, u32 multiboot_magic)
     vga.Print("0x%?\n", (u32)&code_end);
     init_gdt();
     init_idt();
-    asm volatile("int $47");
-    //vga.Print("OK!\n");
-    //asm volatile("int $40");
-    //vga.Print("OK!\n");
+    init_timer();
+    asm volatile("sti");
     while (true) {}
-    /*init_allocator();
-    setup_paging();
 
-	interrupts.Setup();
-	timer.Init(50);
-    paging.Init();
-
-    vga.Print("Paged!\n");*/
 	kpanic("WIN");
 }

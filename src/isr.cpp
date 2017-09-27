@@ -1,8 +1,11 @@
 #include "isr.h"
 #include "vga.h"
+#include "common.h"
 
 IDTEntry idt_entries[256];
 IDTPointer idt_pointer;
+InterruptHandler isrHandlers[33];
+InterruptHandler irqHandlers[16];
 
 //interrupt handler assembly code locations
 //defined in interrupts.asm
@@ -18,10 +21,15 @@ static void idt_setup(int idx, u32 address, u16 sel, u8 flags)
     entry.flags = flags;
 }
 
+static_assert(sizeof(isrHandlers) == sizeof(InterruptHandler*)*33, "wat");
+
 void init_idt()
 {
     idt_pointer.limit = (sizeof(IDTEntry) * 256) - 1;
     idt_pointer.base = (u32)&idt_entries;
+
+    zero_memory(&isrHandlers, sizeof(isrHandlers));
+    zero_memory(&irqHandlers, sizeof(irqHandlers));
 
     // 0x08 is offset to kernel code segment selector
     // Flags byte format:
@@ -30,7 +38,7 @@ void init_idt()
     // DPL = Privilege level - Kernel ring 0-3
     // Misc = Always 0xE
     // 0x8E sets present, ring 0
-    zero_memory(&idt_entries, sizeof(IDTEntry)*256);
+    zero_memory(&idt_entries, sizeof(idt_entries));
     u32* isrLoc = &isr_loc;
     for (int i = 0; i<48; i++)
     	idt_setup(i, isrLoc[i], 0x08, 0x8E);
@@ -49,9 +57,6 @@ void init_idt()
 	outb(0xA1, 0x01);
 	outb(0x21, 0x0);
 	outb(0xA1, 0x0);
-
-	//Enable interrupts
-	asm volatile("sti");
 }
 
 static const char* isrErrors[19] = {
@@ -77,6 +82,12 @@ static const char* isrErrors[19] = {
 
 extern "C" void isr_handler(const Registers regs)
 {
+	if (isrHandlers[regs.interrupt])
+	{
+		isrHandlers[regs.interrupt](regs);
+		return;
+	}
+
 	vga.Print("Unhandled interrupt:\n%? (%?) code %? at 0x%?\n",
 		regs.interrupt <= 18 ? isrErrors[regs.interrupt] : "Reserved",
 		(int)regs.interrupt, 
@@ -106,5 +117,22 @@ extern "C" void irq_handler(const Registers regs)
 		outb(0xA0, 0x20);
 	outb(0x20, 0x20);
 
-	vga.Print("IRQ %?\n", (int)regs.interrupt);
+	if (irqHandlers[regs.interrupt] != nullptr)
+		irqHandlers[regs.interrupt](regs);
+	else
+		vga.Print("IRQ %?\n", (int)regs.interrupt);
+}
+
+void register_int_handler(int int_code, InterruptHandler handler)
+{
+	if (int_code < 0 || int_code >= 33)
+		kpanic("invalid int code");
+	isrHandlers[int_code] = handler;
+}
+
+void register_irq_handler(int irq_code, InterruptHandler handler)
+{
+	if (irq_code < 0 || irq_code >= 16)
+		kpanic("invalid int code");
+	irqHandlers[irq_code] = handler;
 }

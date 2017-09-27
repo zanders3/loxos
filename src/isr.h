@@ -28,3 +28,5 @@ struct IDTPointer
 } __attribute__((packed));
 
 void init_idt();
+void register_int_handler(int int_code, InterruptHandler handler);
+void register_irq_handler(int irq_code, InterruptHandler handler);
