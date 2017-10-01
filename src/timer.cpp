@@ -9,7 +9,7 @@ long ticks;
 
 void timercallback(const Registers&)
 {
-	ticks++;
+	//ticks++;
 }
 
 void init_timer()

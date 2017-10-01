@@ -2,124 +2,77 @@
 #include "vga.h"
 #include "isr.h"
 
-u32 placement_address;
-u32 first_free_frame;
-u32 total_frames;
-
 extern "C" u32 code_end;
+u32 g_placement_address;
 
-static u32 kmalloc(u32 sz, bool align, u32* phys)
+static PageTable* alloc_page(u32& physAddr)
 {
-    if (align && (placement_address & 0xFFFFF000))
-    {
-        placement_address &= 0xFFFFF000;
-        placement_address += 0x1000;
-    }
-    if (phys)
-        *phys = placement_address;
-    
-    u32 tmp = placement_address;
-    placement_address += sz;
-    return tmp;
-}
-
-static u32 kmalloca(u32 sz)
-{
-    return kmalloc(sz, true, nullptr);
-}
-
-static u32 kmallocap(u32 sz, u32* phys)
-{
-    return kmalloc(sz, true, phys);
-}
-
-static Page* get_page(u32 address, bool create, PageDirectory* dir)
-{
-    address /= 0x1000;
-    u32 table_idx = address / 1024;
-    if (dir->tables[table_idx])
-        return &dir->tables[table_idx]->pages[address%1024];
-    else if (create)
-    {
-        u32 tmp;
-        dir->tables[table_idx] = (PageTable*)kmallocap(sizeof(PageTable), &tmp);
-        zero_memory(dir->tables[table_idx], sizeof(PageTable));
-        dir->tablesPhysical[table_idx] = tmp | 0x7;//PRESENT, RW, US
-        return &dir->tables[table_idx]->pages[address%1024];
-    }
-    else
-        return nullptr;
-}
-
-static void alloc_frame(Page* page, bool isKernel, bool isWriteable)
-{
-    if (page->frame)
-        return;
-    if (first_free_frame >= total_frames)
-        kpanic("No free frames!");
-
-    page->frame = first_free_frame;
-    first_free_frame++;
-    page->present = 1;
-    page->rw = isWriteable ? 1 : 0;
-    page->user = isKernel ? 0 : 1;
-}
-
-static void switch_page_directory(PageDirectory* dir)
-{
-    asm volatile("mov %0, %%cr3"::"r"(&dir->tablesPhysical));
-    u32 cr0;
-    asm volatile("mov %%cr0, %0":"=r"(cr0));
-    cr0 |= 0x80000000;
-    asm volatile("mov %0, %%cr0"::"r"(cr0));
-}
-
-static void page_fault(const Registers& regs)
-{
-    vga.Print("Unhandled interrupt:\nPage fault (%?) at 0x%?\n",
-        (int)regs.interrupt, 
-        regs.eip);
-
-    u32 faulting_addr;
-    asm volatile("mov %%cr2, %0" : "=r"(faulting_addr));
-
-    vga.Print("(");
-    if (!(regs.err_code & 0x1)) { vga.Print("not-present "); }
-    if (regs.err_code & 0x2) { vga.Print("write-op "); }
-    if (regs.err_code & 0x4) { vga.Print("user-mode "); }
-    if (regs.err_code & 0x8) { vga.Print("overwritten-reserved "); }
-    if (regs.err_code & 0x10) { vga.Print("instruction-fetch "); }
-    vga.Print(") at 0x%?\n", faulting_addr);
-    kpanic("");
+    if (g_placement_address & 0xFFFFF000)
+        g_placement_address = (g_placement_address & 0xFFFFF000) + 0x1000;
+    physAddr = g_placement_address;
+    g_placement_address += sizeof(PageTable);
+    return (PageTable*)physAddr;
 }
 
 void init_paging()
 {
-    const u32 mem_end_page = 0x1000000;//assume 16MB
-    total_frames = mem_end_page / 0x1000;
-    first_free_frame = 0;
-    placement_address = (u32)&code_end;
+    g_placement_address = (u32)&code_end;
 
-    PageDirectory* kernelDirectory = (PageDirectory*)kmalloca(sizeof(PageDirectory));
-    zero_memory(kernelDirectory, sizeof(PageDirectory));
+    //Create page directory, map to itself
+    u32 pageDirAddr;
+    PageTable* dir = alloc_page(pageDirAddr);
+    zero_memory(dir, sizeof(PageTable));
+    dir->pages[1023].Set(pageDirAddr, PageFlags::RW | PageFlags::Present);
 
-    u32 i = 0x0;
-    while (i < placement_address)
+    //Identity map first 0x40 0000
+    kassert(g_placement_address < 0x1000*1024);
+    u32 pageAddr;
+    PageTable* page = alloc_page(pageAddr);
+    dir->pages[0].Set(pageAddr, PageFlags::RW | PageFlags::Present);
+    for (u32 i = 0; i<1024; i++)
+        page->pages[i].Set(i*0x1000, PageFlags::RW | PageFlags::Present);
+
+    //Activate paging
+    asm volatile("mov %0, %%cr3"::"r"(pageDirAddr));
+    u32 cr0;
+    asm volatile("mov %%cr0, %0":"=r"(cr0));
+    cr0 |= 0x80000000;
+    asm volatile("mov %0, %%cr0"::"r"(cr0));
+
+    //Check some stuff
+    vga.Print("Dir 0 val: %? (%?)\n", dir->pages[0].value, pageDirAddr);
+    vga.Print("Page 0 val: %? (%?)\n", page->pages[20].value, pageAddr);
+    dir = (PageTable*)0xFFFFF000;
+    page= (PageTable*)0xFFC00000;
+    vga.Print("Dir 0 val: %? (%?)\n", dir->pages[0].value, pageDirAddr);
+    vga.Print("Page 0 val: %?\n", page->pages[20].value);
+    vga.Print("OK!\n");
+
+    //ID Map kernel
+    /*while (int i = 0x0; i < code_end; i+=0x1000)
+        map_page(i, i, PageFlags::RW | PageFlags::Present);*/
+}
+
+void map_page(u32 virtualAddr, u32 flags)
+{
+    u32 dirIdx = virtualAddr >> 22;//top 10 bits
+    u32 pageIdx = virtualAddr >> 12 & 0x3FF;//next 10 bits from top
+
+    //Create the page table it doesn't exist yet
+    PageTable* dir = (PageTable*)0xFFFFF000;
+    PageTable* page = ((PageTable*)0xFFC00000) + dirIdx;
+    if (dir->pages[pageIdx].value == 0x0)
     {
-        Page* page = get_page(i, true, kernelDirectory);
-        if (!page)
-            kpanic("page didn't alloc");
-        alloc_frame(page, false, false);
-        i += 0x1000;
+        u32 pageAddr;
+        alloc_page(pageAddr);
+        dir->pages[pageIdx].Set(pageAddr, PageFlags::RW | PageFlags::Present);
+        zero_memory(page, sizeof(PageTable));
     }
 
-    vga.Print("alloc %?/%? frames (0x%?)\n", (int)first_free_frame, (int)total_frames, placement_address);
+    //Page table exists at this point!
+    kassert(page->pages[pageIdx].value == 0x0);//should not already be mapped
 
-    register_int_handler(14, &page_fault);
-
-    switch_page_directory(kernelDirectory);
-    vga.Print("Hello paging!\n");
-
-    u32* ptr = (u32*)0xA0000000;
-    *ptr = 0;
+    u32 memAddr;
+    alloc_page(memAddr);
+    page->pages[pageIdx].Set(memAddr, flags | PageFlags::Present);
 }

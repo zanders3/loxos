@@ -21,10 +21,10 @@ u16 inw(u16 port)
     return ret;
 }
 
-void kpanic(const char* msg)
+void kpanic_internal(const char* msg, const char* file, int line)
 {
     vga.SetColor(VGAColor::Red, VGAColor::Black);
-    vga.Print(msg);
+    vga.Print("%? at %?:%?", msg, file, line);
     asm volatile("cli");
     asm volatile("hlt");
 }

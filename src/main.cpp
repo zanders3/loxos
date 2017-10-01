@@ -49,7 +49,16 @@ extern "C" void kmain(MultibootInfo* bootInfo, u32 multiboot_magic)
     init_gdt();
     init_idt();
     init_timer();
+
+    int* testVal = (int*)0xC0000000;
+    *testVal = 123;
+    vga.Print("test val: %?\n", *testVal);
+
     init_paging();
+
+    map_page(0x0, PageFlags::RW);
+    //vga.Print("test val: %?\n", *testVal);
+
     while (true) {}
 
     //asm volatile("sti");
