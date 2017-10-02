@@ -49,15 +49,12 @@ extern "C" void kmain(MultibootInfo* bootInfo, u32 multiboot_magic)
     init_gdt();
     init_idt();
     init_timer();
-
-    int* testVal = (int*)0xC0000000;
-    *testVal = 123;
-    vga.Print("test val: %?\n", *testVal);
-
     init_paging();
 
-    map_page(0x0, PageFlags::RW);
-    //vga.Print("test val: %?\n", *testVal);
+    map_page(0xC000000, PageFlags::RW);
+    int* test = (int*)0xC000000;
+    *test = 0xdead;
+    vga.Print("test val: %?\n", (u32)*test);
 
     while (true) {}
 
