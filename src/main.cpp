@@ -4,6 +4,7 @@
 #include "gdt.h"
 #include "isr.h"
 #include "timer.h"
+#include "keyboard.h"
 
 struct MultibootInfo
 {
@@ -28,6 +29,14 @@ struct MemoryMap
 
 extern "C" u32 code_end;
 
+static void onkey(const KeyInfo& keyInfo)
+{
+    //vga.Print("K: %? %? %? %?\n", (int)keyInfo.key, keyInfo.charValue, (int)keyInfo.keyDown, (u32)keyInfo.scanCode);
+    if (keyInfo.keyDown && 
+        ((keyInfo.charValue >= ' ' && keyInfo.charValue <= '~') || keyInfo.charValue == '\n'))
+        vga.Puts(keyInfo.charValue);
+}
+
 extern "C" void kmain(MultibootInfo* bootInfo, u32 multiboot_magic)
 {
 	vga.Clear();
@@ -46,15 +55,15 @@ extern "C" void kmain(MultibootInfo* bootInfo, u32 multiboot_magic)
     }
 
     vga.Print("0x%?\n", (u32)&code_end);
+
     init_gdt();
     init_idt();
     init_timer();
     init_paging();
-
-    map_page(0xC000000, PageFlags::RW);
-    int* test = (int*)0xC000000;
-    *test = 0xdead;
-    vga.Print("test val: %?\n", (u32)*test);
+    init_keyboard();
+    register_keyboard_handler(onkey);
+    asm ("sti");
+    vga.Print("OK\n");
 
     while (true) {}
 

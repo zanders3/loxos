@@ -38,6 +38,7 @@ private:
 	void PrintVal(const char* s);
 	void PrintVal(short value);
 	void PrintVal(int value);
+	void PrintVal(char value);
 	void PrintVal(unsigned short value);
 	void PrintVal(unsigned int value);
 

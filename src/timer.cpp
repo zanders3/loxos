@@ -9,12 +9,12 @@ long ticks;
 
 void timercallback(const Registers&)
 {
-	//ticks++;
+	ticks++;
 }
 
 void init_timer()
 {
-    const u32 freq = 50;
+    const u32 freq = 1;
 	ticks = 0;
 	register_irq_handler(0, &timercallback);
 	u32 divisor = 1193180 / freq;

@@ -11,9 +11,8 @@ namespace PageFlags
 
 struct Page
 {
-    void Set(u32 frame, u32 flags)
+    inline void Set(u32 frame, u32 flags)
     {
-        kassert((frame & 0xFFF) == 0);
         value = frame | flags;
     }
 

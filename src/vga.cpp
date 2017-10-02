@@ -120,3 +120,8 @@ void VGA::PrintVal(unsigned int value)
 	for (;i>=0;i--)
 		Puts(buf[i]);
 }
+
+void VGA::PrintVal(char value)
+{
+	Puts(value);
+}

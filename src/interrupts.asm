@@ -92,7 +92,6 @@ isr_common_handler:
 	mov gs, ax
 	popa
 	add esp, 8
-	sti
 	iret
 
 ;Common handler for all IRQs
@@ -117,5 +116,4 @@ irq_common_handler:
     mov gs, ax
     popa
     add esp, 8
-    sti
     iret

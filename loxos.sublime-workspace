@@ -4,15 +4,119 @@
 		"selected_items":
 		[
 			[
+				"key",
+				"keyboard_handler"
+			],
+			[
+				"p",
+				"pages"
+			],
+			[
+				"pla",
+				"placement_address"
+			],
+			[
+				"allo",
+				"alloc_page"
+			],
+			[
+				"fi",
+				"firstPageAddr"
+			],
+			[
+				"PAge",
+				"PageFlags"
+			],
+			[
+				"ta",
+				"tablesPhysical"
+			],
+			[
+				"over",
+				"overallPageIdx"
+			],
+			[
+				"PAgeT",
+				"PageTable"
+			],
+			[
+				"g",
+				"g_placement_address"
+			],
+			[
+				"g_mem",
+				"g_memEnd"
+			],
+			[
+				"g_me",
+				"g_memAllocLoc"
+			],
+			[
+				"mall",
+				"malloc_block"
+			],
+			[
+				"g_",
+				"g_memAllocLoc"
+			],
+			[
+				"g_m",
+				"g_memStart"
+			],
+			[
+				"kpan",
+				"kpanic_internal"
+			],
+			[
+				"max",
+				"maxSize"
+			],
+			[
+				"Mall",
+				"MallocHeader"
+			],
+			[
+				"faul",
+				"faulting_addr"
+			],
+			[
+				"tabl",
+				"tablesPhysical"
+			],
+			[
+				"tal",
+				"table_idx"
+			],
+			[
+				"km",
+				"kmalloc"
+			],
+			[
+				"Page",
+				"PageDirectory"
+			],
+			[
+				"isrHa",
+				"isrHandlers"
+			],
+			[
+				"isr",
+				"isr_handler"
+			],
+			[
+				"irq",
+				"irq_handler"
+			],
+			[
+				"zero",
+				"zero_memory"
+			],
+			[
 				"err",
 				"err_code"
 			],
 			[
 				"talbE",
-				"tableType"
-			],
-			[
-				"tal",
 				"tableType"
 			],
 			[
@@ -106,10 +210,6 @@
 			[
 				"fram",
 				"frameAddr"
-			],
-			[
-				"g",
-				"gdt64_code"
 			],
 			[
 				"ma",
@@ -414,116 +514,34 @@
 			[
 				"MemoryAre",
 				"MemoryAreaIter"
-			],
-			[
-				"kernel",
-				"kernel_end"
-			],
-			[
-				"sta",
-				"start_frame"
-			],
-			[
-				"curr",
-				"current_area"
-			],
-			[
-				"CURR",
-				"current_area"
-			],
-			[
-				"Memor",
-				"MemoryAreaIter"
-			],
-			[
-				"ker",
-				"kernel_end"
-			],
-			[
-				"mult",
-				"multiboot_information_address"
-			],
-			[
-				"sec",
-				"sections"
-			],
-			[
-				"BUFF",
-				"BUFFER_HEIGHT"
-			],
-			[
-				"colo",
-				"color_code"
-			],
-			[
-				"col",
-				"column_position"
-			],
-			[
-				"BUF",
-				"BUFFER_HEIGHT"
-			],
-			[
-				"Colo",
-				"ColorCode"
-			],
-			[
-				"hello",
-				"hello_coloured"
-			],
-			[
-				"p",
-				"p4_table\tlabel"
-			],
-			[
-				"check",
-				"check_long_mode\tlabel"
-			],
-			[
-				"che",
-				"check_cpuid\tlabel"
-			],
-			[
-				"scre",
-				"screen"
-			],
-			[
-				"Dra",
-				"DrawCircles"
-			],
-			[
-				"bitma",
-				"bitmapSize"
-			],
-			[
-				"bitm",
-				"bitmapWidth"
-			],
-			[
-				"scr",
-				"screenResolution"
-			],
-			[
-				"IM",
-				"IMyTerminalBlock"
-			],
-			[
-				"Space",
-				"SpaceKrieg_Windows"
-			],
-			[
-				"program",
-				"programInfo"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "src/interrupts.asm",
+			"file": "src/main.cpp",
 			"settings":
 			{
-				"buffer_size": 1605,
+				"buffer_size": 1516,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/paging.cpp",
+			"settings":
+			{
+				"buffer_size": 2798,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/timer.cpp",
+			"settings":
+			{
+				"buffer_size": 368,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -532,24 +550,33 @@
 			"file": "src/isr.cpp",
 			"settings":
 			{
-				"buffer_size": 2697,
+				"buffer_size": 3442,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/keyboard.h",
+			"settings":
+			{
+				"buffer_size": 101,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Windows",
+				"name": "#pragma once"
 			}
 		},
 		{
-			"file": "src/isr.h",
+			"file": "tmp.txt",
 			"settings":
 			{
-				"buffer_size": 604,
-				"line_ending": "Windows"
+				"buffer_size": 575896,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/main.cpp",
+			"file": "src/keyboard.cpp",
 			"settings":
 			{
-				"buffer_size": 1607,
+				"buffer_size": 267,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -558,7 +585,34 @@
 			"file": "Makefile",
 			"settings":
 			{
-				"buffer_size": 907,
+				"buffer_size": 949,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/interrupts.asm",
+			"settings":
+			{
+				"buffer_size": 1592,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/paging.h",
+			"settings":
+			{
+				"buffer_size": 496,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/common.cpp",
+			"settings":
+			{
+				"buffer_size": 679,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -567,7 +621,8 @@
 			"file": "src/boot.asm",
 			"settings":
 			{
-				"buffer_size": 618,
+				"buffer_size": 575,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
@@ -790,24 +845,36 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Alex/.ssh/box3zanders.key",
+		"/C/Users/Alex/.ssh/box3zanders.key.pub",
+		"/C/Users/Alex/Code/loxos/src/common.h",
+		"/C/Users/Alex/Desktop/written_answers.txt",
+		"/C/Users/Alex/Code/loxos/src/timer.cpp",
+		"/C/Users/Alex/Code/loxos/src/liballoc.c",
+		"/C/Users/Alex/Code/loxos/src/liballoc.h",
+		"/C/Users/Alex/Code/loxos/src/array.h",
+		"/C/Users/Alex/Code/loxos/src/alloc.h",
+		"/C/Users/Alex/Code/loxos/src/alloc.cpp",
+		"/C/Users/Alex/Code/loxos/src/paging.cpp",
+		"/C/Users/Alex/Code/loxos/src/isr.cpp",
 		"/C/Users/Alex/Code/loxos/src/main.cpp",
-		"/C/Users/Alex/Code/loxos/src/gdt.h",
 		"/C/Users/Alex/Code/loxos/src/isr.h",
+		"/C/Users/Alex/Desktop/spaceinvaders/text_draw.h",
+		"/C/Users/Alex/Desktop/spaceinvaders/text_draw.cpp",
+		"/C/Users/Alex/Code/loxos/src/paging.h",
+		"/C/Users/Alex/Code/loxos/src/common.cpp",
+		"/C/Users/Alex/Code/loxos/src/timer.h",
+		"/C/Users/Alex/Code/loxos/Makefile",
+		"/C/Users/Alex/Code/loxos/src/interrupts.asm",
+		"/C/Users/Alex/Code/loxos/src/gdt.h",
 		"/C/Users/Alex/Code/loxos/src/gdt.cpp",
 		"/C/Users/Alex/Code/loxos/src/linker.ld",
 		"/C/Users/Alex/Code/loxos/src/boot.asm",
-		"/C/Users/Alex/Code/loxos/src/common.h",
-		"/C/Users/Alex/Code/loxos/Makefile",
 		"/C/Users/Alex/Code/loxos/src/test.c",
 		"/C/Users/Alex/Code/loxos/src/vga.cpp",
-		"/C/Users/Alex/Code/loxos/src/interrupts.asm",
-		"/C/Users/Alex/Code/loxos/src/common.cpp",
-		"/C/Users/Alex/Code/loxos/src/paging.cpp",
-		"/C/Users/Alex/Code/loxos/src/paging.h",
 		"/C/Users/Alex/Code/loxos/src/vga.h",
 		"/C/Users/Alex/Code/loxos/src/grub.cfg",
 		"/C/Users/Alex/Code/loxos/src/interrupt_handler.h",
-		"/C/Users/Alex/Code/loxos/src/timer.cpp",
 		"/C/Users/Alex/Downloads/paging/src/boot.s",
 		"/C/Users/Alex/Downloads/paging/src/kheap.c",
 		"/C/Users/Alex/Code/loxos/src/multiboot.h",
@@ -816,7 +883,6 @@
 		"/C/Users/Alex/Code/loxos/qemu.log",
 		"/C/Users/Alex/Code/loxos/Readme.md",
 		"/C/Users/Alex/Downloads/paging/src/kheap.h",
-		"/C/Users/Alex/Code/loxos/src/timer.h",
 		"/C/Users/Alex/Code/loxos/loxos.sublime-project",
 		"/C/Users/Alex/Code/GB/gb.cpp",
 		"/C/Users/Alex/Code/GB/gb.h",
@@ -906,18 +972,7 @@
 		"/E/SteamLibrary/steamapps/common/Kerbal Space Program/2017-06-02_190940/output_log.txt",
 		"/C/Users/Alex/Code/go/src/bitbucket.org/zanders3/traintracker/2017-06-02-02-01.pPortData.log",
 		"/C/Users/Alex/Code/go/src/bitbucket.org/zanders3/traintracker/timetablesmall.xml",
-		"/C/Users/Alex/Code/go/src/bitbucket.org/zanders3/traintracker/reference.xml",
-		"/C/Users/Alex/Code/go/src/bitbucket.org/zanders3/traintracker/rttiPPTSchedules_v1.xsd",
-		"/C/Users/Alex/Code/go/src/bitbucket.org/zanders3/traintracker/main.go",
-		"/C/Users/Alex/Code/go/src/bitbucket.org/zanders3/traintracker/20170602020826_v8.xml",
-		"/C/Users/Alex/Downloads/nordic-game-playtest.txt",
-		"/E/SteamLibrary/steamapps/common/Kerbal Space Program/2017-06-02_190940/error.log",
-		"/C/Users/Alex/AppData/Roaming/Sublime Text 3/Packages/GoSublime/9o.md",
-		"/C/Users/Alex/AppData/Roaming/Sublime Text 3/Packages/User/go.sublime-build",
-		"/C/Users/Alex/Code/go/src/bitbucket.org/zanders3/traintracker/go.sublime-build",
-		"/C/Users/Alex/Downloads/20044.8205.xml",
-		"/C/Users/Alex/Downloads/20170531020826_ref_v3.xml",
-		"/C/Users/Alex/Code/go/src/zanders3/gqcserver/leaderboardhandlers.go"
+		"/C/Users/Alex/Code/go/src/bitbucket.org/zanders3/traintracker/reference.xml"
 	],
 	"find":
 	{
@@ -939,6 +994,20 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"u32",
+			"20",
+			"j",
+			"kmalloc_aligned<PageTable>",
+			"tables",
+			"NULL",
+			"total_frames",
+			"tmp",
+			"map_page",
+			"InterruptHandler",
+			"m_maxSize",
+			"u32int",
+			"idx",
+			"new",
 			"gcc",
 			"idt_flush",
 			"}\n",
@@ -1052,21 +1121,7 @@
 			"euston",
 			"brighton",
 			"btn",
-			"SWANSLE",
-			"Hove",
-			"opdt",
-			"23",
-			"LANDUDJ",
-			"LUDO",
-			"LLJN",
-			"test",
-			" ",
-			",",
-			" ",
-			"compressed shader",
-			"compile",
-			".png",
-			" = [0-9]+;"
+			"SWANSLE"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1086,87 +1141,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 5,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/interrupts.asm",
+					"file": "src/main.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1605,
+						"buffer_size": 1516,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1002,
-								1002
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/NASM x86 Assembly/Assembly x86.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 585.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/isr.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2697,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2608,
-								2608
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1125.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/isr.h",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 604,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								253,
-								253
+								1464,
+								1464
 							]
 						],
 						"settings":
@@ -1177,6 +1169,131 @@
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 405.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/paging.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2798,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1843,
+								1843
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 619.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/timer.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 368,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								137,
+								137
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/isr.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3442,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2892,
+								2872
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1444.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/keyboard.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 101,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								100,
+								100
+							]
+						],
+						"settings":
+						{
+							"auto_name": "#pragma once",
+							"incomplete_sync": null,
+							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1186,20 +1303,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "src/main.cpp",
+					"buffer": 5,
+					"file": "tmp.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1607,
+						"buffer_size": 575896,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1350,
-								1350
+								3208,
+								3208
 							]
 						],
 						"settings":
@@ -1207,36 +1324,62 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 315.0,
+						"translation.y": 2100.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "Makefile",
+					"buffer": 6,
+					"file": "src/keyboard.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 907,
+						"buffer_size": 267,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								360,
-								360
-							],
+								267,
+								267
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"incomplete_sync": null,
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "Makefile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 949,
+						"regions":
+						{
+						},
+						"selection":
+						[
 							[
-								443,
-								443
+								811,
+								811
 							]
 						],
 						"settings":
@@ -1250,24 +1393,121 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "src/boot.asm",
+					"buffer": 8,
+					"file": "src/interrupts.asm",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 618,
+						"buffer_size": 1592,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1105,
+								1105
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/NASM x86 Assembly/Assembly x86.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 855.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "src/paging.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 496,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								221,
+								221
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "src/common.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 679,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								501,
+								501
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "src/boot.asm",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 575,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								272,
+								272
 							]
 						],
 						"settings":
@@ -1282,7 +1522,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 10,
 					"type": "text"
 				}
 			]
@@ -1353,20 +1593,48 @@
 		"selected_items":
 		[
 			[
-				"main",
-				"src\\main.cpp"
+				"tmp.",
+				"tmp.txt"
 			],
 			[
 				"make",
 				"Makefile"
 			],
 			[
-				"boo",
-				"src\\boot.asm"
+				"isr",
+				"src\\isr.cpp"
+			],
+			[
+				"paging.h",
+				"src\\paging.h"
 			],
 			[
 				"comm",
-				"src\\common.h"
+				"src\\common.cpp"
+			],
+			[
+				"pa",
+				"src\\paging.cpp"
+			],
+			[
+				"isrc",
+				"src\\isr.cpp"
+			],
+			[
+				"isr.h",
+				"src\\isr.h"
+			],
+			[
+				"timer",
+				"src\\timer.cpp"
+			],
+			[
+				"main",
+				"src\\main.cpp"
+			],
+			[
+				"boo",
+				"src\\boot.asm"
 			],
 			[
 				"boot",

@@ -14,6 +14,26 @@ static PageTable* alloc_page(u32& physAddr)
     return (PageTable*)physAddr;
 }
 
+static void handle_page_fault(const Registers& regs)
+{
+    vga.Print("Unhandled interrupt:\nPage fault (%?) code %? at 0x%?\n",
+        (int)regs.interrupt, 
+        (int)regs.err_code,
+        regs.eip);
+
+    u32 memLoc;
+    asm volatile("mov %%cr2,%0" : "=r"(memLoc));
+
+    vga.Print("(");
+    vga.Print(regs.err_code & 0x1 ? "protection-violation " : "not-present ");
+    vga.Print(regs.err_code & 0x2 ? "write " : "read ");
+    vga.Print(regs.err_code & 0x4 ? "user-mode" : "supervisor-mode");
+    if (regs.err_code & 0x10) vga.Print(" inst-fetch");
+    vga.Print(") at 0x%?\n", memLoc);
+
+    kpanic("");
+}
+
 void init_paging()
 {
     g_placement_address = (u32)&code_end;
@@ -24,13 +44,19 @@ void init_paging()
     zero_memory(dir, sizeof(PageTable));
     dir->pages[1023].Set(pageDirAddr, PageFlags::RW | PageFlags::Present);
 
-    //Identity map first 0x40 0000
+    //Identity map to g_placement_address
     u32 pageAddr;
     PageTable* page = alloc_page(pageAddr);
     kassert(g_placement_address < 0x1000*1024);//assumes kernel < 4MB total
+
+    //Set first directory entry to page
     dir->pages[0].Set(pageAddr, PageFlags::RW | PageFlags::Present);
-    for (u32 i = 0; i<1024; i++)
+    u32 numToMap = g_placement_address / 0x1000;
+    kassert(numToMap < 1024);
+    for (u32 i = 0; i<numToMap; i++)
         page->pages[i].Set(i*0x1000, PageFlags::RW | PageFlags::Present);
+
+    register_int_handler(14, &handle_page_fault);
 
     //Activate paging
     asm volatile("mov %0, %%cr3"::"r"(pageDirAddr));
@@ -38,15 +64,6 @@ void init_paging()
     asm volatile("mov %%cr0, %0":"=r"(cr0));
     cr0 |= 0x80000000;
     asm volatile("mov %0, %%cr0"::"r"(cr0));
-
-    //Check some stuff
-    vga.Print("Dir 0 val: %? (%?)\n", dir->pages[0].value, pageDirAddr);
-    vga.Print("Page 0 val: %? (%?)\n", page->pages[20].value, pageAddr);
-    dir = (PageTable*)0xFFFFF000;
-    page= (PageTable*)0xFFC00000;
-    vga.Print("Dir 0 val: %? (%?)\n", dir->pages[0].value, pageDirAddr);
-    vga.Print("Page 0 val: %?\n", page->pages[20].value);
-    vga.Print("OK!\n");
 }
 
 void map_page(u32 virtualAddr, u32 flags)
