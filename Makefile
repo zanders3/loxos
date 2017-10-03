@@ -2,7 +2,7 @@ default: run
 
 .PHONY: clean
 
-OBJS := build/boot.o build/main.o build/vga.o build/common.o build/paging.o build/gdt.o build/isr.o build/interrupts.o build/timer.o build/keyboard.o
+OBJS := build/boot.o build/main.o build/vga.o build/common.o build/paging.o build/gdt.o build/isr.o build/interrupts.o build/timer.o build/keyboard.o build/kalloc.o
 OPTIONS := -m32 -nostdlib -fno-exceptions -mno-red-zone -mno-ms-bitfields -ffreestanding -std=c++11 -fno-rtti -Wall -Wextra -Werror
 
 build/%.o: src/%.asm

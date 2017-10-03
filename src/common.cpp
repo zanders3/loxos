@@ -35,3 +35,13 @@ void zero_memory(void* ptr, u32 size)
     for (u32 i = 0; i<size; ++i)
         buf[i] = 0;
 }
+
+u32 next_power_of_2(u32 size)
+{
+    u32 res;
+    asm volatile("lzcnt %1, %0" : "=a"(res) : "dN"(size));
+    res = 1 << res;
+    if (res != size)
+        res <<= 1;
+    return res;
+}

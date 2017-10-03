@@ -87,5 +87,6 @@ void map_page(u32 virtualAddr, u32 flags)
 
     u32 memAddr;
     alloc_page(memAddr);
+    //vga.Print("\npage map %? -> 0x%?\n", (int)pageIdx, memAddr);
     page->pages[pageIdx].Set(memAddr, flags | PageFlags::Present);
 }

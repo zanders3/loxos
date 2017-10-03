@@ -12,6 +12,7 @@ u16 inw(u16 port);
 
 void kpanic_internal(const char* msg, const char* file, int line);
 void zero_memory(void* ptr, u32 size);
+u32 next_power_of_2(u32 size);
 
 #define kpanic(msg) kpanic_internal(msg, __FILE__, __LINE__)
 #define kassert(cond) { if (!(cond)) { kpanic_internal(#cond, __FILE__, __LINE__); } }

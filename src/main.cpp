@@ -5,6 +5,7 @@
 #include "isr.h"
 #include "timer.h"
 #include "keyboard.h"
+#include "kalloc.h"
 
 struct MultibootInfo
 {
@@ -37,10 +38,22 @@ static void onkey(const KeyInfo& keyInfo)
         vga.Puts(keyInfo.charValue);
 }
 
+class TestClass
+{
+public:
+    TestClass(u32 val)
+        : value(val)
+    {
+        vga.Print("hello constructor!\n");
+    }
+
+    u32 value;
+};
+
 extern "C" void kmain(MultibootInfo* bootInfo, u32 multiboot_magic)
 {
-	vga.Clear();
-	vga.Print("loxos\n");
+    vga.Clear();
+    vga.Print("loxos\n");
     vga.Print("mbt: 0x%?\n", multiboot_magic);
     vga.Print("flags: %?\n", bootInfo->flags);
     vga.Print("mem: %?KB -> %?KB\n", (int)bootInfo->mem_lower, (int)bootInfo->mem_upper);
@@ -60,11 +73,21 @@ extern "C" void kmain(MultibootInfo* bootInfo, u32 multiboot_magic)
     init_idt();
     init_timer();
     init_paging();
+    kalloc_init(0xC000000, 0x1000000);
     init_keyboard();
     register_keyboard_handler(onkey);
+
     asm ("sti");
     vga.Print("OK\n");
+    
+    new (kallocator) TestClass(123);
+    for (int i = 1; i<256; i++)
+    {
+        int* arr = new (kallocator) int[i];
+        kfree(arr);
+    }
 
+    vga.Print("OK\n");
     while (true) {}
 
     //asm volatile("sti");
