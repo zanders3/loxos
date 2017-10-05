@@ -6,6 +6,7 @@
 #include "timer.h"
 #include "keyboard.h"
 #include "kalloc.h"
+#include "karray.h"
 
 struct MultibootInfo
 {
@@ -38,18 +39,6 @@ static void onkey(const KeyInfo& keyInfo)
         vga.Puts(keyInfo.charValue);
 }
 
-class TestClass
-{
-public:
-    TestClass(u32 val)
-        : value(val)
-    {
-        vga.Print("hello constructor!\n");
-    }
-
-    u32 value;
-};
-
 extern "C" void kmain(MultibootInfo* bootInfo, u32 multiboot_magic)
 {
     vga.Clear();
@@ -80,12 +69,18 @@ extern "C" void kmain(MultibootInfo* bootInfo, u32 multiboot_magic)
     asm ("sti");
     vga.Print("OK\n");
     
-    new (kallocator) TestClass(123);
-    for (int i = 1; i<256; i++)
-    {
-        int* arr = new (kallocator) int[i];
-        kfree(arr);
-    }
+    Array<int> test;
+    for (int i = 0; i<20; i++)
+        test.Add(i);
+    test.Insert(5, 23);
+    test.Insert(2, 85);
+    test.Sort();
+    test.RemoveAt(0, 10);
+
+    for (const int& val : test)
+        vga.Print("%? ", val);
+
+    vga.Print("\n");
 
     vga.Print("OK\n");
     while (true) {}
