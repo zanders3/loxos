@@ -2,7 +2,6 @@
 #include "vga.h"
 #include "isr.h"
 
-extern "C" u32 code_end;
 u32 g_placement_address;
 
 static PageTable* alloc_page(u32& physAddr)
@@ -34,9 +33,9 @@ static void handle_page_fault(const Registers& regs)
     kpanic("");
 }
 
-void init_paging()
+void init_paging(u32 kernelEnd)
 {
-    g_placement_address = (u32)&code_end;
+    g_placement_address = kernelEnd;
 
     //Create page directory, map to itself
     u32 pageDirAddr;

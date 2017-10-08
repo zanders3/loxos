@@ -23,5 +23,4 @@ SECTIONS {
     	*(COMMON)
     	*(.bss)
     }
-    code_end = .;
 }

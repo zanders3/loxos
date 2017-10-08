@@ -26,5 +26,5 @@ struct PageTable
 
 static_assert(sizeof(PageTable) == 0x1000, "invalid size");
 
-void init_paging();
+void init_paging(u32 kernelEnd);
 void map_page(u32 virtualAddr, u32 flags);

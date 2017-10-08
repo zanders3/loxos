@@ -1,4 +1,5 @@
 #include "vga.h"
+#include "common.h"
 
 VGA vga;
 
@@ -32,6 +33,7 @@ void VGA::Puts(char c)
 	short* vga = (short*)0xB8000;
 	if (c == '\n')
 	{
+		vga[cursorY*80 + cursorX] = color | ' ';
 		cursorY++;
 		cursorX = 0;
 	}
@@ -56,6 +58,29 @@ void VGA::Puts(char c)
 			vga[i] = vga[i+80];
 		for (int i = 24*80; i<25*80; ++i)
 			vga[i] = 0;
+	}
+}
+
+void VGA::Backspace()
+{
+	if (cursorX > 0)
+	{
+		short* vga = (short*)0xB8000;
+		vga[cursorY*80 + cursorX] = color | ' ';
+		--cursorX;
+		vga[cursorY*80 + cursorX] = color | ' ';
+	}
+}
+
+void VGA::TickCursor()//tick every 10ms
+{
+	cursorTimer++;
+	if (cursorTimer >= 50)//every 500ms
+	{
+		short* vga = (short*)0xB8000;
+		vga[cursorY*80 + cursorX] = color | (cursor ? '_' : ' ');
+		cursor = !cursor;
+		cursorTimer = 0;
 	}
 }
 

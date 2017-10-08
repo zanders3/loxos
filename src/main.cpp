@@ -6,7 +6,14 @@
 #include "timer.h"
 #include "keyboard.h"
 #include "kalloc.h"
-#include "karray.h"
+#include "fs.h"
+#include "lox/lox.h"
+
+struct ModEntry
+{
+    u32 start_addr;
+    u32 end_addr;
+} __attribute__((__packed__));
 
 struct MultibootInfo
 {
@@ -16,74 +23,73 @@ struct MultibootInfo
     u32 boot_device;
     u32 cmdline;
     u32 mods_count;
-    u32 mods_addr;
+    ModEntry* mods_addr;
     u32 elf_num, elf_size, elf_addr, elf_shndx;
     u32 mmap_length;
     u32 mmap_addr;
 } __attribute__((__packed__));
 
-struct MemoryMap
-{
-    u32 size;
-    u32 base_addr, base_addr_high, length, length_high;
-    u32 type;
-} __attribute__((__packed__));
-
-extern "C" u32 code_end;
+bool g_completedLine = false;
+char g_currentLine[128];
+int g_currentLineIdx = 0;
 
 static void onkey(const KeyInfo& keyInfo)
 {
-    //vga.Print("K: %? %? %? %?\n", (int)keyInfo.key, keyInfo.charValue, (int)keyInfo.keyDown, (u32)keyInfo.scanCode);
-    if (keyInfo.keyDown && 
-        ((keyInfo.charValue >= ' ' && keyInfo.charValue <= '~') || keyInfo.charValue == '\n'))
-        vga.Puts(keyInfo.charValue);
+    if (keyInfo.keyDown)
+    {
+        if (keyInfo.charValue >= ' ' && keyInfo.charValue <= '~')
+        {
+            g_currentLine[g_currentLineIdx++] = keyInfo.charValue;
+            vga.Puts(keyInfo.charValue);
+        }
+        else if (keyInfo.key == Key::Backspace && g_currentLineIdx > 0)
+        {
+            --g_currentLineIdx;
+            vga.Backspace();
+        }
+        else if (keyInfo.key == Key::Enter || g_currentLineIdx >= 126)
+        {
+            g_currentLine[g_currentLineIdx] = '\n';
+            g_currentLine[g_currentLineIdx+1] = '\0';
+            g_completedLine = true;
+        }
+    }
 }
 
-extern "C" void kmain(MultibootInfo* bootInfo, u32 multiboot_magic)
+extern "C" void kmain(MultibootInfo* bootInfo)
 {
     vga.Clear();
     vga.Print("loxos\n");
-    vga.Print("mbt: 0x%?\n", multiboot_magic);
     vga.Print("flags: %?\n", bootInfo->flags);
-    vga.Print("mem: %?KB -> %?KB\n", (int)bootInfo->mem_lower, (int)bootInfo->mem_upper);
-    vga.Print("mmap: 0x%? (0x%?)\n", bootInfo->mmap_addr, bootInfo->mmap_length);
+    vga.Print("mem: %?MB available\n", (int)(bootInfo->mem_upper - bootInfo->mem_lower) / 1024);
 
-    for (MemoryMap* mmap = (MemoryMap*)(u32)bootInfo->mmap_addr; 
-        (u32)mmap < bootInfo->mmap_addr + bootInfo->mmap_length;
-        mmap = (MemoryMap*)((u32)mmap + mmap->size + sizeof(mmap->size)))
-    {
-        vga.Print("  base_addr = 0x%? len = 0x%? type = %?\n",
-            (u32)mmap->base_addr, (u32)mmap->length, (int)mmap->type);
-    }
-
-    vga.Print("0x%?\n", (u32)&code_end);
+    kassert(bootInfo->mods_count > 0);
+    u32 initrd_loc = bootInfo->mods_addr->start_addr;
+    u32 initrd_end = bootInfo->mods_addr->end_addr;
+    vga.Print("start: %? end: %?\n", initrd_loc, initrd_end);
 
     init_gdt();
     init_idt();
     init_timer();
-    init_paging();
+    init_paging(initrd_end);
     kalloc_init(0xC000000, 0x1000000);
     init_keyboard();
     register_keyboard_handler(onkey);
+    fs_init(initrd_loc, initrd_end);
 
     asm ("sti");
     vga.Print("OK\n");
-    
-    Array<int> test;
-    for (int i = 0; i<20; i++)
-        test.Add(i);
-    test.Insert(5, 23);
-    test.Insert(2, 85);
-    test.Sort();
-    test.RemoveAt(0, 10);
 
-    for (const int& val : test)
-        vga.Print("%? ", val);
-
-    vga.Print("\n");
-
-    vga.Print("OK\n");
-    while (true) {}
+    while (true) 
+    {
+        vga.Print("> ");
+        while (!g_completedLine) 
+        {}
+        g_completedLine = false;
+        g_currentLineIdx = 0;
+        vga.Puts('\n');
+        lox_run(g_currentLine);
+    }
 
     //asm volatile("sti");
 }

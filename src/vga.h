@@ -13,6 +13,8 @@ public:
 	void SetColor(VGAColor fg, VGAColor bg);
 	void Print(const char* str);
 	void Puts(char c);
+	void Backspace();
+	void TickCursor();
 
 	//Prints a formatted string e.g. Print("Hello %?", "World!");
 	template <typename T, typename... Targs>
@@ -44,6 +46,8 @@ private:
 
 	int cursorX, cursorY;
 	short color;
+	short cursorTimer;
+	bool cursor;
 };
 
 extern VGA vga;
