@@ -15,7 +15,6 @@ public:
     {
         if (initialSize > 0)
             Grow(initialSize);
-        //vga.Print("init size %?\n", m_size);
     }
     ~Array() { Empty(); }
 
@@ -24,6 +23,13 @@ public:
         if (m_size >= m_maxSize)
             Grow();
         m_array[m_size++] = item;
+    }
+
+    void Add(T&& item)
+    {
+        if (m_size >= m_maxSize)
+            Grow();
+        m_array[m_size++] = (T&&)item;
     }
 
     void Insert(int idx, const T& item)
@@ -84,7 +90,12 @@ public:
         kassert(idx >= 0 && idx < m_size); 
         return m_array[idx];
     }
-    int Size() const { return m_size; }
+    const T& operator[](int idx) const
+    { 
+        kassert(idx >= 0 && idx < m_size); 
+        return m_array[idx];
+    }
+    inline int Size() const { return m_size; }
 
 private:
     Array(const Array<T>& other) = delete;
@@ -99,7 +110,7 @@ private:
         if (m_array)
         {
             for (int i = 0; i<m_size; ++i)
-                newArray[i] = m_array[i];
+                newArray[i] = (T&&)m_array[i];
             kfree(m_array);
         }
         m_array = newArray;

@@ -9,6 +9,8 @@
 #include "fs.h"
 #include "lox/lox.h"
 
+#include "kuniqueptr.h"
+
 struct ModEntry
 {
     u32 start_addr;
@@ -76,9 +78,9 @@ extern "C" void kmain(MultibootInfo* bootInfo)
     init_keyboard();
     register_keyboard_handler(onkey);
     fs_init(initrd_loc, initrd_end);
-
     asm ("sti");
-    vga.Print("OK\n");
+
+    vga.Print("READY\n");
 
     while (true) 
     {

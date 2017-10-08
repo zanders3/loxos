@@ -66,3 +66,8 @@ int atoi(const char* val, int valLen)
     }
     return posSign ? ival : -ival;
 }
+
+extern "C" void __cxa_pure_virtual()
+{
+    kpanic("called abstract virtual function");
+}
