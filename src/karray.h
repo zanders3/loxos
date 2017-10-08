@@ -1,5 +1,6 @@
 #pragma once
 #include "kalloc.h"
+#include "vga.h"
 
 template <typename T> class Array
 {
@@ -14,7 +15,7 @@ public:
     {
         if (initialSize > 0)
             Grow(initialSize);
-        vga.Print("init size %?\n", m_size);
+        //vga.Print("init size %?\n", m_size);
     }
     ~Array() { Empty(); }
 
@@ -90,7 +91,7 @@ private:
 
     void Grow(int size = 0)
     {
-        vga.Print("%? >= %?\n", m_size, m_maxSize);
+        //vga.Print("%? >= %?\n", m_size, m_maxSize);
         if (size == 0)
             size = m_maxSize > 0 ? m_maxSize * 2 : 4;
 

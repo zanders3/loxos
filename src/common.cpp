@@ -45,3 +45,24 @@ u32 next_power_of_2(u32 size)
         res <<= 1;
     return res;
 }
+
+int atoi(const char* val, int valLen)
+{
+    bool posSign = true;
+    while (*val == ' ') { ++val; --valLen; }
+    if (*val == '-' || *val == '+')
+    {
+        posSign = *val == '+';
+        ++val;
+        --valLen;
+    }
+
+    int ival = 0;
+    while (*val >= '0' && *val <= '9' && valLen > 0)
+    {
+        ival = ival * 10 + (*val - '0');
+        ++val;
+        --valLen;
+    }
+    return posSign ? ival : -ival;
+}

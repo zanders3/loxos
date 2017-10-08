@@ -114,7 +114,7 @@ void kalloc_init(u32 memStart, u32 memSize)
 
 void* kalloc(u32 size, bool exactFit)
 {
-    vga.Print("alloc %?\n", (int)size);
+    //vga.Print("alloc %?\n", (int)size);
 
     u32 newLoc;
     if (exactFit == false)
@@ -153,7 +153,7 @@ void* kalloc(u32 size, bool exactFit)
 
 void kfree(void* ptr)
 {
-    vga.Print("free %?\n", (u32)ptr);
+    //vga.Print("free %?\n", (u32)ptr);
 
     if (ptr == nullptr)
         return;
