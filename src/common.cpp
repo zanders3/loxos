@@ -87,6 +87,11 @@ extern "C" void __cxa_pure_virtual()
     kpanic("called abstract virtual function");
 }
 
+void* operator new(size_t, void *p)
+{
+    return p;
+}
+
 void operator delete(void*)
 { 
     kpanic("called unsupported delete"); 

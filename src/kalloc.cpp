@@ -48,6 +48,7 @@ struct Slab
             kpanic("heap corruption");
 
         m_freelist = m_freelist->next;
+        
         return true;
     }
 
@@ -55,13 +56,6 @@ struct Slab
     {
         if (location < m_slabStart || location >= m_slabStart + 0x1000)
             return false;
-        
-        //check for size alignment
-        {
-            u32 alignedLoc = (location / m_size) * m_size;
-            if (alignedLoc != location)
-                kpanic("invalid free location");
-        }
 
         //check for double free and heap corruption
         for (SlabEntry* entry = m_freelist; entry; entry = entry->next)
@@ -184,5 +178,3 @@ int kalloc_count()
 {
     return g_allocCount;
 }
-
-KAllocator kallocator;

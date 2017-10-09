@@ -22,4 +22,5 @@ void print_stacktrace(u32 maxFrames);
 #define kpanic(msg) kpanic_internal(msg, __FILE__, __LINE__)
 #define kassert(cond) { if (!(cond)) { kpanic_internal(#cond, __FILE__, __LINE__); } }
 
+void* operator new(size_t, void *p);
 void operator delete(void *);

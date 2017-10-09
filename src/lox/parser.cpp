@@ -110,7 +110,7 @@ struct Parser
             return nullptr;
         }
         
-        StmtPrint* stmt = new (kallocator) StmtPrint();
+        StmtPrint* stmt = kalloc<StmtPrint>();
         stmt->expr.Assign(expr);
         return stmt;
     }
@@ -127,7 +127,7 @@ struct Parser
             return nullptr;
         }
         
-        StmtExpression* stmt = new (kallocator) StmtExpression();
+        StmtExpression* stmt = kalloc<StmtExpression>();
         stmt->expr.Assign(expr);
         return stmt;
     }
@@ -143,6 +143,36 @@ struct Parser
     Expr* Assignment()
     {
         Expr* expr = LogicOr();
+        if (expr == nullptr)
+        {
+            FreeExpr(expr);
+            return nullptr;
+        }
+        if (Match(TokenType::EQUAL))
+        {
+            const Token& equals = Previous();
+            Expr* value = Assignment();
+            if (value == nullptr)
+            {
+                FreeExpr(expr);
+                return nullptr;
+            }
+
+            if (expr->type == ASTType::ExprVariable)
+            {
+                const Token* name = ((ExprVariable*)expr)->name;
+                ExprAssign* assignExpr = kalloc<ExprAssign>();
+                assignExpr->name = name;
+                assignExpr->value.Assign(value);
+                FreeExpr(expr);
+                return assignExpr;
+            }
+
+            lox_error(equals, "Invalid assignment target");
+            FreeExpr(expr);
+            FreeExpr(value);
+            return nullptr;
+        }
         /*if (expr && Match(TokenType::EQUAL))
         {
             const Token& equals = Previous();
@@ -173,7 +203,7 @@ struct Parser
                 return nullptr;
             }
 
-            ExprLogical* newExpr = new (kallocator) ExprLogical();
+            ExprLogical* newExpr = kalloc<ExprLogical>();
             newExpr->left.Assign(expr);
             newExpr->op = &op;
             newExpr->right.Assign(right);
@@ -198,7 +228,7 @@ struct Parser
                 return nullptr;
             }
 
-            ExprLogical* newExpr = new (kallocator) ExprLogical();
+            ExprLogical* newExpr = kalloc<ExprLogical>();
             newExpr->left.Assign(expr);
             newExpr->op = &op;
             newExpr->right.Assign(right);
@@ -222,7 +252,7 @@ struct Parser
                 FreeExpr(expr);
                 return nullptr;
             }
-            ExprBinary* exprBin = new (kallocator) ExprBinary();
+            ExprBinary* exprBin = kalloc<ExprBinary>();
             exprBin->left.Assign(expr);
             exprBin->op = &op;
             exprBin->right.Assign(right);
@@ -246,7 +276,7 @@ struct Parser
                 FreeExpr(expr);
                 return nullptr;
             }
-            ExprBinary* exprBin = new (kallocator) ExprBinary();
+            ExprBinary* exprBin = kalloc<ExprBinary>();
             exprBin->left.Assign(expr);
             exprBin->op = &op;
             exprBin->right.Assign(right);
@@ -270,7 +300,7 @@ struct Parser
                 FreeExpr(expr);
                 return nullptr;
             }
-            ExprBinary* exprBin = new (kallocator) ExprBinary();
+            ExprBinary* exprBin = kalloc<ExprBinary>();
             exprBin->left.Assign(expr);
             exprBin->op = &op;
             exprBin->right.Assign(right);
@@ -294,7 +324,7 @@ struct Parser
                 FreeExpr(expr);
                 return nullptr;
             }
-            ExprBinary* exprBin = new (kallocator) ExprBinary();
+            ExprBinary* exprBin = kalloc<ExprBinary>();
             exprBin->left.Assign(expr);
             exprBin->op = &op;
             exprBin->right.Assign(right);
@@ -314,7 +344,7 @@ struct Parser
             Expr* right = Unary();
             if (right == nullptr)
                 return nullptr;
-            ExprUnary* exprUn = new (kallocator) ExprUnary();
+            ExprUnary* exprUn = kalloc<ExprUnary>();
             exprUn->op = &op;
             exprUn->right.Assign(right);
             return exprUn;
@@ -351,14 +381,14 @@ struct Parser
                 return nullptr;
             if (!Consume(TokenType::RIGHT_PAREN, "Expect ')' after expression"))
                 return nullptr;
-            ExprGrouping* exprGroup = new (kallocator) ExprGrouping();
+            ExprGrouping* exprGroup = kalloc<ExprGrouping>();
             exprGroup->expr.Assign(expr);
             return exprGroup;
         }
 
         if (Match(TokenType::IDENTIFIER))
         {
-            ExprVariable* var = new (kallocator) ExprVariable();
+            ExprVariable* var = kalloc<ExprVariable>();
             var->name = &Previous();
             return var;
         }
@@ -369,7 +399,7 @@ struct Parser
 
     Expr* Literal(const Value& value)
     {
-        ExprLiteral* expr = new (kallocator) ExprLiteral();
+        ExprLiteral* expr = kalloc<ExprLiteral>();
         expr->value = value;
         return expr;
     }

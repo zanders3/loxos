@@ -8,17 +8,11 @@ int kalloc_count();
 
 template <typename T> inline T* kalloc()
 {
-    return (T*)kalloc(sizeof(T), true);   
+    void* ptr = kalloc(sizeof(T), true);   
+    return new (ptr) T;
 }
 
 template <typename T> inline T* kallocArr(u32 count)
 {
     return (T*)kalloc(sizeof(T) * count, false);
-}
-
-class KAllocator {};
-extern KAllocator kallocator;
-inline void* operator new(size_t size, KAllocator&)
-{
-    return kalloc(size, true);
 }
