@@ -1,6 +1,15 @@
 # LoxOS
 
-Tiny OS
+A tiny hobby operating system 
+
+## Features
+
+- C++
+- Protected mode 32 bit x86 OS with virtual memory and heap memory allocation
+- Simple shell interface, keyboard and vga text mode driver
+- Interprets the lox programming language from http://craftinginterpreters.com/
+
+## Installation
 
 	sudo apt-get install nasm xorriso qemu build-essential
 	sudo apt-get install grub-pc-bin
