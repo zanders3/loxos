@@ -2,7 +2,7 @@
 #include "paging.h"
 #include "vga.h"
 
-int g_allocatedSlabs, g_totalSlabs;
+int g_allocatedSlabs, g_totalSlabs, g_allocCount = 0;
 
 struct SlabEntry
 {
@@ -56,13 +56,22 @@ struct Slab
         if (location < m_slabStart || location >= m_slabStart + 0x1000)
             return false;
         
+        //check for size alignment
+        {
+            u32 alignedLoc = (location / m_size) * m_size;
+            if (alignedLoc != location)
+                kpanic("invalid free location");
+        }
+
         //check for double free and heap corruption
         for (SlabEntry* entry = m_freelist; entry; entry = entry->next)
         {
             if (entry && ((u32)entry < m_slabStart || (u32)entry > m_slabStart + 0x1000))
                 kpanic("heap corruption");
-            if ((u32)entry == location)
+            if (location == (u32)entry)
                 kpanic("double free");
+            else if (location == (u32)entry->next)
+                kpanic("not allocated");
         }
 
         SlabEntry* newEntry = (SlabEntry*)location;
@@ -110,21 +119,26 @@ void kalloc_init(u32 memStart, u32 memSize)
 
     g_slabMetaData = alloc_slab_meta(g_memStart);
     g_memStart += 0x1000;
+    g_allocCount = 0;
 }
 
 void* kalloc(u32 size, bool exactFit)
 {
-    //vga.Print("alloc %?\n", (int)size);
+    ++g_allocCount;
 
     u32 newLoc;
-    if (exactFit == false)
+    if (!exactFit)
         size = next_power_of_2(size);
     
     Slab* slab = g_slabList;
     for (; slab; slab = slab->m_nextSlab)
     {
         if (slab->Alloc(size, newLoc))
+        {
+            vga.Print("alloc %?\n", newLoc);
+            //print_stacktrace(5);
             return (void*)newLoc;
+        }
     }
 
     kassert(g_memStart < g_memEnd);//out of memory!
@@ -148,22 +162,31 @@ void* kalloc(u32 size, bool exactFit)
 
     didAlloc = newSlab->Alloc(size, newLoc);
     kassert(didAlloc);
+    vga.Print("alloc %?\n", newLoc);
+    //print_stacktrace(5);
     return (void*)newLoc;
 }
 
 void kfree(void* ptr)
 {
-    //vga.Print("free %?\n", (u32)ptr);
-
     if (ptr == nullptr)
         return;
 
+    vga.Print("free %?\n", (u32)ptr);
+    //print_stacktrace(5);
+
+    --g_allocCount;
     u32 loc = (u32)ptr;
     for (Slab* slab = g_slabList; slab; slab = slab->m_nextSlab)
         if (slab->Free(loc))
             return;
 
     kpanic("pointer not in heap");
+}
+
+int kalloc_count()
+{
+    return g_allocCount;
 }
 
 KAllocator kallocator;

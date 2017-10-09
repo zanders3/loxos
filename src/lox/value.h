@@ -13,11 +13,9 @@ struct Value
     Value(const char* value);
 
     ValueType type;
-    union {
-        bool boolValue;
-        int intValue;
-        const char* stringValue;
-    };
+    const char* stringValue;
+    int intValue;
 
     void Print() const;
+    int ToInt() const;
 };

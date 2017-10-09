@@ -56,6 +56,7 @@ public:
             m_array[i].~T();
         m_size = 0;
         kfree(m_array);
+        m_array = nullptr;
     }
 
     inline void Swap(int i, int j)
@@ -102,16 +103,16 @@ private:
 
     void Grow(int size = 0)
     {
-        //vga.Print("%? >= %?\n", m_size, m_maxSize);
         if (size == 0)
             size = m_maxSize > 0 ? m_maxSize * 2 : 4;
 
-        T* newArray = new (kallocator) T[size];
+        T* newArray = kallocArr<T>(size);
         if (m_array)
         {
             for (int i = 0; i<m_size; ++i)
                 newArray[i] = (T&&)m_array[i];
             kfree(m_array);
+            m_array = nullptr;
         }
         m_array = newArray;
         m_maxSize = size;

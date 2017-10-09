@@ -49,12 +49,6 @@ const char* tokentype_to_string(const TokenType token)
     }
 }
 
-Token::~Token()
-{
-    if (stringLiteral)
-        kfree((void*)stringLiteral);
-}
-
 struct Keyword
 {
     const char* keyword;
@@ -155,7 +149,8 @@ struct Scanner
         Advance();
 
         int len = m_current - m_start - 2;
-        char* str = new (kallocator) char[len+1];
+        vga.Print("allocchar\n");
+        char* str = kallocArr<char>(len+1);
         for (int i = 0; i<len; ++i)
             str[i] = m_source[m_start + i + 1];
         str[len] = '\0';
@@ -268,4 +263,10 @@ void scanner_scan(const char* source, int sourceLen, Array<Token>& tokens)
 {
     Scanner scanner(source, sourceLen, tokens);
     scanner.ScanTokens();
+}
+
+Token::~Token()
+{
+    if (stringLiteral) 
+        kfree((void*)stringLiteral);
 }

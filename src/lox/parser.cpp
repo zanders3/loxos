@@ -93,8 +93,22 @@ struct Parser
     // statement -> exprStmt | forStmt | ifStmt | printStmt | returnStmt | whileStmt | block
     Stmt* Statement()
     {
-        //TODO: IF, PRINT, etc
+        if (Match(TokenType::PRINT)) return PrintStatement();
+
         return ExpressionStatement();
+    }
+
+    // printStmt -> "print" expression ";"
+    Stmt* PrintStatement()
+    {
+        Expr* expr = Expression();
+        if (expr && Consume(TokenType::SEMICOLON, "Expect ';' after expression"))
+        {
+            StmtPrint* stmt = new (kallocator) StmtPrint();
+            stmt->expr.Assign(expr);
+            return stmt;
+        }
+        return nullptr;
     }
 
     // exprStmt -> expression ";"
@@ -103,6 +117,7 @@ struct Parser
         Expr* expr = Expression();
         if (expr && Consume(TokenType::SEMICOLON, "Expect ';' after expression"))
         {
+            vga.Print("stmtexpr\n");
             StmtExpression* stmt = new (kallocator) StmtExpression();
             stmt->expr.Assign(expr);
             return stmt;
@@ -298,6 +313,7 @@ struct Parser
     Expr* Call()
     {
         return Primary();
+        //TODO: function call
     }
 
     //primary        → NUMBER | STRING | "false" | "true" | "nil"
@@ -326,7 +342,12 @@ struct Parser
             return exprGroup;
         }
 
-        //TODO: IDENTIFIER
+        if (Match(TokenType::IDENTIFIER))
+        {
+            ExprVariable* var = new (kallocator) ExprVariable();
+            var->name = &Previous();
+            return var;
+        }
 
         lox_error(Peek(), "Expect expression");
         return nullptr;
@@ -334,6 +355,7 @@ struct Parser
 
     Expr* Literal(const Value& value)
     {
+        vga.Print("exprliteral\n");
         ExprLiteral* expr = new (kallocator) ExprLiteral();
         expr->value = value;
         return expr;

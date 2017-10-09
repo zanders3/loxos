@@ -21,10 +21,25 @@ u16 inw(u16 port)
     return ret;
 }
 
+void print_stacktrace(u32 maxFrames)
+{
+    u32* ebp = &maxFrames - 2;
+    for (u32 i = 0; i<maxFrames; ++i)
+    {
+        u32 eip = ebp[1];
+        if (eip == 0)
+            break;
+        ebp = (u32*)ebp[0];
+        vga.Print("   0x%?", eip);
+    }
+    vga.Puts('\n');
+}
+
 void kpanic_internal(const char* msg, const char* file, int line)
 {
     vga.SetColor(VGAColor::Red, VGAColor::Black);
     vga.Print("%? at %?:%?", msg, file, line);
+    print_stacktrace(10);
     asm volatile("cli");
     asm volatile("hlt");
 }
@@ -70,4 +85,9 @@ int atoi(const char* val, int valLen)
 extern "C" void __cxa_pure_virtual()
 {
     kpanic("called abstract virtual function");
+}
+
+void operator delete(void*)
+{ 
+    kpanic("called unsupported delete"); 
 }

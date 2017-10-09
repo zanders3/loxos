@@ -17,6 +17,9 @@ int atoi(const char* val, int valLen);
 
 //Kernel panic
 void kpanic_internal(const char* msg, const char* file, int line);
+void print_stacktrace(u32 maxFrames);
 
 #define kpanic(msg) kpanic_internal(msg, __FILE__, __LINE__)
 #define kassert(cond) { if (!(cond)) { kpanic_internal(#cond, __FILE__, __LINE__); } }
+
+void operator delete(void *);
