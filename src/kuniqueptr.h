@@ -1,22 +1,18 @@
 #pragma once
 #include "kalloc.h"
-#include "vga.h"
 
 template <typename T> class UniquePtr
 {
 public:
     explicit UniquePtr(T* ptr)
         : m_ptr(ptr)
-    {
-        vga.Print("allocuptr %?\n", (u32)ptr);
-    }
+    {}
     UniquePtr()
         : m_ptr(nullptr)
     {}
-    UniquePtr(UniquePtr<T>&& other)
+    explicit UniquePtr(UniquePtr<T>&& other)
         : m_ptr(other.m_ptr)
     {
-        vga.Print("movuptr %?\n", (u32)other.m_ptr);
         other.m_ptr = nullptr;
     }
 
@@ -24,7 +20,6 @@ public:
 
     UniquePtr<T>& operator=(UniquePtr<T>&& other)
     {
-        vga.Print("movuptr %?\n", (u32)other.m_ptr);
         m_ptr = other.m_ptr;
         other.m_ptr = nullptr;
         return *this;
@@ -36,11 +31,15 @@ public:
     { 
         Release();
         m_ptr = ptr;
-        vga.Print("assign %?\n", (u32)ptr);
+    }
+    void Assign(UniquePtr<T>&& ptr)
+    {
+        Release();
+        m_ptr = ptr.m_ptr;
+        ptr.m_ptr = nullptr;
     }
     void Release() 
-    { 
-        vga.Print("releaseuptr %?\n", (u32)m_ptr);
+    {
         if (m_ptr)
             m_ptr->~T();
         kfree(m_ptr); 

@@ -149,7 +149,6 @@ struct Scanner
         Advance();
 
         int len = m_current - m_start - 2;
-        vga.Print("allocchar\n");
         char* str = kallocArr<char>(len+1);
         for (int i = 0; i<len; ++i)
             str[i] = m_source[m_start + i + 1];

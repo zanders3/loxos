@@ -87,11 +87,11 @@ extern "C" void kmain(MultibootInfo* bootInfo)
         vga.Print("> ");
         while (!g_completedLine) {}
         vga.Puts('\n');
-        vga.Print("[%?]\n", kalloc_count());
+        int allocBefore = kalloc_count();
         lox_run(g_currentLine, g_currentLineIdx);
         g_completedLine = false;
         g_currentLineIdx = 0;
-        vga.Print("[%?]\n", kalloc_count());
+        kassert(allocBefore == kalloc_count());
     }
 
     //asm volatile("sti");

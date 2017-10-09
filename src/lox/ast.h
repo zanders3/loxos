@@ -10,6 +10,7 @@
 
 struct Visitor
 {
+    virtual ~Visitor();
     #define AST(rettype, parent, name, vars, ret) virtual rettype Visit##name(const parent##name& val) = 0;
     #include "astdefs.h"
     #undef AST
@@ -17,13 +18,13 @@ struct Visitor
 
 struct Expr
 {
-    virtual ~Expr() {}
+    virtual ~Expr();
     virtual Value Visit(Visitor& visitor) const = 0;
 };
 
 struct Stmt
 {
-    virtual ~Stmt() {}
+    virtual ~Stmt();
     virtual void Visit(Visitor& visitor) const = 0;
 };
 

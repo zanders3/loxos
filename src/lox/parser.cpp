@@ -102,27 +102,34 @@ struct Parser
     Stmt* PrintStatement()
     {
         Expr* expr = Expression();
-        if (expr && Consume(TokenType::SEMICOLON, "Expect ';' after expression"))
+        if (expr == nullptr)
+            return nullptr;
+        if (!Consume(TokenType::SEMICOLON, "Expect ';' after expression"))
         {
-            StmtPrint* stmt = new (kallocator) StmtPrint();
-            stmt->expr.Assign(expr);
-            return stmt;
+            FreeExpr(expr);
+            return nullptr;
         }
-        return nullptr;
+        
+        StmtPrint* stmt = new (kallocator) StmtPrint();
+        stmt->expr.Assign(expr);
+        return stmt;
     }
 
     // exprStmt -> expression ";"
     Stmt* ExpressionStatement()
     {
         Expr* expr = Expression();
-        if (expr && Consume(TokenType::SEMICOLON, "Expect ';' after expression"))
+        if (expr == nullptr)
+            return nullptr;
+        if (!Consume(TokenType::SEMICOLON, "Expect ';' after expression"))
         {
-            vga.Print("stmtexpr\n");
-            StmtExpression* stmt = new (kallocator) StmtExpression();
-            stmt->expr.Assign(expr);
-            return stmt;
+            FreeExpr(expr);
+            return nullptr;
         }
-        return nullptr;
+        
+        StmtExpression* stmt = new (kallocator) StmtExpression();
+        stmt->expr.Assign(expr);
+        return stmt;
     }
 
     // expression -> assignment
@@ -144,6 +151,13 @@ struct Parser
         return expr;
     }
 
+    void FreeExpr(Expr*& expr)
+    {
+        expr->~Expr();
+        kfree(expr);
+        expr = nullptr;
+    }
+
     // logic_or -> logic_and ( "or" logic_or )*
     Expr* LogicOr()
     {
@@ -155,7 +169,7 @@ struct Parser
             Expr* right = LogicOr();
             if (right == nullptr)
             {
-                kfree(expr); expr = nullptr;
+                FreeExpr(expr);
                 return nullptr;
             }
 
@@ -180,7 +194,7 @@ struct Parser
             Expr* right = Equality();
             if (right == nullptr)
             {
-                kfree(expr); expr = nullptr;
+                FreeExpr(expr);
                 return nullptr;
             }
 
@@ -205,7 +219,7 @@ struct Parser
             Expr* right = Comparison();
             if (right == nullptr)
             {
-                kfree(expr); expr = nullptr;
+                FreeExpr(expr);
                 return nullptr;
             }
             ExprBinary* exprBin = new (kallocator) ExprBinary();
@@ -229,7 +243,7 @@ struct Parser
             Expr* right = Addition();
             if (right == nullptr)
             {
-                kfree(expr); expr = nullptr;
+                FreeExpr(expr);
                 return nullptr;
             }
             ExprBinary* exprBin = new (kallocator) ExprBinary();
@@ -253,7 +267,7 @@ struct Parser
             Expr* right = Multiplication();
             if (right == nullptr)
             {
-                kfree(expr); expr = nullptr;
+                FreeExpr(expr);
                 return nullptr;
             }
             ExprBinary* exprBin = new (kallocator) ExprBinary();
@@ -277,7 +291,7 @@ struct Parser
             Expr* right = Unary();
             if (right == nullptr)
             {
-                kfree(expr); expr = nullptr;
+                FreeExpr(expr);
                 return nullptr;
             }
             ExprBinary* exprBin = new (kallocator) ExprBinary();
@@ -355,7 +369,6 @@ struct Parser
 
     Expr* Literal(const Value& value)
     {
-        vga.Print("exprliteral\n");
         ExprLiteral* expr = new (kallocator) ExprLiteral();
         expr->value = value;
         return expr;

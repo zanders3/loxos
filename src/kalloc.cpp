@@ -126,6 +126,9 @@ void* kalloc(u32 size, bool exactFit)
 {
     ++g_allocCount;
 
+    if (size < sizeof(SlabEntry))
+        size = sizeof(SlabEntry);
+
     u32 newLoc;
     if (!exactFit)
         size = next_power_of_2(size);
@@ -135,8 +138,6 @@ void* kalloc(u32 size, bool exactFit)
     {
         if (slab->Alloc(size, newLoc))
         {
-            vga.Print("alloc %?\n", newLoc);
-            //print_stacktrace(5);
             return (void*)newLoc;
         }
     }
@@ -162,8 +163,6 @@ void* kalloc(u32 size, bool exactFit)
 
     didAlloc = newSlab->Alloc(size, newLoc);
     kassert(didAlloc);
-    vga.Print("alloc %?\n", newLoc);
-    //print_stacktrace(5);
     return (void*)newLoc;
 }
 
@@ -171,9 +170,6 @@ void kfree(void* ptr)
 {
     if (ptr == nullptr)
         return;
-
-    vga.Print("free %?\n", (u32)ptr);
-    //print_stacktrace(5);
 
     --g_allocCount;
     u32 loc = (u32)ptr;
