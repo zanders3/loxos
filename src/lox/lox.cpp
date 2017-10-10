@@ -27,12 +27,13 @@ struct Interpreter : public Visitor
         return left.intValue == right.intValue;
     }
 
-    bool CheckNumbers(const Token* op, const Value& left, const Value& right) const
+    bool CheckNumbers(const Token* op, const Value& left, const Value& right, bool error = true) const
     {
         if (left.type == ValueType::NUMBER && right.type == ValueType::NUMBER)
             return true;
 
-        lox_error(*op, "Operands must be numbers");
+        if (error)
+            lox_error(*op, "Operands must be numbers");
         return false;
     }
 
@@ -47,8 +48,36 @@ struct Interpreter : public Visitor
                     return left.intValue - right.intValue;
                 break;
             case TokenType::PLUS:
-                if (CheckNumbers(expr.op, left, right))
+                if (CheckNumbers(expr.op, left, right, false))
                     return left.intValue + right.intValue;
+                else if (left.type == ValueType::STRING)
+                {
+                    const char* leftStr = left.stringValue.Get();
+
+                    const char* rightStr = nullptr;
+                    char rightStrBuf[20];
+                    switch (right.type)
+                    {
+                        case ValueType::NIL: return left;
+                        case ValueType::BOOL: rightStr = right.intValue ? "true" : "false"; break;
+                        case ValueType::NUMBER: 
+                            itoa(right.intValue, rightStrBuf, 10);
+                            rightStr = &rightStrBuf[0];
+                            break;
+                        case ValueType::STRING: rightStr = right.stringValue.Get(); break;
+                    }
+
+                    const int leftLen = strlen(leftStr);
+                    const int rightLen = strlen(rightStr);
+                    SharedPtr<char> newStrPtr = SharedPtr<char>::Make(leftLen + rightLen + 1);
+                    char* newStr = newStrPtr.Get();
+                    for (int i = 0; i<leftLen; ++i)
+                        newStr[i] = leftStr[i];
+                    for (int i = 0; i<rightLen; ++i)
+                        newStr[i+leftLen] = rightStr[i];
+                    newStr[leftLen+rightLen] = '\0';
+                    return Value(newStrPtr);
+                }
                 break;
             case TokenType::STAR:
                 if (CheckNumbers(expr.op, left, right))

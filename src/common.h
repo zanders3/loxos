@@ -14,6 +14,8 @@ u16 inw(u16 port);
 void zero_memory(void* ptr, u32 size);
 u32 next_power_of_2(u32 size);
 int atoi(const char* val, int valLen);
+void itoa(int val, char* buffer, int radix);
+int strlen(const char* p);
 
 //Kernel panic
 void kpanic_internal(const char* msg, const char* file, int line);

@@ -82,6 +82,45 @@ int atoi(const char* val, int valLen)
     return posSign ? ival : -ival;
 }
 
+void itoa(int value, char* buffer, int radix)
+{
+    if (value < 0)
+    {
+        buffer[0] = '-';
+        buffer[1] = '\0';
+        value = -value;
+    }
+    else if (value == 0)
+    {
+        buffer[0] = '+';
+        buffer[1] = '\0';
+        return;
+    }
+    char buf[20];
+    int i = 0;
+    for (; value > 0; i++)
+    {
+        long digit = value % radix;
+        buf[i] = '0' + digit;
+        value /= radix;
+    }
+    i--;
+    int j = 0;
+    for (;i>=0;i--)
+        buffer[j++] = buf[i];
+    buffer[j] = '\0';
+}
+
+int strlen(const char* p)
+{
+    int count = 0;
+    while (*p != '\0')
+    {
+        ++count; ++p;
+    }
+    return count;
+}
+
 extern "C" void __cxa_pure_virtual()
 {
     kpanic("called abstract virtual function");
