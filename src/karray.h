@@ -107,6 +107,9 @@ private:
             size = m_maxSize > 0 ? m_maxSize * 2 : 4;
 
         T* newArray = kallocArr<T>(size);
+        for (int i = 0; i<size; ++i)
+            new (newArray + i) T();
+
         if (m_array)
         {
             for (int i = 0; i<m_size; ++i)

@@ -1,4 +1,5 @@
 #pragma once
+#include "ksharedptr.h"
 
 enum class ValueType
 {
@@ -10,10 +11,10 @@ struct Value
     Value();
     Value(bool value);
     Value(int value);
-    Value(const char* value);
+    Value(const SharedPtr<char>& value);
 
     ValueType type;
-    const char* stringValue;
+    SharedPtr<char> stringValue;
     int intValue;
 
     void Print() const;

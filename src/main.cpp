@@ -9,8 +9,6 @@
 #include "fs.h"
 #include "lox/lox.h"
 
-#include "kuniqueptr.h"
-
 struct ModEntry
 {
     u32 start_addr;

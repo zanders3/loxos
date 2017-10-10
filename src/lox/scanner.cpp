@@ -149,12 +149,13 @@ struct Scanner
         Advance();
 
         int len = m_current - m_start - 2;
-        char* str = kallocArr<char>(len+1);
+        SharedPtr<char> strPtr = SharedPtr<char>::Make(len+1);
+        char* str = strPtr.Get();
         for (int i = 0; i<len; ++i)
             str[i] = m_source[m_start + i + 1];
         str[len] = '\0';
 
-        AddToken(TokenType::STRING).stringLiteral = str;
+        AddToken(TokenType::STRING).stringLiteral = strPtr;
     }
 
     inline bool IsDigit(char c) { return c >= '0' && c <= '9'; }
@@ -252,8 +253,8 @@ struct Scanner
         Token& tok = m_tokens[m_tokens.Size()-1];
         tok.type = TokenType::EOF;
         tok.lexeme[0] = '\0';
-        tok.stringLiteral = nullptr;
-        tok.numberLiteral = 0.0;
+        tok.stringLiteral = SharedPtr<char>();
+        tok.numberLiteral = 0;
         tok.line = m_line;
     }
 };
@@ -262,10 +263,4 @@ void scanner_scan(const char* source, int sourceLen, Array<Token>& tokens)
 {
     Scanner scanner(source, sourceLen, tokens);
     scanner.ScanTokens();
-}
-
-Token::~Token()
-{
-    if (stringLiteral) 
-        kfree((void*)stringLiteral);
 }

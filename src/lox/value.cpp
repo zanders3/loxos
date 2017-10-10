@@ -4,20 +4,17 @@
 
 Value::Value()
     : type(ValueType::NIL)
-    , stringValue(nullptr)
     , intValue(0)
 {}
 Value::Value(bool value)
     : type(ValueType::BOOL)
-    , stringValue(nullptr)
     , intValue(value)
 {}
 Value::Value(int value)
     : type(ValueType::NUMBER)
-    , stringValue(nullptr)
     , intValue(value)
 {}
-Value::Value(const char* value)
+Value::Value(const SharedPtr<char>& value)
     : type(ValueType::STRING)
     , stringValue(value)
     , intValue(0)
@@ -34,7 +31,7 @@ void Value::Print() const
             vga.Print("%?", intValue);
             break;
         case ValueType::STRING:
-            vga.Print(stringValue);
+            vga.Print(stringValue.Get());
             break;
         case ValueType::NIL:
             vga.Print("nil");

@@ -144,10 +144,8 @@ struct Parser
     {
         Expr* expr = LogicOr();
         if (expr == nullptr)
-        {
-            FreeExpr(expr);
             return nullptr;
-        }
+        
         if (Match(TokenType::EQUAL))
         {
             const Token& equals = Previous();
@@ -173,16 +171,12 @@ struct Parser
             FreeExpr(value);
             return nullptr;
         }
-        /*if (expr && Match(TokenType::EQUAL))
-        {
-            const Token& equals = Previous();
-            Expr* value = Assignment();
-        }*/
         return expr;
     }
 
     void FreeExpr(Expr*& expr)
     {
+        kassert(expr);
         expr->~Expr();
         kfree(expr);
         expr = nullptr;
@@ -192,8 +186,10 @@ struct Parser
     Expr* LogicOr()
     {
         Expr* expr = LogicAnd();
+        if (expr == nullptr)
+            return nullptr;
 
-        while (expr && Match(TokenType::OR))
+        while (Match(TokenType::OR))
         {
             const Token& op = Previous();
             Expr* right = LogicOr();
@@ -217,8 +213,10 @@ struct Parser
     Expr* LogicAnd()
     {
         Expr* expr = Equality();
+        if (expr == nullptr)
+            return nullptr;
 
-        while (expr && Match(TokenType::AND))
+        while (Match(TokenType::AND))
         {
             const Token& op = Previous();
             Expr* right = Equality();
@@ -242,8 +240,10 @@ struct Parser
     Expr* Equality()
     {
         Expr* expr = Comparison();
+        if (expr == nullptr)
+            return nullptr;
 
-        while (expr && (Match(TokenType::BANG_EQUAL) || Match(TokenType::EQUAL_EQUAL)))
+        while (Match(TokenType::BANG_EQUAL) || Match(TokenType::EQUAL_EQUAL))
         {
             const Token& op = Previous();
             Expr* right = Comparison();
@@ -266,8 +266,10 @@ struct Parser
     Expr* Comparison()
     {
         Expr* expr = Addition();
+        if (expr == nullptr)
+            return nullptr;
 
-        while (expr && (Match(TokenType::GREATER) || Match(TokenType::GREATER_EQUAL) || Match(TokenType::LESS) || Match(TokenType::LESS_EQUAL)))
+        while (Match(TokenType::GREATER) || Match(TokenType::GREATER_EQUAL) || Match(TokenType::LESS) || Match(TokenType::LESS_EQUAL))
         {
             const Token& op = Previous();
             Expr* right = Addition();
@@ -290,8 +292,10 @@ struct Parser
     Expr* Addition()
     {
         Expr* expr = Multiplication();
+        if (expr == nullptr)
+            return nullptr;
 
-        while (expr && (Match(TokenType::MINUS) || Match(TokenType::PLUS)))
+        while (Match(TokenType::MINUS) || Match(TokenType::PLUS))
         {
             const Token& op = Previous();
             Expr* right = Multiplication();
@@ -314,8 +318,10 @@ struct Parser
     Expr* Multiplication()
     {
         Expr* expr = Unary();
+        if (expr == nullptr)
+            return nullptr;
 
-        while (expr && (Match(TokenType::SLASH) || Match(TokenType::STAR)))
+        while (Match(TokenType::SLASH) || Match(TokenType::STAR))
         {
             const Token& op = Previous();
             Expr* right = Unary();

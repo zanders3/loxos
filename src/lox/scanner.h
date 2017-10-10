@@ -1,5 +1,6 @@
 #pragma once
 #include "karray.h"
+#include "ksharedptr.h"
 
 enum class TokenType
 {
@@ -26,10 +27,8 @@ struct Token
     TokenType type;
     char lexeme[32];
     int numberLiteral;
-    const char* stringLiteral;
+    SharedPtr<char> stringLiteral;
     int line;
-
-    ~Token();
 };
 
 void scanner_scan(const char* source, int sourceLen, Array<Token>& tokens);
