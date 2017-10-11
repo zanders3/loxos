@@ -40,8 +40,7 @@ void kpanic_internal(const char* msg, const char* file, int line)
     vga.SetColor(VGAColor::Red, VGAColor::Black);
     vga.Print("%? at %?:%?", msg, file, line);
     print_stacktrace(10);
-    asm volatile("cli");
-    asm volatile("hlt");
+    asm volatile("cli\nhlt");
 }
 
 void zero_memory(void* ptr, u32 size)

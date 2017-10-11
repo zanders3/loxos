@@ -74,6 +74,8 @@ extern "C" void kmain(MultibootInfo* bootInfo)
     init_timer();
     init_paging(initrd_end);
     kalloc_init(0xC000000, 0x1000000);
+    unmap_page(0x0);
+
     init_keyboard();
     register_keyboard_handler(onkey);
     fs_init(initrd_loc, initrd_end);

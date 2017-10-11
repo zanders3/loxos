@@ -1,11 +1,20 @@
 #include "paging.h"
 #include "vga.h"
 #include "isr.h"
+#include "std/karray.h"
 
 u32 g_placement_address;
+Array<u32>* g_free_list;
 
 static PageTable* alloc_page(u32& physAddr)
 {
+    if (g_free_list && g_free_list->Size() > 0)
+    {
+        u32 addr = g_free_list->Pop();
+        vga.Print("reusing %?\n", addr);
+        return (PageTable*)addr;
+    }
+
     if (g_placement_address & 0xFFFFF000)
         g_placement_address = (g_placement_address & 0xFFFFF000) + 0x1000;
     physAddr = g_placement_address;
@@ -88,4 +97,27 @@ void map_page(u32 virtualAddr, u32 flags)
     alloc_page(memAddr);
     //vga.Print("\npage map %? -> 0x%?\n", (int)pageIdx, memAddr);
     page->pages[pageIdx].Set(memAddr, flags | PageFlags::Present);
+}
+
+void unmap_page(u32 virtualAddr)
+{
+    u32 dirIdx = virtualAddr >> 22;
+    u32 pageIdx = virtualAddr >> 12 & 0x3FF;
+
+    PageTable* dir = (PageTable*)0xFFFFF000;
+    if (dir->pages[dirIdx].value == 0x0)
+        kpanic("page directory not mapped!");
+    PageTable* page = ((PageTable*)0xFFC00000) + dirIdx;
+    if (page->pages[pageIdx].value == 0x0)
+        kpanic("page not mapped!");
+
+    if (g_free_list == nullptr)
+        g_free_list = kalloc<Array<u32>>();
+    u32 physicalAddr = page->pages[pageIdx].GetPhysicalAddr();
+    g_free_list->Add(physicalAddr);
+
+    page->pages[pageIdx].value = 0x0;
+    asm volatile("invlpg (%0)" : : "b"(virtualAddr) : "memory");
+
+    vga.Print("freed %?\n", physicalAddr);
 }

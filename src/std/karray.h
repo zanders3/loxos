@@ -32,6 +32,14 @@ public:
         m_array[m_size++] = (T&&)item;
     }
 
+    T Pop()
+    {
+        kassert(m_size > 0);
+        T val = (T&&)m_array[m_size];
+        --m_size;
+        return (T&&)val;
+    }
+
     void Insert(int idx, const T& item)
     {
         if (m_size >= m_maxSize)

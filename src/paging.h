@@ -15,6 +15,10 @@ struct Page
     {
         value = frame | flags;
     }
+    inline u32 GetPhysicalAddr()
+    {
+        return value & !0x7FF;
+    }
 
     u32 value;
 } __attribute__((packed));
@@ -28,3 +32,4 @@ static_assert(sizeof(PageTable) == 0x1000, "invalid size");
 
 void init_paging(u32 kernelEnd);
 void map_page(u32 virtualAddr, u32 flags);
+void unmap_page(u32 virtualAddr);
