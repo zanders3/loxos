@@ -1,5 +1,5 @@
 #pragma once
-#include "ksharedptr.h"
+#include "std/kstring.h"
 
 enum class ValueType
 {
@@ -11,10 +11,10 @@ struct Value
     Value();
     Value(bool value);
     Value(int value);
-    Value(const SharedPtr<char>& value);
+    Value(const String& value);
 
     ValueType type;
-    SharedPtr<char> stringValue;
+    String stringValue;
     int intValue;
 
     void Print() const;

@@ -17,7 +17,7 @@ public:
         return SharedPtr(ptr);
     }
 
-private:
+protected:
     explicit SharedPtr(PtrStruct* ptr) : m_ptr(ptr) 
     {}
 public:
@@ -56,7 +56,7 @@ public:
         kassert(IsValid());
         return m_ptr->value;
     }
-private:
+protected:
     void Aquire()
     {
         if (m_ptr)

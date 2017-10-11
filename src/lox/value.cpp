@@ -14,7 +14,7 @@ Value::Value(int value)
     : type(ValueType::NUMBER)
     , intValue(value)
 {}
-Value::Value(const SharedPtr<char>& value)
+Value::Value(const String& value)
     : type(ValueType::STRING)
     , stringValue(value)
     , intValue(0)

@@ -4,6 +4,86 @@
 		"selected_items":
 		[
 			[
+				"m_a",
+				"m_array"
+			],
+			[
+				"arr",
+				"arraySize"
+			],
+			[
+				"Dic",
+				"DictionaryIter"
+			],
+			[
+				"m_",
+				"m_arraySize"
+			],
+			[
+				"newA",
+				"newArr"
+			],
+			[
+				"Ke",
+				"KeyPair"
+			],
+			[
+				"m_A",
+				"m_arraySize"
+			],
+			[
+				"env",
+				"environment"
+			],
+			[
+				"en",
+				"environment"
+			],
+			[
+				"lox",
+				"lox_error"
+			],
+			[
+				"String",
+				"STRING"
+			],
+			[
+				"rightS",
+				"rightStr"
+			],
+			[
+				"lef",
+				"leftStr"
+			],
+			[
+				"ri",
+				"right"
+			],
+			[
+				"rig",
+				"rightStr"
+			],
+			[
+				"newS",
+				"newStrPtr"
+			],
+			[
+				"left",
+				"leftLen"
+			],
+			[
+				"righ",
+				"rightLen"
+			],
+			[
+				"news",
+				"newStrPtr"
+			],
+			[
+				"ass",
+				"assignExpr"
+			],
+			[
 				"kall",
 				"kAllocBefore"
 			],
@@ -152,10 +232,6 @@
 				"initializer_list"
 			],
 			[
-				"m_",
-				"m_array"
-			],
-			[
 				"Grow",
 				"GrowIfNeeded"
 			],
@@ -274,10 +350,6 @@
 			[
 				"map",
 				"map_page"
-			],
-			[
-				"en",
-				"entry"
 			],
 			[
 				"slab",
@@ -442,78 +514,6 @@
 			[
 				"ml",
 				"multiboot_magic\tlabel"
-			],
-			[
-				"len",
-				"length"
-			],
-			[
-				"MUL",
-				"MULTIBOOT_CHECKSUM\tlabel"
-			],
-			[
-				"MULTI",
-				"MULTIBOOT_MAGIC"
-			],
-			[
-				"mt",
-				"mbtPtr"
-			],
-			[
-				"fno",
-				"fno-rtti"
-			],
-			[
-				"mbt",
-				"mbtLocation"
-			],
-			[
-				"mb",
-				"mbtLocation"
-			],
-			[
-				"numF",
-				"numFrameInts"
-			],
-			[
-				"cod",
-				"codeEndVal"
-			],
-			[
-				"code",
-				"code_end"
-			],
-			[
-				"talb",
-				"tableIdx"
-			],
-			[
-				"fra",
-				"frameAllocator"
-			],
-			[
-				"mem",
-				"mem_end_page"
-			],
-			[
-				"fram",
-				"frameAddr"
-			],
-			[
-				"ma",
-				"malloc_address"
-			],
-			[
-				"cu",
-				"cursorX"
-			],
-			[
-				"cus",
-				"cursorY"
-			],
-			[
-				"inte",
-				"interrupt"
 			]
 		]
 	},
@@ -523,64 +523,25 @@
 			"file": "src/lox/lox.cpp",
 			"settings":
 			{
-				"buffer_size": 5087,
+				"buffer_size": 7496,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/main.cpp",
-			"settings":
-			{
-				"buffer_size": 2380,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "Searching 50 files for \"Expect '\"\n\nC:\\Users\\Alex\\Code\\loxos\\build\\kernel.bin:\n    <binary>\n\nC:\\Users\\Alex\\Code\\loxos\\build\\os.iso:\n    <binary>\n\nC:\\Users\\Alex\\Code\\loxos\\build\\isofiles\\boot\\kernel.bin:\n    <binary>\n\nC:\\Users\\Alex\\Code\\loxos\\src\\lox\\parser.cpp:\n  103      {\n  104          Expr* expr = Expression();\n  105:         if (expr && Consume(TokenType::SEMICOLON, \"Expect ';' after expression\"))\n  106          {\n  107              StmtPrint* stmt = new (kallocator) StmtPrint();\n  ...\n  116      {\n  117          Expr* expr = Expression();\n  118:         if (expr && Consume(TokenType::SEMICOLON, \"Expect ';' after expression\"))\n  119          {\n  120              StmtExpression* stmt = new (kallocator) StmtExpression();\n  ...\n  342              if (expr == nullptr)\n  343                  return nullptr;\n  344:             if (!Consume(TokenType::RIGHT_PAREN, \"Expect ')' after expression\"))\n  345                  return nullptr;\n  346              ExprGrouping* exprGroup = new (kallocator) ExprGrouping();\n\n9 matches across 4 files\n",
-			"settings":
-			{
-				"buffer_size": 1049,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"contents": "#include \"parser.h\"\n#include \"lox.h\"\n\nstruct Parser\n{\n    const Array<Token>& m_tokens;\n    int m_current;\n\n    Parser(const Array<Token>& tokens)\n        : m_tokens(tokens)\n        , m_current(0)\n    {}\n\n    inline const Token& Peek() { return m_tokens[m_current]; }\n    inline const Token& Previous() { return m_tokens[m_current - 1]; }\n    inline bool IsAtEnd() { return Peek().type == TokenType::EOF; }\n\n    const Token& Advance()\n    {\n        if (!IsAtEnd()) ++m_current;\n        return Previous();\n    }\n\n    bool Check(TokenType type)\n    {\n        if (IsAtEnd()) return false;\n        return Peek().type == type;\n    }\n\n    bool Match(TokenType type)\n    {\n        if (Check(type))\n        {\n            Advance();\n            return true;\n        }\n        return false;\n    }\n\n    const Token* Consume(TokenType type, const char* message)\n    {\n        if (Check(type)) return &Advance();\n\n        lox_error(Peek(), message);\n        return nullptr;\n    }\n\n    void Synchronize()\n    {\n        Advance();\n\n        while (!IsAtEnd())\n        {\n            if (Previous().type == TokenType::SEMICOLON) \n                return;\n            switch (Peek().type)\n            {\n                case TokenType::CLASS: case TokenType::FUN: case TokenType::VAR:\n                case TokenType::IF: case TokenType::WHILE: case TokenType::PRINT: case TokenType::RETURN:\n                    return;\n                default:\n                    Advance();\n                    break;\n            }\n        }\n    }\n\n    // program -> declaration* EOF\n    void Parse(Array<UniquePtr<Stmt>>& stmts)\n    {\n        while (!IsAtEnd())\n        {\n            UniquePtr<Stmt> stmt(Declaration());\n            if (stmt.IsValid())\n                stmts.Add((UniquePtr<Stmt>&&)stmt);\n        }\n    }\n\n    //declaration -> funcDecl | varDecl | statement\n    Stmt* Declaration()\n    {\n        Stmt* stmt = nullptr;\n        //if (Match(TokenType::FUN)) stmt = Function();\n        //if (Match(TokenType::VAR)) stmt = Var();\n        stmt = Statement();\n\n        if (stmt == nullptr)\n            Synchronize();\n\n        return stmt;\n    }\n\n    // statement -> exprStmt | forStmt | ifStmt | printStmt | returnStmt | whileStmt | block\n    Stmt* Statement()\n    {\n        if (Match(TokenType::PRINT)) return PrintStatement();\n\n        return ExpressionStatement();\n    }\n\n    // printStmt -> \"print\" expression \";\"\n    Stmt* PrintStatement()\n    {\n        Expr* expr = Expression();\n        if (expr == nullptr)\n            return nullptr;\n        if (!Consume(TokenType::SEMICOLON, \"Expect ';' after expression\"))\n        {\n            FreeExpr(expr);\n            return nullptr;\n        }\n        \n        StmtPrint* stmt = new (kallocator) StmtPrint();\n        stmt->expr.Assign(expr);\n        return stmt;\n    }\n\n    // exprStmt -> expression \";\"\n    Stmt* ExpressionStatement()\n    {\n        Expr* expr = Expression();\n        if (expr == nullptr)\n            return nullptr;\n        if (!Consume(TokenType::SEMICOLON, \"Expect ';' after expression\"))\n        {\n            FreeExpr(expr);\n            return nullptr;\n        }\n        \n        StmtExpression* stmt = new (kallocator) StmtExpression();\n        stmt->expr.Assign(expr);\n        return stmt;\n    }\n\n    // expression -> assignment\n    Expr* Expression()\n    {\n        return Assignment();\n    }\n\n    // assignment -> identifier \"=\" assignment\n    //             | logic_or\n    Expr* Assignment()\n    {\n        Expr* expr = LogicOr();\n        if (expr == nullptr)\n        {\n            FreeExpr(expr);\n            return nullptr;\n        }\n        if (Match(TokenType::EQUAL))\n        {\n            const Token& equals = Previous();\n            Expr* value = Assignment();\n            if (value == nullptr)\n            {\n                FreeExpr(expr);\n                return nullptr;\n            }\n\n            if (expr->type == ExprType::Variable)\n        }\n        /*if (expr && Match(TokenType::EQUAL))\n        {\n            const Token& equals = Previous();\n            Expr* value = Assignment();\n        }*/\n        return expr;\n    }\n\n    void FreeExpr(Expr*& expr)\n    {\n        expr->~Expr();\n        kfree(expr);\n        expr = nullptr;\n    }\n\n    // logic_or -> logic_and ( \"or\" logic_or )*\n    Expr* LogicOr()\n    {\n        Expr* expr = LogicAnd();\n\n        while (expr && Match(TokenType::OR))\n        {\n            const Token& op = Previous();\n            Expr* right = LogicOr();\n            if (right == nullptr)\n            {\n                FreeExpr(expr);\n                return nullptr;\n            }\n\n            ExprLogical* newExpr = new (kallocator) ExprLogical();\n            newExpr->left.Assign(expr);\n            newExpr->op = &op;\n            newExpr->right.Assign(right);\n            expr = newExpr;\n        }\n\n        return expr;\n    }\n\n    // logic_and -> equality ( \"and\" equality )*\n    Expr* LogicAnd()\n    {\n        Expr* expr = Equality();\n\n        while (expr && Match(TokenType::AND))\n        {\n            const Token& op = Previous();\n            Expr* right = Equality();\n            if (right == nullptr)\n            {\n                FreeExpr(expr);\n                return nullptr;\n            }\n\n            ExprLogical* newExpr = new (kallocator) ExprLogical();\n            newExpr->left.Assign(expr);\n            newExpr->op = &op;\n            newExpr->right.Assign(right);\n            expr = newExpr;\n        }\n\n        return expr;\n    }\n\n    // equality -> comparison ( ( \"!=\" | \"==\" ) comparison )*\n    Expr* Equality()\n    {\n        Expr* expr = Comparison();\n\n        while (expr && (Match(TokenType::BANG_EQUAL) || Match(TokenType::EQUAL_EQUAL)))\n        {\n            const Token& op = Previous();\n            Expr* right = Comparison();\n            if (right == nullptr)\n            {\n                FreeExpr(expr);\n                return nullptr;\n            }\n            ExprBinary* exprBin = new (kallocator) ExprBinary();\n            exprBin->left.Assign(expr);\n            exprBin->op = &op;\n            exprBin->right.Assign(right);\n            expr = exprBin;\n        }\n\n        return expr;\n    }\n\n    //comparison → addition ( ( \">\" | \">=\" | \"<\" | \"<=\" ) addition )*\n    Expr* Comparison()\n    {\n        Expr* expr = Addition();\n\n        while (expr && (Match(TokenType::GREATER) || Match(TokenType::GREATER_EQUAL) || Match(TokenType::LESS) || Match(TokenType::LESS_EQUAL)))\n        {\n            const Token& op = Previous();\n            Expr* right = Addition();\n            if (right == nullptr)\n            {\n                FreeExpr(expr);\n                return nullptr;\n            }\n            ExprBinary* exprBin = new (kallocator) ExprBinary();\n            exprBin->left.Assign(expr);\n            exprBin->op = &op;\n            exprBin->right.Assign(right);\n            expr = exprBin;\n        }\n\n        return expr;\n    }\n\n    //addition       → multiplication ( ( \"-\" | \"+\" ) multiplication )*\n    Expr* Addition()\n    {\n        Expr* expr = Multiplication();\n\n        while (expr && (Match(TokenType::MINUS) || Match(TokenType::PLUS)))\n        {\n            const Token& op = Previous();\n            Expr* right = Multiplication();\n            if (right == nullptr)\n            {\n                FreeExpr(expr);\n                return nullptr;\n            }\n            ExprBinary* exprBin = new (kallocator) ExprBinary();\n            exprBin->left.Assign(expr);\n            exprBin->op = &op;\n            exprBin->right.Assign(right);\n            expr = exprBin;\n        }\n\n        return expr;\n    }\n\n    //multiplication → unary ( ( \"/\" | \"*\" ) unary )*\n    Expr* Multiplication()\n    {\n        Expr* expr = Unary();\n\n        while (expr && (Match(TokenType::SLASH) || Match(TokenType::STAR)))\n        {\n            const Token& op = Previous();\n            Expr* right = Unary();\n            if (right == nullptr)\n            {\n                FreeExpr(expr);\n                return nullptr;\n            }\n            ExprBinary* exprBin = new (kallocator) ExprBinary();\n            exprBin->left.Assign(expr);\n            exprBin->op = &op;\n            exprBin->right.Assign(right);\n            expr = exprBin;\n        }\n\n        return expr;\n    }\n\n    //unary          → ( \"!\" | \"-\" ) unary\n    //               | call\n    Expr* Unary()\n    {\n        if (Match(TokenType::BANG) || Match(TokenType::MINUS))\n        {\n            const Token& op = Previous();\n            Expr* right = Unary();\n            if (right == nullptr)\n                return nullptr;\n            ExprUnary* exprUn = new (kallocator) ExprUnary();\n            exprUn->op = &op;\n            exprUn->right.Assign(right);\n            return exprUn;\n        }\n\n        return Call();\n    }\n\n    //call -> primary ( \"(\" arguments? \")\" )*\n    Expr* Call()\n    {\n        return Primary();\n        //TODO: function call\n    }\n\n    //primary        → NUMBER | STRING | \"false\" | \"true\" | \"nil\"\n    //               | \"(\" expression \")\" ;\n    //               | IDENTIFIER\n    Expr* Primary()\n    {\n        if (Match(TokenType::FALSE)) return Literal(Value(false));\n        if (Match(TokenType::TRUE)) return Literal(Value(true));\n        if (Match(TokenType::NIL)) return Literal(Value());\n\n        if (Match(TokenType::NUMBER))\n            return Literal(Value(Previous().numberLiteral));\n        if (Match(TokenType::STRING))\n            return Literal(Value(Previous().stringLiteral));\n\n        if (Match(TokenType::LEFT_PAREN))\n        {\n            Expr* expr = Expression();\n            if (expr == nullptr)\n                return nullptr;\n            if (!Consume(TokenType::RIGHT_PAREN, \"Expect ')' after expression\"))\n                return nullptr;\n            ExprGrouping* exprGroup = new (kallocator) ExprGrouping();\n            exprGroup->expr.Assign(expr);\n            return exprGroup;\n        }\n\n        if (Match(TokenType::IDENTIFIER))\n        {\n            ExprVariable* var = new (kallocator) ExprVariable();\n            var->name = &Previous();\n            return var;\n        }\n\n        lox_error(Peek(), \"Expect expression\");\n        return nullptr;\n    }\n\n    Expr* Literal(const Value& value)\n    {\n        ExprLiteral* expr = new (kallocator) ExprLiteral();\n        expr->value = value;\n        return expr;\n    }\n};\n\nvoid parser_parse(const Array<Token>& tokens, Array<UniquePtr<Stmt>>& stmts)\n{\n    Parser parser(tokens);\n    parser.Parse(stmts);\n}\n",
 			"file": "src/lox/parser.cpp",
-			"file_size": 10617,
-			"file_write_time": 131520126671523732,
 			"settings":
 			{
-				"buffer_size": 10378,
+				"buffer_size": 10847,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/kalloc.h",
+			"file": "src/lox/scanner.h",
 			"settings":
 			{
-				"buffer_size": 495,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/kalloc.cpp",
-			"settings":
-			{
-				"buffer_size": 4677,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/karray.h",
-			"settings":
-			{
-				"buffer_size": 2728,
+				"buffer_size": 788,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -589,37 +550,101 @@
 			"file": "src/lox/scanner.cpp",
 			"settings":
 			{
-				"buffer_size": 8443,
+				"buffer_size": 8232,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/kuniqueptr.h",
+			"file": "src/lox/env.cpp",
 			"settings":
 			{
-				"buffer_size": 1053,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/lox/ast.h",
-			"settings":
-			{
-				"buffer_size": 789,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/lox/ast.cpp",
-			"settings":
-			{
-				"buffer_size": 75,
+				"buffer_size": 312,
 				"encoding": "UTF-8",
 				"line_ending": "Windows",
-				"name": "#include \"ast.h\""
+				"name": "#include \"env.h\""
+			}
+		},
+		{
+			"file": "src/std/kstring.h",
+			"settings":
+			{
+				"buffer_size": 261,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "#pragma once"
+			}
+		},
+		{
+			"file": "src/std/karray.h",
+			"settings":
+			{
+				"buffer_size": 2802,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/std/kstring.cpp",
+			"settings":
+			{
+				"buffer_size": 957,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "#include \"kstring.h\""
+			}
+		},
+		{
+			"file": "src/std/ksharedptr.h",
+			"settings":
+			{
+				"buffer_size": 1617,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/std/kdictionary.h",
+			"settings":
+			{
+				"buffer_size": 3167,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/std/kdictionary.cpp",
+			"settings":
+			{
+				"buffer_size": 291,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 56 files for \"#include \"karray.h\"\"\n\nC:\\Users\\Alex\\Code\\loxos\\src\\lox\\ast.h:\n    2  #include \"scanner.h\"\n    3  #include \"value.h\"\n    4: #include \"karray.h\"\n    5  #include \"kuniqueptr.h\"\n    6  \n\nC:\\Users\\Alex\\Code\\loxos\\src\\lox\\scanner.h:\n    1  #pragma once\n    2: #include \"karray.h\"\n    3  #include \"ksharedptr.h\"\n    4  \n\nC:\\Users\\Alex\\Code\\loxos\\src\\std\\kstring.h:\n    1  #pragma once\n    2: #include \"karray.h\"\n    3  #include \"ksharedptr.h\"\n    4  \n\n3 matches across 3 files\n\n\nSearching 56 files for \"#include \"karray.h\"\"\n\n0 matches\n\nSearching 56 files for \"Array<char>\"\n\nC:\\Users\\Alex\\Code\\loxos\\src\\std\\kstring.h:\n    2  #include \"std/karray.h\"\n    3  \n    4: class String : SharedPtr<Array<char>>\n    5  {\n    6  public:\n\n1 match in 1 file\n",
+			"settings":
+			{
+				"buffer_size": 762,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "src/main.cpp",
+			"settings":
+			{
+				"buffer_size": 2326,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/lox/value.h",
+			"settings":
+			{
+				"buffer_size": 315,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -815,7 +840,7 @@
 				"Set Syntax: JavaScript"
 			]
 		],
-		"width": 444.0
+		"width": 412.0
 	},
 	"console":
 	{
@@ -838,35 +863,42 @@
 	[
 		"/C/Users/Alex/Code/loxos",
 		"/C/Users/Alex/Code/loxos/src",
-		"/C/Users/Alex/Code/loxos/src/lox"
+		"/C/Users/Alex/Code/loxos/src/std"
 	],
 	"file_history":
 	[
-		"/C/Users/Alex/Code/loxos/src/common.h",
-		"/C/Users/Alex/Code/loxos/src/common.cpp",
+		"/C/Users/Alex/Code/loxos/src/lox/env.h",
+		"/C/Users/Alex/Code/loxos/src/lox/ast.h",
 		"/C/Users/Alex/Code/loxos/src/lox/astdefs.h",
-		"/C/Users/Alex/Code/loxos/src/kalloc.h",
+		"/C/Users/Alex/Code/loxos/src/lox/scanner.h",
+		"/C/Users/Alex/Code/loxos/src/kdictionary.h",
+		"/C/Users/Alex/Code/loxos/src/kdictionary.cpp",
+		"/C/Users/Alex/Code/loxos/src/gdt.cpp",
+		"/C/Users/Alex/Code/loxos/src/common.cpp",
+		"/C/Users/Alex/Code/loxos/src/vga.cpp",
+		"/C/Users/Alex/Code/loxos/src/lox/parser.h",
+		"/C/Users/Alex/Code/loxos/src/common.h",
 		"/C/Users/Alex/Code/loxos/src/lox/scanner.cpp",
-		"/C/Users/Alex/Code/loxos/src/kalloc.cpp",
+		"/C/Users/Alex/Code/loxos/src/lox/value.cpp",
 		"/C/Users/Alex/Code/loxos/src/lox/parser.cpp",
+		"/C/Users/Alex/Code/loxos/src/lox/value.h",
+		"/C/Users/Alex/Code/loxos/src/ksharedptr.h",
 		"/C/Users/Alex/Code/loxos/src/main.cpp",
 		"/C/Users/Alex/Code/loxos/src/karray.h",
-		"/C/Users/Alex/Code/loxos/src/lox/lox.cpp",
-		"/C/Users/Alex/Code/loxos/src/lox/ast.h",
+		"/C/Users/Alex/Code/loxos/src/kalloc.h",
+		"/C/Users/Alex/Code/loxos/Readme.md",
+		"/C/Users/Alex/Code/loxos/src/kalloc.cpp",
 		"/C/Users/Alex/Code/loxos/src/kuniqueptr.h",
-		"/C/Users/Alex/Code/loxos/src/lox/scanner.h",
-		"/C/Users/Alex/Code/loxos/src/lox/value.cpp",
-		"/C/Users/Alex/Code/loxos/src/lox/value.h",
+		"/C/Users/Alex/Code/loxos/src/lox/lox.cpp",
+		"/C/Users/Alex/Code/loxos/src/lox/ast.cpp",
 		"/C/Users/Alex/Code/loxos/src/lox/lox.h",
 		"/C/Users/Alex/Code/loxos/src/lox/interpreter.h",
-		"/C/Users/Alex/Code/loxos/src/lox/parser.h",
 		"/C/Users/Alex/Code/loxos/src/vga.h",
 		"/C/Users/Alex/Code/loxos/Makefile",
 		"/C/Users/Alex/Code/loxos/src/keycodes.h",
 		"/C/Users/Alex/Code/loxos/src/fs.cpp",
 		"/C/Users/Alex/Code/loxos/src/timer.h",
 		"/C/Users/Alex/Code/loxos/src/timer.cpp",
-		"/C/Users/Alex/Code/loxos/src/vga.cpp",
 		"/C/Users/Alex/Code/loxos/src/fs.h",
 		"/C/Users/Alex/Code/loxos/src/keyboard.h",
 		"/C/Users/Alex/Code/loxos/src/linker.ld",
@@ -876,7 +908,6 @@
 		"/C/Users/Alex/Code/loxos/disk/subfolder/hello3.txt",
 		"/C/Users/Alex/Code/loxos/disk/hello.txt",
 		"/C/Users/Alex/Code/loxos/src/grub.cfg",
-		"/C/Users/Alex/Code/loxos/Readme.md",
 		"/C/Users/Alex/Code/loxos/src/isr.h",
 		"/C/Users/Alex/Code/brick/triangle.shader",
 		"/C/Users/Alex/Code/brick/raymarch.shader",
@@ -900,7 +931,6 @@
 		"/C/Users/Alex/Desktop/spaceinvaders/text_draw.h",
 		"/C/Users/Alex/Desktop/spaceinvaders/text_draw.cpp",
 		"/C/Users/Alex/Code/loxos/src/gdt.h",
-		"/C/Users/Alex/Code/loxos/src/gdt.cpp",
 		"/C/Users/Alex/Code/loxos/src/test.c",
 		"/C/Users/Alex/Code/loxos/src/interrupt_handler.h",
 		"/C/Users/Alex/Downloads/paging/src/boot.s",
@@ -964,12 +994,7 @@
 		"/C/Users/Alex/Code/GB/Tetris.gb",
 		"/C/Users/Alex/Downloads/builtin_shaders-2017.1.0f3/CGIncludes/UnityCG.cginc",
 		"/C/Users/Alex/AppData/Local/Temp/Temp1_cpu_instrs (2).zip/cpu_instrs/readme.txt",
-		"/C/Users/Alex/Code/Unity/spacekrieg2/Assets/Photon Unity Networking/changelog.txt",
-		"/C/Users/Alex/AppData/LocalLow/We Heart Dragons/Glyph Quest Chronicles/PrivateProfile.bat",
-		"/C/Users/Alex/Downloads/builtin_shaders-2017.1.0f3/DefaultResourcesExtra/Standard.shader",
-		"/C/Users/Alex/Downloads/builtin_shaders-2017.1.0f3/CGIncludes/UnityStandardCoreForwardSimple.cginc",
-		"/C/Users/Alex/Downloads/builtin_shaders-2017.1.0f3/CGIncludes/UnityStandardCoreForward.cginc",
-		"/C/Users/Alex/Downloads/builtin_shaders-2017.1.0f3/CGIncludes/UnityStandardCore.cginc"
+		"/C/Users/Alex/Code/Unity/spacekrieg2/Assets/Photon Unity Networking/changelog.txt"
 	],
 	"find":
 	{
@@ -991,6 +1016,28 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Array<char>",
+			"#include \"karray.h\"",
+			"m_hashFunc",
+			"validIdx",
+			"CheckNumbers",
+			"Expect expression",
+			"Expect expression at",
+			"kallocArr",
+			"Value",
+			"operands must",
+			"u32",
+			"stringLiteral",
+			"Value\\(",
+			"Value(",
+			"stringValue",
+			"location",
+			"kalloc<.+\\(",
+			"new (kallocator) ",
+			"new (kallocator)",
+			"kalloc",
+			"new (kall",
+			"invalid free",
 			"todo",
 			"Expect '",
 			"allocchar",
@@ -1096,29 +1143,7 @@
 			"clear",
 			"removeNode",
 			"mindmapRoot",
-			"numTabs",
-			"textArea.selectionStart",
-			"=false",
-			"ore",
-			"\n ",
-			"linear",
-			"UNITY_LIGHTMODEL_AMBIENT",
-			"ambient",
-			"worldpos",
-			"UnityObjectTo",
-			"SHEvalLinearL0L1",
-			"ShadeSH9",
-			"ShadeSHPerVertex",
-			"ShadeSH9",
-			"ShadeSHPerVertex",
-			"unity_AmbientGround",
-			"unity_AmbientEquator",
-			"ambient",
-			" +.+",
-			".*\\([0-9]+\\) ",
-			".+\\([0-9]+\\) ",
-			"data",
-			"\t"
+			"numTabs"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1126,6 +1151,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"#include \"std/karray.h\"",
+			"kalloc<",
 			"Flux",
 			"gl"
 		],
@@ -1138,7 +1165,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -1147,15 +1174,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5087,
+						"buffer_size": 7496,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4512,
-								4512
+								7496,
+								7496
 							]
 						],
 						"settings":
@@ -1168,116 +1195,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2301.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/main.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2380,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2030,
-								2030
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1035.0,
+						"translation.y": 3471.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1049,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										374,
-										382
-									],
-									[
-										608,
-										616
-									],
-									[
-										875,
-										883
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								365,
-								365
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"incomplete_sync": null,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ \t].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
+					"buffer": 1,
 					"file": "src/lox/parser.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10378,
+						"buffer_size": 10847,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3893,
-								3893
+								9862,
+								9862
 							]
 						],
 						"settings":
@@ -1290,27 +1228,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1789.0,
+						"translation.y": 5451.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "src/kalloc.h",
+					"buffer": 2,
+					"file": "src/lox/scanner.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 495,
+						"buffer_size": 788,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								357,
-								357
+								62,
+								62
 							]
 						],
 						"settings":
@@ -1318,129 +1256,32 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/kalloc.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4677,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4341,
-								4341
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2196.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/karray.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2728,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2503,
-								2503
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1395.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "src/lox/scanner.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8443,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3650,
-								3650
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 344.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "src/kuniqueptr.h",
+					"buffer": 3,
+					"file": "src/lox/scanner.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1053,
+						"buffer_size": 8232,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								805,
-								805
+								8010,
+								8010
 							]
 						],
 						"settings":
@@ -1453,34 +1294,33 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 180.0,
+						"translation.y": 3471.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "src/lox/ast.h",
+					"buffer": 4,
+					"file": "src/lox/env.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 789,
+						"buffer_size": 312,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								238,
-								238
+								104,
+								104
 							]
 						],
 						"settings":
 						{
+							"auto_name": "#include \"env.h\"",
 							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
 							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
@@ -1491,25 +1331,25 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
-					"file": "src/lox/ast.cpp",
+					"buffer": 5,
+					"file": "src/std/kstring.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 75,
+						"buffer_size": 261,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								75,
-								75
+								213,
+								213
 							]
 						],
 						"settings":
 						{
-							"auto_name": "#include \"ast.h\"",
+							"auto_name": "#pragma once",
 							"incomplete_sync": null,
 							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
@@ -1517,7 +1357,294 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/std/karray.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2802,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 540.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/std/kstring.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 957,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								927,
+								927
+							]
+						],
+						"settings":
+						{
+							"auto_name": "#include \"kstring.h\"",
+							"incomplete_sync": null,
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 135.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/std/ksharedptr.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1617,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "src/std/kdictionary.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3167,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								169,
+								169
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "src/std/kdictionary.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 291,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								48,
+								48
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 762,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										147,
+										166
+									],
+									[
+										278,
+										297
+									],
+									[
+										409,
+										428
+									],
+									[
+										706,
+										717
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								553,
+								553
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"incomplete_sync": null,
+							"line_numbers": false,
+							"output_tag": 3,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 200.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "src/main.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2326,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								391,
+								391
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "src/lox/value.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 315,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								110,
+								110
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
 					"type": "text"
 				}
 			]
@@ -1564,7 +1691,7 @@
 	},
 	"output.exec":
 	{
-		"height": 271.0
+		"height": 428.0
 	},
 	"output.find_results":
 	{
@@ -1588,36 +1715,116 @@
 		"selected_items":
 		[
 			[
-				"kun",
-				"src\\kuniqueptr.h"
+				"scann",
+				"src\\lox\\scanner.cpp"
+			],
+			[
+				"lox",
+				"src\\lox\\lox.cpp"
+			],
+			[
+				"sca",
+				"src\\lox\\scanner.cpp"
+			],
+			[
+				"sha",
+				"src\\std\\ksharedptr.h"
+			],
+			[
+				"parse",
+				"src\\lox\\parser.cpp"
+			],
+			[
+				"value",
+				"src\\lox\\value.h"
+			],
+			[
+				"arr",
+				"src\\std\\karray.h"
 			],
 			[
 				"main",
 				"src\\main.cpp"
 			],
 			[
-				"ka",
-				"src\\kalloc.cpp"
+				"kd",
+				"src\\std\\kdictionary.cpp"
 			],
 			[
-				"kall",
-				"src\\kalloc.h"
+				"env",
+				"src\\lox\\env.h"
 			],
 			[
-				"karr",
-				"src\\karray.h"
+				"sc",
+				"src\\lox\\scanner.h"
 			],
 			[
 				"ast",
 				"src\\lox\\astdefs.h"
 			],
 			[
+				"valu",
+				"src\\lox\\value.h"
+			],
+			[
+				"vga",
+				"src\\vga.cpp"
+			],
+			[
 				"comm",
-				"src\\common.h"
+				"src\\common.cpp"
+			],
+			[
+				"va",
+				"src\\lox\\value.h"
+			],
+			[
+				"co",
+				"src\\common.cpp"
+			],
+			[
+				"loxo",
+				"src\\lox\\lox.cpp"
+			],
+			[
+				"ks",
+				"src\\ksharedptr.h"
+			],
+			[
+				"scan",
+				"src\\lox\\scanner.cpp"
+			],
+			[
+				"kal",
+				"src\\kalloc.h"
+			],
+			[
+				"kall",
+				"src\\kalloc.h"
+			],
+			[
+				"as",
+				"src\\lox\\ast.h"
+			],
+			[
+				"parser",
+				"src\\lox\\parser.cpp"
 			],
 			[
 				"ast.h",
 				"src\\lox\\ast.h"
+			],
+			[
+				"kun",
+				"src\\kuniqueptr.h"
+			],
+			[
+				"ka",
+				"src\\kalloc.cpp"
+			],
+			[
+				"karr",
+				"src\\karray.h"
 			],
 			[
 				"pars",
@@ -1632,40 +1839,12 @@
 				"src\\lox\\lox.cpp"
 			],
 			[
-				"scann",
-				"src\\lox\\scanner.cpp"
-			],
-			[
-				"sc",
-				"src\\lox\\scanner.cpp"
-			],
-			[
-				"lox",
-				"src\\lox\\lox.cpp"
-			],
-			[
 				"uniq",
 				"src\\kuniqueptr.h"
 			],
 			[
-				"co",
-				"src\\common.h"
-			],
-			[
 				"com",
 				"src\\common.cpp"
-			],
-			[
-				"valu",
-				"src\\lox\\value.h"
-			],
-			[
-				"as",
-				"src\\lox\\astdefs.h"
-			],
-			[
-				"sca",
-				"src\\lox\\scanner.h"
 			],
 			[
 				"uni",
@@ -1674,10 +1853,6 @@
 			[
 				"vau",
 				"src\\lox\\value.cpp"
-			],
-			[
-				"value",
-				"src\\lox\\value.h"
 			],
 			[
 				"kar",
@@ -1692,16 +1867,8 @@
 				"src\\lox\\parser.cpp"
 			],
 			[
-				"parse",
-				"src\\lox\\parser.cpp"
-			],
-			[
 				"krr",
 				"src\\karray.h"
-			],
-			[
-				"scan",
-				"src\\lox\\scanner.cpp"
 			],
 			[
 				"ma",
@@ -1714,10 +1881,6 @@
 			[
 				"vga.",
 				"src\\vga.h"
-			],
-			[
-				"vga",
-				"src\\vga.cpp"
 			],
 			[
 				"timer",
@@ -1754,10 +1917,6 @@
 			[
 				"isr.",
 				"src\\isr.h"
-			],
-			[
-				"kal",
-				"src\\kalloc.cpp"
 			],
 			[
 				"isr.h",

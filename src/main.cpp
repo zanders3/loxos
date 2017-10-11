@@ -8,6 +8,7 @@
 #include "kalloc.h"
 #include "fs.h"
 #include "lox/lox.h"
+#include "lox/env.h"
 
 struct ModEntry
 {
@@ -80,17 +81,18 @@ extern "C" void kmain(MultibootInfo* bootInfo)
 
     vga.Print("READY\n");
 
-    while (true) 
+    Environment environment;
+    while (true)
     {
         vga.Print("> ");
-        while (!g_completedLine) {}
+        while (!g_completedLine) { asm("sti\nhlt\ncli"); }
         vga.Puts('\n');
         int allocBefore = kalloc_count();
-        lox_run(g_currentLine, g_currentLineIdx);
+        lox_run(environment, g_currentLine, g_currentLineIdx);
         g_completedLine = false;
         g_currentLineIdx = 0;
-        kassert(allocBefore == kalloc_count());
+        int allocAfter = kalloc_count();
+        if (allocAfter != allocBefore)
+            vga.Print("[allocs changed from %? to %?]\n", allocBefore, allocAfter);
     }
-
-    //asm volatile("sti");
 }

@@ -1,8 +1,8 @@
 #pragma once
 #include "scanner.h"
 #include "value.h"
-#include "karray.h"
-#include "kuniqueptr.h"
+#include "std/karray.h"
+#include "std/kuniqueptr.h"
 
 #define AST(rettype, parent, name, vars, ret) struct parent##name;
 #include "astdefs.h"

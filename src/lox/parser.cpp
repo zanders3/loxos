@@ -81,8 +81,8 @@ struct Parser
     {
         Stmt* stmt = nullptr;
         //if (Match(TokenType::FUN)) stmt = Function();
-        //if (Match(TokenType::VAR)) stmt = Var();
-        stmt = Statement();
+        if (Match(TokenType::VAR)) stmt = VarDecl();
+        else stmt = Statement();
 
         if (stmt == nullptr)
             Synchronize();
@@ -112,6 +112,31 @@ struct Parser
         
         StmtPrint* stmt = kalloc<StmtPrint>();
         stmt->expr.Assign(expr);
+        return stmt;
+    }
+
+    // varDecl -> "var" IDENTIFIER ( "=" expression )? ";"
+    Stmt* VarDecl()
+    {
+        const Token* name = Consume(TokenType::IDENTIFIER, "Expected variable name");
+        if (name == nullptr)
+            return nullptr;
+
+        Expr* initializer = nullptr;
+        if (Match(TokenType::EQUAL))
+            initializer = Expression();
+
+        if (!Consume(TokenType::SEMICOLON, "Expect ';' after variable declaration"))
+        {
+            if (initializer)
+                FreeExpr(initializer);
+            return nullptr;
+        }
+
+        StmtVar* stmt = kalloc<StmtVar>();
+        stmt->name = name;
+        if (initializer)
+            stmt->initializer.Assign(initializer);
         return stmt;
     }
 

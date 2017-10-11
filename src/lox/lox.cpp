@@ -1,14 +1,15 @@
 #include "lox.h"
 #include "scanner.h"
 #include "parser.h"
+#include "env.h"
 #include "vga.h"
+#include "std/kstring.h"
 
 struct Interpreter : public Visitor
 {
-    Value VisitAssign(const ExprAssign&)
-    {
-        return Value();
-    }
+    Interpreter(Environment& env)
+        : environment(env)
+    {}
 
     bool IsEqual(const Value& left, const Value& right) const
     {
@@ -20,20 +21,26 @@ struct Interpreter : public Visitor
             if (left.type != ValueType::STRING || right.type != ValueType::STRING)
                 return false;
 
-            //TODO: string comparison, also better string handling, etc.
-            return false;
+            return left.stringValue == right.stringValue;
         }
 
         return left.intValue == right.intValue;
     }
 
-    bool CheckNumbers(const Token* op, const Value& left, const Value& right, bool error = true) const
+    static bool CheckNumbers(const Token* op, const Value& left, const Value& right, bool error = true)
     {
         if (left.type == ValueType::NUMBER && right.type == ValueType::NUMBER)
             return true;
 
         if (error)
             lox_error(*op, "Operands must be numbers");
+        return false;
+    }
+
+    static bool CheckNumbers(const Token* op, const Value& operand)
+    {
+        if (operand.type == ValueType::NUMBER) return true;
+        lox_error(*op, "Operand must be a number");
         return false;
     }
 
@@ -67,16 +74,7 @@ struct Interpreter : public Visitor
                         case ValueType::STRING: rightStr = right.stringValue.Get(); break;
                     }
 
-                    const int leftLen = strlen(leftStr);
-                    const int rightLen = strlen(rightStr);
-                    SharedPtr<char> newStrPtr = SharedPtr<char>::Make(leftLen + rightLen + 1);
-                    char* newStr = newStrPtr.Get();
-                    for (int i = 0; i<leftLen; ++i)
-                        newStr[i] = leftStr[i];
-                    for (int i = 0; i<rightLen; ++i)
-                        newStr[i+leftLen] = rightStr[i];
-                    newStr[leftLen+rightLen] = '\0';
-                    return Value(newStrPtr);
+                    return Value(String::Join(leftStr, rightStr));
                 }
                 break;
             case TokenType::STAR:
@@ -125,37 +123,72 @@ struct Interpreter : public Visitor
         return lit.value;
     }
 
+    static bool IsTruthy(const Value& val)
+    {
+        if (val.type == ValueType::NIL) return false;
+        if (val.type == ValueType::STRING) return true;
+        return val.intValue > 0;
+    }
+
     Value VisitLogical(const ExprLogical& expr) 
     {
-        vga.Print("[");
-        expr.left->Visit(*this);
-        vga.Print(" %? ", tokentype_to_string(expr.op->type));
-        expr.right->Visit(*this);
-        vga.Print("]");
-        return Value();
+        Value left = expr.left->Visit(*this);
+        if (expr.op->type == TokenType::OR)
+        {
+            if (IsTruthy(left)) return left;
+        }
+        else
+        {
+            if (!IsTruthy(left)) return left;
+        }
+        
+        return expr.right->Visit(*this);
     }
     
     Value VisitUnary(const ExprUnary& expr)
     {
-        vga.Print("[%? ", tokentype_to_string(expr.op->type));
-        expr.right->Visit(*this);
-        vga.Print("]");
+        Value right = expr.right->Visit(*this);
+        switch (expr.op->type)
+        {
+            case TokenType::MINUS:
+                if (CheckNumbers(expr.op, right))
+                    return -right.intValue;
+            case TokenType::BANG:
+                return !IsTruthy(right);
+            default:
+                break;
+        }
         return Value();
     }
 
-    Value VisitVariable(const ExprVariable&) 
+    void VisitExpression(const StmtExpression& expr) 
     {
-        return Value();
+        expr.expr->Visit(*this);
+    }
+
+    Value VisitVariable(const ExprVariable& expr) 
+    {
+        return environment.Get(expr.name);
+    }
+
+    Value VisitAssign(const ExprAssign& expr)
+    {
+        Value value = expr.value->Visit(*this);
+        environment.Assign(expr.name, value);
+        return value;
+    }
+
+    void VisitVar(const StmtVar& stmt)
+    {
+        Value value;
+        if (stmt.initializer.IsValid())
+            value = stmt.initializer->Visit(*this);
+        environment.Define(stmt.name, value);
     }
 
     void VisitBlock(const StmtBlock&) 
     {
 
-    }
-
-    void VisitExpression(const StmtExpression& expr) 
-    {
-        expr.expr->Visit(*this).Print();
     }
 
     void VisitFunction(const StmtFunction&) 
@@ -178,25 +211,22 @@ struct Interpreter : public Visitor
 
     }
 
-    void VisitVar(const StmtVar&) 
-    {
-
-    }
-
     void VisitWhile(const StmtWhile&) 
     {
 
     }
+private:
+    Environment& environment;
 };
 
-void lox_run(const char* source, int sourceLen)
+void lox_run(Environment& environment, const char* source, int sourceLen)
 {
     Array<Token> tokens;
     scanner_scan(source, sourceLen, tokens);
     Array<UniquePtr<Stmt>> stmts;
     parser_parse(tokens, stmts);
 
-    Interpreter interpreter;
+    Interpreter interpreter(environment);
     for (const UniquePtr<Stmt>& stmt : stmts)
     {
         if (stmt.IsValid())

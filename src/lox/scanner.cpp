@@ -132,7 +132,7 @@ struct Scanner
         return tok;
     }
 
-    void String()
+    void ScanString()
     {
         while (Peek() != '"' && !IsAtEnd())
         {
@@ -147,15 +147,7 @@ struct Scanner
         }
 
         Advance();
-
-        int len = m_current - m_start - 2;
-        SharedPtr<char> strPtr = SharedPtr<char>::Make(len+1);
-        char* str = strPtr.Get();
-        for (int i = 0; i<len; ++i)
-            str[i] = m_source[m_start + i + 1];
-        str[len] = '\0';
-
-        AddToken(TokenType::STRING).stringLiteral = strPtr;
+        AddToken(TokenType::STRING).stringLiteral = String::CopyFromPtr(m_source + m_start + 1, m_current - m_start - 2);
     }
 
     inline bool IsDigit(char c) { return c >= '0' && c <= '9'; }
@@ -195,7 +187,9 @@ struct Scanner
                 break;
             }
         }
-        AddToken(type);
+        Token& token = AddToken(type);
+        if (type == TokenType::IDENTIFIER)
+            token.stringLiteral = String::CopyFromPtr(m_source + m_start, m_current - m_start);
     }
 
     void ScanTokens()
@@ -238,7 +232,7 @@ struct Scanner
                 case '\n':
                     m_line++;
                     break;
-                case '"': String(); break;
+                case '"': ScanString(); break;
                 default:
                     if (IsDigit(c))
                         Number();
@@ -253,7 +247,7 @@ struct Scanner
         Token& tok = m_tokens[m_tokens.Size()-1];
         tok.type = TokenType::EOF;
         tok.lexeme[0] = '\0';
-        tok.stringLiteral = SharedPtr<char>();
+        tok.stringLiteral = String();
         tok.numberLiteral = 0;
         tok.line = m_line;
     }
