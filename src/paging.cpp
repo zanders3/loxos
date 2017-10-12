@@ -61,7 +61,7 @@ void init_paging(u32 kernelEnd)
     dir->pages[0].Set(pageAddr, PageFlags::RW | PageFlags::Present);
     u32 numToMap = g_placement_address / 0x1000;
     kassert(numToMap < 1024);
-    for (u32 i = 0; i<numToMap; i++)
+    for (u32 i = 1; i<numToMap; i++)
         page->pages[i].Set(i*0x1000, PageFlags::RW | PageFlags::Present);
 
     register_int_handler(14, &handle_page_fault);
@@ -118,6 +118,4 @@ void unmap_page(u32 virtualAddr)
 
     page->pages[pageIdx].value = 0x0;
     asm volatile("invlpg (%0)" : : "b"(virtualAddr) : "memory");
-
-    vga.Print("freed %?\n", physicalAddr);
 }

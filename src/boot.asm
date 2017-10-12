@@ -32,6 +32,16 @@ gdt_flush:
 .flush:
 	ret
 
+global enter_v86:
+enter_v86:
+	push dword [esp+4]
+	push dword [esp+8]
+	pushfd
+	or dword [esp], (1 << 17) ; set VM bit in EFLAGS
+	push dword [esp+12]
+	push dword [esp+16]
+	iret
+
 section .bss
 align 4
 kernel_stack_bottom: equ $
