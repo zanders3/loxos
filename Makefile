@@ -14,11 +14,11 @@ build/%.o: src/%.asm
 	nasm -f elf32  $< -o $@
 
 build/kernel.bin: build/writekernelsize $(CPPS) src/linker.ld $(shell find src -name '*.h')
-	i386-elf-g++ $(CPPS) -O3 -o $@ -T src/linker.ld $(OPTIONS)
+	i386-elf-g++ $(CPPS) -Os -o $@ -T src/linker.ld $(OPTIONS)
 	build/writekernelsize
 
 run: build/kernel.bin
-	DISPLAY=:0 qemu-system-i386 -fda build/kernel.bin
+	DISPLAY=:0 qemu-system-i386 -drive format=raw,file=build/kernel.bin,index=0,if=floppy
 
 build: build/kernel.bin
 	
