@@ -1,6 +1,8 @@
 #include "print.h"
 #include "idt.h"
 #include "keyboard.h"
+#include "serial.h"
+#include "display.h"
 
 long ticks = 0;
 
@@ -21,17 +23,13 @@ static void timer_init()
 
 extern "C" void kmain()
 {
+	serial_init();
+	display_init();
+
 	idt_init();
 	timer_init();
 	keyboard_init();
-	asm volatile("sti");
 
-	printf("LoxOS\n");
-	while (true)
-	{
-		printf("> ");
-		const char* input = keyboard_readline();
-		printf("Got %?", input);
-		asm volatile("hlt");
-	}
+	printf("Win!\n");
+	asm ("cli\nhlt");
 }

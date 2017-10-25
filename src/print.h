@@ -6,9 +6,9 @@ void printval(int val);
 void printval(unsigned int val);
 
 inline void printval(short val) { printval((int)val); }
-inline void printval(char val) { printval((char)val); }
-inline void printval(unsigned short val) { printval((unsigned short)val); }
-inline void printval(unsigned char val) { printval((unsigned char)val); }
+inline void printval(char val) { printval((int)val); }
+inline void printval(unsigned short val) { printval((unsigned int)val); }
+inline void printval(unsigned char val) { printval((unsigned int)val); }
 
 inline void printf(const char* fmt) { printval(fmt); }
 template <typename T, typename... Targs>

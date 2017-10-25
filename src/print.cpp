@@ -1,9 +1,11 @@
 #include "print.h"
 #include "vga.h"
+#include "serial.h"
 
 void puts(char c)
 {
 	vga_puts(c);
+	serial_puts(c);
 }
 
 void printval(const char* fmt)
