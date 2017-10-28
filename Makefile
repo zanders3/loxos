@@ -8,7 +8,7 @@ HDRS := $(shell find src -name '*.h')
 OPTIONS := -O2 -Isrc -nostdlib -fno-exceptions -mno-red-zone -mno-ms-bitfields -ffreestanding -mgeneral-regs-only -std=c++11 -fno-rtti
 
 build/writekernelsize: writekernelsize.cpp
-	mkdir build
+	mkdir -p build
 	g++ writekernelsize.cpp -o build/writekernelsize
 
 build/%.o: src/%.asm

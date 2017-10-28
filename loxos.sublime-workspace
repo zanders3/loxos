@@ -1,0 +1,1538 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"disable-",
+				"disable-werror"
+			],
+			[
+				"binut",
+				"binutils-2"
+			],
+			[
+				"mo",
+				"modeInf"
+			],
+			[
+				"vbe",
+				"vbe_mode_info_structure"
+			],
+			[
+				"Vbe",
+				"VbeSignature"
+			],
+			[
+				"Vb",
+				"VbeVersion"
+			],
+			[
+				"g",
+				"g_free_list"
+			],
+			[
+				"Pag",
+				"PageTable"
+			],
+			[
+				"Di",
+				"Dictionary"
+			],
+			[
+				"m_a",
+				"m_array"
+			],
+			[
+				"Add",
+				"AddToken"
+			],
+			[
+				"alloc",
+				"allocBefore"
+			],
+			[
+				"all",
+				"allocAfter"
+			],
+			[
+				"m_",
+				"m_array"
+			],
+			[
+				"arr",
+				"arraySize"
+			],
+			[
+				"Dic",
+				"DictionaryIter"
+			],
+			[
+				"newA",
+				"newArr"
+			],
+			[
+				"Ke",
+				"KeyPair"
+			],
+			[
+				"m_A",
+				"m_arraySize"
+			],
+			[
+				"env",
+				"environment"
+			],
+			[
+				"en",
+				"environment"
+			],
+			[
+				"lox",
+				"lox_error"
+			],
+			[
+				"String",
+				"STRING"
+			],
+			[
+				"rightS",
+				"rightStr"
+			],
+			[
+				"lef",
+				"leftStr"
+			],
+			[
+				"ri",
+				"right"
+			],
+			[
+				"rig",
+				"rightStr"
+			],
+			[
+				"newS",
+				"newStrPtr"
+			],
+			[
+				"left",
+				"leftLen"
+			],
+			[
+				"righ",
+				"rightLen"
+			],
+			[
+				"news",
+				"newStrPtr"
+			],
+			[
+				"ass",
+				"assignExpr"
+			],
+			[
+				"kall",
+				"kAllocBefore"
+			],
+			[
+				"kallo",
+				"kalloc_count"
+			],
+			[
+				"Slab",
+				"SlabEntry"
+			],
+			[
+				"align",
+				"alignedLoc"
+			],
+			[
+				"strin",
+				"stringLiteral"
+			],
+			[
+				"g_all",
+				"g_allocCount"
+			],
+			[
+				"bool",
+				"boolValue"
+			],
+			[
+				"VALUE",
+				"ValueType"
+			],
+			[
+				"Expre",
+				"ExpressionStatement"
+			],
+			[
+				"toke",
+				"tokentype_to_string"
+			],
+			[
+				"Ass",
+				"Assignment"
+			],
+			[
+				"TOK",
+				"TokenType"
+			],
+			[
+				"Vis",
+				"Visitor"
+			],
+			[
+				"Visi",
+				"Visitor"
+			],
+			[
+				"m_s",
+				"m_start"
+			],
+			[
+				"keyw",
+				"keyword"
+			],
+			[
+				"LEs",
+				"LESS_EQUAL"
+			],
+			[
+				"GRE",
+				"GREATER_EQUAL"
+			],
+			[
+				"EQ",
+				"EQUAL_EQUAL"
+			],
+			[
+				"B",
+				"BANG_EQUAL"
+			],
+			[
+				"LE",
+				"LEFT_BRACE"
+			],
+			[
+				"g_cu",
+				"g_currentLineIdx"
+			],
+			[
+				"Pee",
+				"PeekNext"
+			],
+			[
+				"m_sou",
+				"m_source"
+			],
+			[
+				"sou",
+				"source"
+			],
+			[
+				"sour",
+				"sourceLen"
+			],
+			[
+				"cur",
+				"cursorTimer"
+			],
+			[
+				"curs",
+				"cursorY"
+			],
+			[
+				"g_c",
+				"g_currentLineIdx"
+			],
+			[
+				"g_",
+				"g_currentLine"
+			],
+			[
+				"char",
+				"charValue"
+			],
+			[
+				"cha",
+				"charValue"
+			],
+			[
+				"key",
+				"keyInfo"
+			],
+			[
+				"ini",
+				"initrd_loc"
+			],
+			[
+				"kern",
+				"kernelEnd"
+			],
+			[
+				"FSN",
+				"FSNode"
+			],
+			[
+				"init",
+				"initializer_list"
+			],
+			[
+				"Grow",
+				"GrowIfNeeded"
+			],
+			[
+				"clus",
+				"cluster_num"
+			],
+			[
+				"Dir",
+				"DirectoryFlags"
+			],
+			[
+				"Dire",
+				"DirectoryFlags"
+			],
+			[
+				"dir",
+				"dirEntry"
+			],
+			[
+				"di",
+				"directoryEntry"
+			],
+			[
+				"firs",
+				"firstRootDir"
+			],
+			[
+				"fis",
+				"firstRootDir"
+			],
+			[
+				"tot",
+				"totalClusters"
+			],
+			[
+				"sec",
+				"sectorsPerCluster"
+			],
+			[
+				"fat",
+				"fatSize"
+			],
+			[
+				"roo",
+				"rootDirSectors"
+			],
+			[
+				"__",
+				"__packed__"
+			],
+			[
+				"ram",
+				"ramdisk_start"
+			],
+			[
+				"E",
+				"ExtBootRecord"
+			],
+			[
+				"ramdi",
+				"ramdisk_start"
+			],
+			[
+				"ra",
+				"ramdisk_end"
+			],
+			[
+				"ramd",
+				"ramdisk_end"
+			],
+			[
+				"dis",
+				"diskStart"
+			],
+			[
+				"mods_",
+				"mods_addr"
+			],
+			[
+				"g_sl",
+				"g_slabMetaData"
+			],
+			[
+				"bestFi",
+				"bestFitSize"
+			],
+			[
+				"bestF",
+				"bestFitSize"
+			],
+			[
+				"best",
+				"bestFitSize"
+			],
+			[
+				"g_m",
+				"g_memStart"
+			],
+			[
+				"g_mem",
+				"g_memStart"
+			],
+			[
+				"slb",
+				"slabStart"
+			],
+			[
+				"g_me",
+				"g_memStart"
+			],
+			[
+				"allo",
+				"alloc_slab_meta"
+			],
+			[
+				"map",
+				"map_page"
+			],
+			[
+				"slab",
+				"slabStart"
+			],
+			[
+				"sla",
+				"slabStart"
+			],
+			[
+				"nex",
+				"nextSlab"
+			],
+			[
+				"Sla",
+				"SlabListSize"
+			],
+			[
+				"next",
+				"nextPowerOf2"
+			],
+			[
+				"keI",
+				"keyInfo"
+			],
+			[
+				"g_k",
+				"g_keyboard_shift"
+			],
+			[
+				"enu",
+				"enumName"
+			],
+			[
+				"Key",
+				"KeyboardHandler"
+			],
+			[
+				"p",
+				"pages"
+			],
+			[
+				"pla",
+				"placement_address"
+			],
+			[
+				"fi",
+				"firstPageAddr"
+			],
+			[
+				"PAge",
+				"PageFlags"
+			],
+			[
+				"ta",
+				"tablesPhysical"
+			],
+			[
+				"over",
+				"overallPageIdx"
+			],
+			[
+				"PAgeT",
+				"PageTable"
+			],
+			[
+				"mall",
+				"malloc_block"
+			],
+			[
+				"kpan",
+				"kpanic_internal"
+			],
+			[
+				"max",
+				"maxSize"
+			],
+			[
+				"Mall",
+				"MallocHeader"
+			],
+			[
+				"faul",
+				"faulting_addr"
+			],
+			[
+				"tabl",
+				"tablesPhysical"
+			],
+			[
+				"tal",
+				"table_idx"
+			],
+			[
+				"km",
+				"kmalloc"
+			],
+			[
+				"Page",
+				"PageDirectory"
+			],
+			[
+				"isrHa",
+				"isrHandlers"
+			],
+			[
+				"isr",
+				"isr_handler"
+			],
+			[
+				"irq",
+				"irq_handler"
+			],
+			[
+				"zero",
+				"zero_memory"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Makefile",
+			"settings":
+			{
+				"buffer_size": 808,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "crosscompiler.sh",
+			"settings":
+			{
+				"buffer_size": 1055,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/Makefile/Make.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/GoSublime/GoSublime.sublime-build",
+					""
+				],
+				[
+					"Packages/User/go.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/GoSublime/GoSublime.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Makefile/Make.sublime-build",
+					""
+				],
+				[
+					"Packages/Makefile/Make.sublime-build",
+					"Clean"
+				],
+				[
+					"Packages/User/go.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/Makefile/Make.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 104.0,
+		"last_filter": "ssc++",
+		"selected_items":
+		[
+			[
+				"ssc++",
+				"Set Syntax: C++"
+			],
+			[
+				"sublimegdb",
+				"SublimeGDB: Stop Debugging"
+			],
+			[
+				"gdb",
+				"SublimeGDB: Start Debugging"
+			],
+			[
+				"gdb sett",
+				"GoSublime: Default Settings"
+			],
+			[
+				"gdb use",
+				"Preferences: SublimeGDB Settings – User"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"beau",
+				"HTMLBeautify"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"sshtml",
+				"Set Syntax: HTML"
+			],
+			[
+				"sscss",
+				"Set Syntax: CSS"
+			],
+			[
+				"sspy",
+				"Set Syntax: Python"
+			],
+			[
+				"json",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"ssht",
+				"Set Syntax: HTML"
+			],
+			[
+				"goto de",
+				"GoSublime: Goto Definition"
+			],
+			[
+				"GoSublime: ",
+				"Set Syntax: GoSublime: Go"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"ssc",
+				"Set Syntax: C"
+			],
+			[
+				"ssc#",
+				"Set Syntax: C#"
+			],
+			[
+				"ssmat",
+				"Set Syntax: MATLAB"
+			],
+			[
+				"ssma",
+				"Set Syntax: Makefile"
+			],
+			[
+				"ssbash",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"sftp",
+				"SFTP: Browse Remote…"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"INSTAL",
+				"Package Control: Install Package"
+			],
+			[
+				"sort",
+				"Sort Lines"
+			],
+			[
+				"sscg",
+				"Set Syntax: Cg"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"ssbas",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"ssjav",
+				"Set Syntax: Java"
+			],
+			[
+				"pac",
+				"Package Control: Remove Package"
+			],
+			[
+				"pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"ssrus",
+				"Set Syntax: Rust"
+			],
+			[
+				"ssnasm",
+				"Set Syntax: Assembly x86 (NASM)"
+			],
+			[
+				"ssxml",
+				"Set Syntax: XML"
+			],
+			[
+				"ssjs",
+				"Set Syntax: JavaScript"
+			]
+		],
+		"width": 412.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Alex/Code/loxos/build/crosscompiler/gcc-7.1.0/libgo/README",
+		"/C/Users/Alex/Code/loxos/src/paging.cpp",
+		"/C/Users/Alex/Code/loxos/src/main.cpp",
+		"/C/Users/Alex/Code/loxos/src/common.h",
+		"/C/Users/Alex/Code/loxos/src/v86.asm",
+		"/C/Users/Alex/Code/loxos/src/v86.h",
+		"/C/Users/Alex/Code/loxos/src/display.cpp",
+		"/C/Users/Alex/Code/loxos/src/isr.h",
+		"/C/Users/Alex/Code/loxos/src/gdt.cpp",
+		"/C/Users/Alex/Code/loxos/src/grub.cfg",
+		"/C/Users/Alex/Code/loxos/src/boot.asm",
+		"/C/Users/Alex/Code/loxos/src/display.h",
+		"/C/Users/Alex/Code/loxos/Makefile",
+		"/C/Users/Alex/Code/loxos/src/boot2.asm",
+		"/C/Users/Alex/Code/loxos/src/lox/lox.cpp",
+		"/C/Users/Alex/Code/loxos/src/lox/lox.h",
+		"/C/Users/Alex/Code/loxos/src/lox/env.cpp",
+		"/C/Users/Alex/Code/loxos/src/std/kdictionary.h",
+		"/C/Users/Alex/Code/loxos/src/vga.cpp",
+		"/C/Users/Alex/Code/loxos/src/std/karray.h",
+		"/C/Users/Alex/Code/loxos/src/paging.h",
+		"/C/Users/Alex/Code/loxos/src/linker.ld",
+		"/C/Users/Alex/Code/loxos/src/vga.h",
+		"/C/Users/Alex/Code/loxos/src/lox/env.h",
+		"/C/Users/Alex/Code/loxos/src/std/kstring.cpp",
+		"/C/Users/Alex/Code/loxos/src/kalloc.cpp",
+		"/C/Users/Alex/Code/loxos/src/common.cpp",
+		"/C/Users/Alex/Code/loxos/src/lox/scanner.cpp",
+		"/C/Users/Alex/Code/loxos/src/lox/value.cpp",
+		"/C/Users/Alex/Code/loxos/src/std/kstring.h",
+		"/C/Users/Alex/Code/loxos/src/lox/parser.cpp",
+		"/C/Users/Alex/Code/loxos/src/lox/value.h",
+		"/C/Users/Alex/Code/loxos/src/std/ksharedptr.h",
+		"/C/Users/Alex/Code/loxos/src/std/kdictionary.cpp",
+		"/C/Users/Alex/Code/loxos/src/lox/astdefs.h",
+		"/C/Users/Alex/Code/loxos/src/lox/scanner.h",
+		"/C/Users/Alex/Code/loxos/src/lox/ast.h",
+		"/C/Users/Alex/Code/loxos/src/kdictionary.h",
+		"/C/Users/Alex/Code/loxos/src/kdictionary.cpp",
+		"/C/Users/Alex/Code/loxos/src/lox/parser.h",
+		"/C/Users/Alex/Code/loxos/src/ksharedptr.h",
+		"/C/Users/Alex/Code/loxos/src/karray.h",
+		"/C/Users/Alex/Code/loxos/src/kalloc.h",
+		"/C/Users/Alex/Code/loxos/Readme.md",
+		"/C/Users/Alex/Code/loxos/src/kuniqueptr.h",
+		"/C/Users/Alex/Code/loxos/src/lox/ast.cpp",
+		"/C/Users/Alex/Code/loxos/src/lox/interpreter.h",
+		"/C/Users/Alex/Code/loxos/src/keycodes.h",
+		"/C/Users/Alex/Code/loxos/src/fs.cpp",
+		"/C/Users/Alex/Code/loxos/src/timer.h",
+		"/C/Users/Alex/Code/loxos/src/timer.cpp",
+		"/C/Users/Alex/Code/loxos/src/fs.h",
+		"/C/Users/Alex/Code/loxos/src/keyboard.h",
+		"/C/Users/Alex/Code/loxos/disk/hello2.txt",
+		"/C/Users/Alex/Code/loxos/disk/subfolder/hello3.txt",
+		"/C/Users/Alex/Code/loxos/disk/hello.txt",
+		"/C/Users/Alex/Code/brick/triangle.shader",
+		"/C/Users/Alex/Code/brick/raymarch.shader",
+		"/C/Users/Alex/Code/ASTGenerator/ASTGenerator.cs",
+		"/C/Users/Alex/Code/loxos/disk/sub/hello3.txt",
+		"/C/Users/Alex/Code/loxos/src/keyboard.cpp",
+		"/C/Users/Alex/Desktop/kalloc.h",
+		"/C/Users/Alex/Desktop/kalloc.cpp",
+		"/C/Users/Alex/Code/loxos/src/alloc.h",
+		"/C/Users/Alex/Code/loxos/src/isr.cpp",
+		"/C/Users/Alex/Code/loxos/src/interrupts.asm",
+		"/C/Users/Alex/Code/loxos/tmp.txt",
+		"/C/Users/Alex/.ssh/box3zanders.key",
+		"/C/Users/Alex/.ssh/box3zanders.key.pub",
+		"/C/Users/Alex/Desktop/written_answers.txt",
+		"/C/Users/Alex/Code/loxos/src/liballoc.c",
+		"/C/Users/Alex/Code/loxos/src/liballoc.h",
+		"/C/Users/Alex/Code/loxos/src/array.h",
+		"/C/Users/Alex/Code/loxos/src/alloc.cpp",
+		"/C/Users/Alex/Desktop/spaceinvaders/text_draw.h",
+		"/C/Users/Alex/Desktop/spaceinvaders/text_draw.cpp",
+		"/C/Users/Alex/Code/loxos/src/gdt.h",
+		"/C/Users/Alex/Code/loxos/src/test.c",
+		"/C/Users/Alex/Code/loxos/src/interrupt_handler.h",
+		"/C/Users/Alex/Downloads/paging/src/boot.s",
+		"/C/Users/Alex/Downloads/paging/src/kheap.c",
+		"/C/Users/Alex/Code/loxos/src/multiboot.h",
+		"/C/Users/Alex/Code/loxos/src/interrupt_handler.cpp",
+		"/C/Users/Alex/Downloads/paging/src/link.ld",
+		"/C/Users/Alex/Code/loxos/qemu.log",
+		"/C/Users/Alex/Downloads/paging/src/kheap.h",
+		"/C/Users/Alex/Code/loxos/loxos.sublime-project",
+		"/C/Users/Alex/Code/GB/gb.cpp",
+		"/C/Users/Alex/Code/GB/gb.h",
+		"/C/Users/Alex/Code/loxos/src/printf.h",
+		"/C/Users/Alex/Code/loxos/src/printf.cpp",
+		"/C/Users/Alex/Code/loxos/src/string.cpp",
+		"/C/Users/Alex/Code/loxos/src/string.hpp",
+		"/C/Users/Alex/Code/loxos/src/format.hpp",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 3/Packages/User/MakeWin.sublime-build",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 3/Packages/GoSublime/GoSublime.sublime-settings",
+		"/C/Users/Alex/Code/loxos/boot.asm",
+		"/C/Users/Alex/Code/loxos/main.cpp",
+		"/C/Users/Alex/Code/loxos/linker.ld",
+		"/C/Users/Alex/Code/loxos/grub.cfg",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 3/Packages/User/SublimeGDB.sublime-settings",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 3/Packages/User/Make.sublime-build",
+		"/C/Users/Alex/Code/loxos/isofiles/boot/grub/grub.cfg",
+		"/C/Users/Alex/Desktop/BookGalaxy/BookWeb.java",
+		"/C/Users/Alex/Desktop/mindmapper/mindmapper2.html",
+		"/C/Users/Alex/Desktop/mindmapper/springy.js",
+		"/C/Users/Alex/Code/GB/main.cpp",
+		"/C/Users/Alex/Desktop/license.txt",
+		"/C/Users/Alex/Desktop/springyui.js",
+		"/C/Users/Alex/Desktop/springy.js",
+		"/C/Users/Alex/Desktop/BookGalaxy/BookWebApplet.java",
+		"/C/Users/Alex/Desktop/BookGalaxy/NodeViewer.java",
+		"/C/Users/Alex/Desktop/SpaceKriegProto2.txt",
+		"/C/Users/Alex/Documents/Curse/Minecraft/Instances/ImmersiveEngineering/config/oretweaker.cfg",
+		"/C/Users/Alex/Documents/Curse/Minecraft/Instances/ImmersiveEngineering/config/railcraft/railcraft.cfg",
+		"/C/Users/Alex/Documents/Curse/Minecraft/Instances/ImmersiveEngineering/config/railcraft/modules.cfg",
+		"/C/Users/Alex/Documents/Curse/Minecraft/Instances/ImmersiveEngineering/config/immersiveengineering.cfg",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/Assets/Editor/.itch.mac.toml",
+		"/C/Users/Alex/Documents/Curse/Minecraft/Instances/ImmersiveEngineering/config/railcraft/blocks.cfg",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/Assets/Editor/.itch.toml",
+		"/C/Users/Alex/AppData/Roaming/itch/apps/SpaceKrieg/.itch.toml",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/Builds/SpaceKriegMac/.itch.toml",
+		"/C/Users/Alex/AppData/Roaming/itch/apps/SpaceKrieg/SpaceKrieg_Data/output_log.txt",
+		"/C/Users/Alex/AppData/Local/Unity/Editor/Editor.log",
+		"/C/Users/Alex/Documents/Curse/Minecraft/Instances/ImmersiveEngineering/config/orespawn.cfg",
+		"/C/Users/Alex/Code/parkos2/selfie.c",
+		"/C/Users/Alex/AppData/LocalLow/We Heart Dragons/Glyph Quest Chronicles/PublicProfile.bat",
+		"/C/Users/Alex/Code/Unity/spacekrieg2/Builds/Debug/SpaceKrieg_Data/output_log.txt"
+	],
+	"find":
+	{
+		"height": 41.0
+	},
+	"find_in_files":
+	{
+		"height": 105.0,
+		"where_history":
+		[
+			"<open folders>",
+			"<current file>",
+			"<open folders>",
+			"C:\\Users\\Alex\\Downloads\\PresentationProxyTest\\PresentationProxy\\Assets\\Net"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"uint32",
+			"uint8",
+			"uint16",
+			"uint8_t",
+			"uint16_t",
+			"0x9000",
+			"uint16_t",
+			"CODE16",
+			"uint32_t",
+			"ebp",
+			"uint16_t",
+			"get '",
+			"Visit var!",
+			"copied",
+			"SharedPtr",
+			"CopyFromPtr",
+			"return Value()",
+			"Vardecl",
+			"String::Join",
+			"char* leftStr",
+			"arrCount",
+			"String",
+			"Array<char>",
+			"#include \"karray.h\"",
+			"m_hashFunc",
+			"validIdx",
+			"CheckNumbers",
+			"Expect expression",
+			"Expect expression at",
+			"kallocArr",
+			"Value",
+			"operands must",
+			"u32",
+			"stringLiteral",
+			"Value\\(",
+			"Value(",
+			"stringValue",
+			"location",
+			"kalloc<.+\\(",
+			"new (kallocator) ",
+			"new (kallocator)",
+			"kalloc",
+			"new (kall",
+			"invalid free",
+			"todo",
+			"Expect '",
+			"allocchar",
+			"kfree(",
+			"assign ",
+			"new (kallocator)",
+			"new ",
+			"kfree\\(",
+			"kfree(",
+			"new ",
+			"kfree",
+			"operands must be numbers",
+			"value",
+			"void",
+			"printVisitor",
+			"Consume",
+			"Visit",
+			"stringLiteral",
+			"Value",
+			"Consume",
+			"TokenType.",
+			"interpreter",
+			"Token* const",
+			" const",
+			"Token*",
+			"Token",
+			"stringLiteral",
+			"TokenType.",
+			"case ",
+			"vga.Print",
+			"Color",
+			"TokenType.",
+			".",
+			"compareGreater",
+			"compareFunc",
+			"u32",
+			"asm",
+			"mods_count",
+			"maxSize",
+			"fatSize",
+			"code_end",
+			"initfs",
+			"g_totalSlabs",
+			"Init",
+			"Init(",
+			"g_slabMetaList",
+			"powSize",
+			"size",
+			"2048",
+			"200",
+			"kalloc_free",
+			"slab",
+			"prevEntry",
+			"g_freeList",
+			"kalloc",
+			"\t",
+			"~",
+			"NUM_KEYBOARD_HANDLERS",
+			";",
+			")",
+			"u32",
+			"20",
+			"j",
+			"kmalloc_aligned<PageTable>",
+			"tables",
+			"NULL",
+			"total_frames",
+			"tmp",
+			"map_page",
+			"InterruptHandler",
+			"m_maxSize",
+			"u32int",
+			"idx",
+			"new",
+			"gcc",
+			"idt_flush",
+			"}\n",
+			"g++",
+			"idt_setup",
+			"asm volatile",
+			"unsigned int",
+			"testInt",
+			"u64",
+			"physicalAddr"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"#include \"std/karray.h\"",
+			"kalloc<",
+			"Flux",
+			"gl"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Makefile",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 808,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								808,
+								808
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Makefile/Makefile.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "crosscompiler.sh",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1055,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								454,
+								454
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/ShellScript/Shell-Unix-Generic.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.9o://C:\\Users\\Alex\\Code\\go\\src\\bitbucket.org\\zanders3\\traintracker":
+	{
+		"height": 194.0
+	},
+	"output.GsDoc-output-output":
+	{
+		"height": 100.0
+	},
+	"output.exec":
+	{
+		"height": 434.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 100.0
+	},
+	"pinned_build_system": "loxos",
+	"project": "loxos.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"isr",
+				"src\\isr.h"
+			],
+			[
+				"main",
+				"src\\main.cpp"
+			],
+			[
+				"comm",
+				"src\\common.h"
+			],
+			[
+				"v8",
+				"src\\v86.asm"
+			],
+			[
+				"make",
+				"Makefile"
+			],
+			[
+				"boo",
+				"src\\boot.asm"
+			],
+			[
+				"displ",
+				"src\\display.cpp"
+			],
+			[
+				"grub",
+				"src\\grub.cfg"
+			],
+			[
+				"link",
+				"src\\linker.ld"
+			],
+			[
+				"vga",
+				"src\\vga.cpp"
+			],
+			[
+				"boot",
+				"src\\boot.asm"
+			],
+			[
+				"karr",
+				"src\\std\\karray.h"
+			],
+			[
+				"kstr",
+				"src\\std\\kstring.cpp"
+			],
+			[
+				"pa",
+				"src\\paging.cpp"
+			],
+			[
+				"p",
+				"src\\paging.h"
+			],
+			[
+				"env",
+				"src\\lox\\env.h"
+			],
+			[
+				"kdi",
+				"src\\std\\kdictionary.h"
+			],
+			[
+				"lox",
+				"src\\lox\\lox.cpp"
+			],
+			[
+				"value",
+				"src\\lox\\value.h"
+			],
+			[
+				"scann",
+				"src\\lox\\scanner.cpp"
+			],
+			[
+				"as",
+				"src\\lox\\astdefs.h"
+			],
+			[
+				"pars",
+				"src\\lox\\parser.cpp"
+			],
+			[
+				"kdic",
+				"src\\std\\kdictionary.h"
+			],
+			[
+				"sca",
+				"src\\lox\\scanner.h"
+			],
+			[
+				"valu",
+				"src\\lox\\value.cpp"
+			],
+			[
+				"sha",
+				"src\\std\\ksharedptr.h"
+			],
+			[
+				"parse",
+				"src\\lox\\parser.cpp"
+			],
+			[
+				"arr",
+				"src\\std\\karray.h"
+			],
+			[
+				"kd",
+				"src\\std\\kdictionary.cpp"
+			],
+			[
+				"sc",
+				"src\\lox\\scanner.h"
+			],
+			[
+				"ast",
+				"src\\lox\\astdefs.h"
+			],
+			[
+				"va",
+				"src\\lox\\value.h"
+			],
+			[
+				"co",
+				"src\\common.cpp"
+			],
+			[
+				"loxo",
+				"src\\lox\\lox.cpp"
+			],
+			[
+				"ks",
+				"src\\ksharedptr.h"
+			],
+			[
+				"scan",
+				"src\\lox\\scanner.cpp"
+			],
+			[
+				"kal",
+				"src\\kalloc.h"
+			],
+			[
+				"kall",
+				"src\\kalloc.h"
+			],
+			[
+				"parser",
+				"src\\lox\\parser.cpp"
+			],
+			[
+				"ast.h",
+				"src\\lox\\ast.h"
+			],
+			[
+				"kun",
+				"src\\kuniqueptr.h"
+			],
+			[
+				"ka",
+				"src\\kalloc.cpp"
+			],
+			[
+				"u",
+				"src\\kuniqueptr.h"
+			],
+			[
+				"lox.",
+				"src\\lox\\lox.cpp"
+			],
+			[
+				"uniq",
+				"src\\kuniqueptr.h"
+			],
+			[
+				"com",
+				"src\\common.cpp"
+			],
+			[
+				"uni",
+				"src\\kuniqueptr.h"
+			],
+			[
+				"vau",
+				"src\\lox\\value.cpp"
+			],
+			[
+				"kar",
+				"src\\karray.h"
+			],
+			[
+				"arra",
+				"src\\karray.h"
+			],
+			[
+				"par",
+				"src\\lox\\parser.cpp"
+			],
+			[
+				"krr",
+				"src\\karray.h"
+			],
+			[
+				"ma",
+				"Makefile"
+			],
+			[
+				"key",
+				"src\\keycodes.h"
+			],
+			[
+				"vga.",
+				"src\\vga.h"
+			],
+			[
+				"timer",
+				"src\\timer.cpp"
+			],
+			[
+				"vga.cp",
+				"src\\vga.cpp"
+			],
+			[
+				"cga",
+				"src\\vga.h"
+			],
+			[
+				"fs",
+				"src\\fs.cpp"
+			],
+			[
+				"gru",
+				"src\\grub.cfg"
+			],
+			[
+				"isr.",
+				"src\\isr.h"
+			],
+			[
+				"isr.h",
+				"src\\isr.h"
+			],
+			[
+				"fs.",
+				"src\\fs.cpp"
+			],
+			[
+				"pag",
+				"src\\paging.h"
+			],
+			[
+				"mai",
+				"src\\main.cpp"
+			],
+			[
+				"mk",
+				"Makefile"
+			],
+			[
+				"main.",
+				"src\\main.cpp"
+			],
+			[
+				"k",
+				"src\\keyboard.h"
+			],
+			[
+				"tmp.",
+				"tmp.txt"
+			],
+			[
+				"paging.h",
+				"src\\paging.h"
+			],
+			[
+				"isrc",
+				"src\\isr.cpp"
+			],
+			[
+				"inte",
+				"src\\interrupts.asm"
+			],
+			[
+				"mak",
+				"Makefile"
+			],
+			[
+				"ran",
+				"randInitializeWeights.m"
+			],
+			[
+				"standa",
+				"DefaultResourcesExtra\\Standard.shader"
+			],
+			[
+				"unitycg",
+				"CGIncludes\\UnityCG.cginc"
+			],
+			[
+				"unitystandarcorefo",
+				"CGIncludes\\UnityStandardCoreForwardSimple.cginc"
+			],
+			[
+				"unitystandardcorefor",
+				"CGIncludes\\UnityStandardCoreForward.cginc"
+			],
+			[
+				"stan",
+				"DefaultResourcesExtra\\Standard.shader"
+			],
+			[
+				"uity",
+				"CGIncludes\\UnityCG.cginc"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 250.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
